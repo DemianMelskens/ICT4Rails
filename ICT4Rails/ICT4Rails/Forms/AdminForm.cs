@@ -36,7 +36,7 @@ namespace ICT4Rails
             pl_Form_Total_Context.Anchor = AnchorStyles.None;
         }
 
-        #region GUIUserInput
+        #region GUILogic
         public void StandartGUI()
         {
             hideChildbuttons();
