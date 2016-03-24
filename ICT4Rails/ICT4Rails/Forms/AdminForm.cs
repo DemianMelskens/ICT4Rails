@@ -21,7 +21,6 @@ namespace ICT4Rails
             InitializeComponent();
             StandartGUI();
             AutoCenterContextSection();
-            dgvUsers.Rows.Add("Rob", "23", "robeer");
             UpdateFont();
         }
 
@@ -124,6 +123,7 @@ namespace ICT4Rails
         private void btnTramManagement_Click(object sender, EventArgs e)
         {
             pTramManagement.Visible = true;
+            pAccountInfo.Visible = false;
             pDefault.Visible = false;
             if (TramManagement)
             {
@@ -192,6 +192,8 @@ namespace ICT4Rails
             pDefault.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of drivers";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Rob", "23", "robeer");
         }
 
         private void btnTechnicians_Click(object sender, EventArgs e)
@@ -200,6 +202,8 @@ namespace ICT4Rails
             pDefault.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Technicians";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Romal", "19", "romalrio");
         }
 
         private void btnCleaningStaff_Click(object sender, EventArgs e)
@@ -208,6 +212,8 @@ namespace ICT4Rails
             pDefault.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Abdo", "24", "the o g");
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
