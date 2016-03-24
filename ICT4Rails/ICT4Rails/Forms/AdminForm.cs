@@ -21,6 +21,7 @@ namespace ICT4Rails
             InitializeComponent();
             StandartGUI();
             AutoCenterContextSection();
+            UpdateFont();
         }
 
         private void AdminForm_Resize(object sender, EventArgs e)
@@ -106,6 +107,9 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
+                btnDrivers.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnTechnicians.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnCleaningStaff.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 TramManagement = false;
                 TramMaitenance = false;
                 ManageAccountsOpen = true;
@@ -118,6 +122,9 @@ namespace ICT4Rails
 
         private void btnTramManagement_Click(object sender, EventArgs e)
         {
+            pTramManagement.Visible = true;
+            pAccountInfo.Visible = false;
+            pDefault.Visible = false;
             if (TramManagement)
             {
                 TramManagement = false;
@@ -126,6 +133,13 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
+                btnAddTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnMoveTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnDeleteTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnTramStatus.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnReserveSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnBlockSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnDeblockSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 ManageAccountsOpen = false;
                 TramMaitenance = false;
                 TramManagement = true;
@@ -145,6 +159,9 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
+                btnPlannedMaitenance.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnAddMaitenance.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
+                btnMaitenanceHistory.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 ManageAccountsOpen = false;
                 TramManagement = false;
                 TramMaitenance = true;
@@ -153,6 +170,55 @@ namespace ICT4Rails
                 btnTramMaitenance.Location = new Point(3, 67);
             }
         }
+
+        private void UpdateFont()
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in dgvUsers.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8);
+            }
+        }
         #endregion
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDrivers_Click(object sender, EventArgs e)
+        {
+            pTramManagement.Visible = false;
+            pDefault.Visible = false;
+            pManageAccount.Visible = true;
+            lblTableText.Text = "List of drivers";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Rob", "23", "robeer");
+        }
+
+        private void btnTechnicians_Click(object sender, EventArgs e)
+        {
+            pTramManagement.Visible = false;
+            pDefault.Visible = false;
+            pManageAccount.Visible = true;
+            lblTableText.Text = "List of Technicians";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Romal", "19", "romalrio");
+        }
+
+        private void btnCleaningStaff_Click(object sender, EventArgs e)
+        {
+            pTramManagement.Visible = false;
+            pDefault.Visible = false;
+            pManageAccount.Visible = true;
+            lblTableText.Text = "List of Cleaning staff";
+            dgvUsers.Rows.Clear();
+            dgvUsers.Rows.Add("Abdo", "24", "the o g");
+        }
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            pAccountInfo.Visible = true;
+        }
     }
 }
