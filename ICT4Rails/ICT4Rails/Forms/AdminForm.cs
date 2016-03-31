@@ -57,6 +57,7 @@ namespace ICT4Rails
             btnReserveSegment.Hide();
             btnBlockSegment.Hide();
             btnDeblockSegment.Hide();
+            btnRunSimulation.Hide();
             btnPlannedMaitenance.Hide();
             btnAddMaitenance.Hide();
             btnMaitenanceHistory.Hide();
@@ -71,11 +72,11 @@ namespace ICT4Rails
 
         public void showTramManagementbuttons()
         {
-            btnAddTram.Show();
             btnAddTram.Location = new Point(3, 67);
             btnMoveTram.Show();
             btnMoveTram.Location = new Point(3, 99);
             btnDeleteTram.Show();
+            btnAddTram.Show();
             btnDeleteTram.Location = new Point(3, 131);
             btnTramStatus.Show();
             btnTramStatus.Location = new Point(3, 163);
@@ -85,6 +86,8 @@ namespace ICT4Rails
             btnBlockSegment.Location = new Point(3, 227);
             btnDeblockSegment.Show();
             btnDeblockSegment.Location = new Point(3, 259);
+            btnRunSimulation.Show();
+            btnRunSimulation.Location = new Point(3, 291);
         }
 
         public void showTramMaitenancebuttons()
@@ -145,7 +148,7 @@ namespace ICT4Rails
                 TramManagement = true;
                 showTramManagementbuttons();
                 btnTramManagement.Location = new Point(3, 35);
-                btnTramMaitenance.Location = new Point(3, 291);
+                btnTramMaitenance.Location = new Point(3, 323);
             }
         }
 
@@ -194,6 +197,7 @@ namespace ICT4Rails
             lblTableText.Text = "List of drivers";
             dgvUsers.Rows.Clear();
             dgvUsers.Rows.Add("Rob", "23", "robeer");
+            dgvUsers.ClearSelection();
         }
 
         private void btnTechnicians_Click(object sender, EventArgs e)
@@ -204,6 +208,7 @@ namespace ICT4Rails
             lblTableText.Text = "List of Technicians";
             dgvUsers.Rows.Clear();
             dgvUsers.Rows.Add("Romal", "19", "romalrio");
+            dgvUsers.ClearSelection();
         }
 
         private void btnCleaningStaff_Click(object sender, EventArgs e)
@@ -213,12 +218,25 @@ namespace ICT4Rails
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
             dgvUsers.Rows.Clear();
-            dgvUsers.Rows.Add("Abdo", "24", "the o g");
+            dgvUsers.Rows.Add("Abdo", "24", "abdojan");
+            dgvUsers.ClearSelection();
         }
 
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
+            lblAccountInfo.Text = "Add Account";
             pAccountInfo.Visible = true;
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblAccountInfo.Text = "Edit Account";
+            pAccountInfo.Visible = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            pAccountInfo.Visible = false;
         }
     }
 }
