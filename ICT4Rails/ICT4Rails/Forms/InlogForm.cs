@@ -64,5 +64,15 @@ namespace ICT4Rails
             pContactAdmin.Visible = true;
 
         }
+
+        private void btnSubmitContact_Click(object sender, EventArgs e)
+        {
+            pContactAdmin.Visible = false;
+        }
+
+        private void btnCancelContact_Click(object sender, EventArgs e)
+        {
+            pContactAdmin.Visible = false;
+        }
     }
 }
