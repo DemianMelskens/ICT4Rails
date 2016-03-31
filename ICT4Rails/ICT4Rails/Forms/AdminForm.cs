@@ -127,7 +127,7 @@ namespace ICT4Rails
         {
             pTramManagement.Visible = true;
             pAccountInfo.Visible = false;
-            pDefault.Visible = false;
+            pTramMaitenance.Visible = false;
             if (TramManagement)
             {
                 TramManagement = false;
@@ -192,7 +192,7 @@ namespace ICT4Rails
         private void btnDrivers_Click(object sender, EventArgs e)
         {
             pTramManagement.Visible = false;
-            pDefault.Visible = false;
+            pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of drivers";
             dgvUsers.Rows.Clear();
@@ -203,7 +203,7 @@ namespace ICT4Rails
         private void btnTechnicians_Click(object sender, EventArgs e)
         {
             pTramManagement.Visible = false;
-            pDefault.Visible = false;
+            pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Technicians";
             dgvUsers.Rows.Clear();
@@ -214,7 +214,7 @@ namespace ICT4Rails
         private void btnCleaningStaff_Click(object sender, EventArgs e)
         {
             pTramManagement.Visible = false;
-            pDefault.Visible = false;
+            pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
             dgvUsers.Rows.Clear();

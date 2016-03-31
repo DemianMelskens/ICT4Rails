@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
-            this.pDefault = new System.Windows.Forms.Panel();
+            this.pTramMaitenance = new System.Windows.Forms.Panel();
             this.pTramManagement = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox211 = new System.Windows.Forms.TextBox();
@@ -316,7 +316,7 @@
             // pl_Form_Total_Context
             // 
             this.pl_Form_Total_Context.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pl_Form_Total_Context.Controls.Add(this.pDefault);
+            this.pl_Form_Total_Context.Controls.Add(this.pTramMaitenance);
             this.pl_Form_Total_Context.Controls.Add(this.pTramManagement);
             this.pl_Form_Total_Context.Controls.Add(this.panel3);
             this.pl_Form_Total_Context.Controls.Add(this.pManageAccount);
@@ -326,13 +326,13 @@
             this.pl_Form_Total_Context.Size = new System.Drawing.Size(1326, 705);
             this.pl_Form_Total_Context.TabIndex = 0;
             // 
-            // pDefault
+            // pTramMaitenance
             // 
-            this.pDefault.BackColor = System.Drawing.Color.White;
-            this.pDefault.Location = new System.Drawing.Point(226, 90);
-            this.pDefault.Name = "pDefault";
-            this.pDefault.Size = new System.Drawing.Size(1097, 612);
-            this.pDefault.TabIndex = 20;
+            this.pTramMaitenance.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pTramMaitenance.Location = new System.Drawing.Point(226, 90);
+            this.pTramMaitenance.Name = "pTramMaitenance";
+            this.pTramMaitenance.Size = new System.Drawing.Size(1097, 612);
+            this.pTramMaitenance.TabIndex = 20;
             // 
             // pTramManagement
             // 
@@ -4212,7 +4212,7 @@
         private System.Windows.Forms.TextBox Track_36;
         private System.Windows.Forms.TextBox Track_37;
         private System.Windows.Forms.TextBox Track_38;
-        private System.Windows.Forms.Panel pDefault;
+        private System.Windows.Forms.Panel pTramMaitenance;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox211;
         private System.Windows.Forms.TextBox textBox202;
