@@ -39,5 +39,30 @@ namespace ICT4Rails
             AdminForm.Show();
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pRecoverPassword.Visible = true;
+            pInlog.Visible = false;
+            pContactAdmin.Visible = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            pInlog.Visible = true;
+            pRecoverPassword.Visible = false;
+            pContactAdmin.Visible = false;
+        }
+
+        private void btnSubmitRecover_Click(object sender, EventArgs e)
+        {
+            pRecoverPassword.Visible = false;
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pContactAdmin.Visible = true;
+
+        }
     }
 }

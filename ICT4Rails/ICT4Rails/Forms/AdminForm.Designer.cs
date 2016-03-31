@@ -302,6 +302,7 @@
             this.btnTramMaitenance = new System.Windows.Forms.Button();
             this.btnTramManagement = new System.Windows.Forms.Button();
             this.btnManageAccounts = new System.Windows.Forms.Button();
+            this.btnRunSimulation = new System.Windows.Forms.Button();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramManagement.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -3632,6 +3633,7 @@
             this.btnCancel.TabIndex = 22;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSubmit
             // 
@@ -3803,7 +3805,9 @@
             this.dgvUsers.Location = new System.Drawing.Point(15, 52);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(518, 541);
-            this.dgvUsers.TabIndex = 3;
+            this.dgvUsers.TabIndex = 12;
+            this.dgvUsers.TabStop = false;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // ColumName
             // 
@@ -3830,6 +3834,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnRunSimulation);
             this.panel1.Controls.Add(this.btnMaitenanceHistory);
             this.panel1.Controls.Add(this.btnAddMaitenance);
             this.panel1.Controls.Add(this.btnPlannedMaitenance);
@@ -3856,7 +3861,7 @@
             this.btnMaitenanceHistory.BackColor = System.Drawing.Color.White;
             this.btnMaitenanceHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaitenanceHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaitenanceHistory.Location = new System.Drawing.Point(3, 483);
+            this.btnMaitenanceHistory.Location = new System.Drawing.Point(3, 515);
             this.btnMaitenanceHistory.Name = "btnMaitenanceHistory";
             this.btnMaitenanceHistory.Size = new System.Drawing.Size(209, 30);
             this.btnMaitenanceHistory.TabIndex = 15;
@@ -3868,7 +3873,7 @@
             this.btnAddMaitenance.BackColor = System.Drawing.Color.White;
             this.btnAddMaitenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddMaitenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddMaitenance.Location = new System.Drawing.Point(3, 451);
+            this.btnAddMaitenance.Location = new System.Drawing.Point(3, 483);
             this.btnAddMaitenance.Name = "btnAddMaitenance";
             this.btnAddMaitenance.Size = new System.Drawing.Size(209, 30);
             this.btnAddMaitenance.TabIndex = 14;
@@ -3880,7 +3885,7 @@
             this.btnPlannedMaitenance.BackColor = System.Drawing.Color.White;
             this.btnPlannedMaitenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlannedMaitenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlannedMaitenance.Location = new System.Drawing.Point(3, 419);
+            this.btnPlannedMaitenance.Location = new System.Drawing.Point(3, 451);
             this.btnPlannedMaitenance.Name = "btnPlannedMaitenance";
             this.btnPlannedMaitenance.Size = new System.Drawing.Size(209, 30);
             this.btnPlannedMaitenance.TabIndex = 13;
@@ -3896,7 +3901,7 @@
             this.btnDeblockSegment.Name = "btnDeblockSegment";
             this.btnDeblockSegment.Size = new System.Drawing.Size(209, 30);
             this.btnDeblockSegment.TabIndex = 12;
-            this.btnDeblockSegment.Text = "Segment Deblokeren";
+            this.btnDeblockSegment.Text = "Deblock Segment";
             this.btnDeblockSegment.UseVisualStyleBackColor = false;
             // 
             // btnBlockSegment
@@ -3908,7 +3913,7 @@
             this.btnBlockSegment.Name = "btnBlockSegment";
             this.btnBlockSegment.Size = new System.Drawing.Size(209, 30);
             this.btnBlockSegment.TabIndex = 11;
-            this.btnBlockSegment.Text = "Segment Blokeren";
+            this.btnBlockSegment.Text = "Block Segment";
             this.btnBlockSegment.UseVisualStyleBackColor = false;
             // 
             // btnTramStatus
@@ -3920,7 +3925,7 @@
             this.btnTramStatus.Name = "btnTramStatus";
             this.btnTramStatus.Size = new System.Drawing.Size(209, 30);
             this.btnTramStatus.TabIndex = 10;
-            this.btnTramStatus.Text = "Tram Status Opvragen";
+            this.btnTramStatus.Text = "Tram Status";
             this.btnTramStatus.UseVisualStyleBackColor = false;
             // 
             // btnReserveSegment
@@ -3932,7 +3937,7 @@
             this.btnReserveSegment.Name = "btnReserveSegment";
             this.btnReserveSegment.Size = new System.Drawing.Size(209, 30);
             this.btnReserveSegment.TabIndex = 9;
-            this.btnReserveSegment.Text = "Segment Reserveren";
+            this.btnReserveSegment.Text = "Reserve Segment";
             this.btnReserveSegment.UseVisualStyleBackColor = false;
             // 
             // btnDeleteTram
@@ -3944,7 +3949,7 @@
             this.btnDeleteTram.Name = "btnDeleteTram";
             this.btnDeleteTram.Size = new System.Drawing.Size(209, 30);
             this.btnDeleteTram.TabIndex = 8;
-            this.btnDeleteTram.Text = "Tram Verwijderen";
+            this.btnDeleteTram.Text = "Delete Tram";
             this.btnDeleteTram.UseVisualStyleBackColor = false;
             // 
             // btnMoveTram
@@ -3956,7 +3961,7 @@
             this.btnMoveTram.Name = "btnMoveTram";
             this.btnMoveTram.Size = new System.Drawing.Size(209, 30);
             this.btnMoveTram.TabIndex = 7;
-            this.btnMoveTram.Text = "Tram Verplaatsen";
+            this.btnMoveTram.Text = "Move Tram";
             this.btnMoveTram.UseVisualStyleBackColor = false;
             // 
             // btnAddTram
@@ -3968,7 +3973,7 @@
             this.btnAddTram.Name = "btnAddTram";
             this.btnAddTram.Size = new System.Drawing.Size(209, 30);
             this.btnAddTram.TabIndex = 6;
-            this.btnAddTram.Text = "Tram Toevoegen";
+            this.btnAddTram.Text = "Add Tram";
             this.btnAddTram.UseVisualStyleBackColor = false;
             // 
             // btnCleaningStaff
@@ -4015,7 +4020,7 @@
             this.btnTramMaitenance.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnTramMaitenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTramMaitenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTramMaitenance.Location = new System.Drawing.Point(3, 387);
+            this.btnTramMaitenance.Location = new System.Drawing.Point(3, 419);
             this.btnTramMaitenance.Name = "btnTramMaitenance";
             this.btnTramMaitenance.Size = new System.Drawing.Size(209, 30);
             this.btnTramMaitenance.TabIndex = 2;
@@ -4048,6 +4053,18 @@
             this.btnManageAccounts.Text = "Manage Accounts";
             this.btnManageAccounts.UseVisualStyleBackColor = false;
             this.btnManageAccounts.Click += new System.EventHandler(this.btnManageAccounts_Click);
+            // 
+            // btnRunSimulation
+            // 
+            this.btnRunSimulation.BackColor = System.Drawing.Color.White;
+            this.btnRunSimulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRunSimulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRunSimulation.Location = new System.Drawing.Point(3, 387);
+            this.btnRunSimulation.Name = "btnRunSimulation";
+            this.btnRunSimulation.Size = new System.Drawing.Size(209, 30);
+            this.btnRunSimulation.TabIndex = 16;
+            this.btnRunSimulation.Text = "Run Simulation";
+            this.btnRunSimulation.UseVisualStyleBackColor = false;
             // 
             // AdminForm
             // 
@@ -4352,5 +4369,6 @@
         private System.Windows.Forms.TextBox textBox53;
         private System.Windows.Forms.TextBox textBox54;
         private System.Windows.Forms.TextBox textBox55;
+        private System.Windows.Forms.Button btnRunSimulation;
     }
 }
