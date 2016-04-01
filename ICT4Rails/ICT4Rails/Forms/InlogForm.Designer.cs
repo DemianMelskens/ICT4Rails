@@ -56,6 +56,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbEmailRecover = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnTestConnection = new System.Windows.Forms.Button();
+            this.lblTestConnection = new System.Windows.Forms.Label();
             this.pInlog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pl_Form_Total_Context.SuspendLayout();
@@ -201,6 +203,8 @@
             this.pContactAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pContactAdmin.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.pContactAdmin.Controls.Add(this.lblTestConnection);
+            this.pContactAdmin.Controls.Add(this.btnTestConnection);
             this.pContactAdmin.Controls.Add(this.richTextBox1);
             this.pContactAdmin.Controls.Add(this.btnCancelContact);
             this.pContactAdmin.Controls.Add(this.btnSubmitContact);
@@ -363,6 +367,24 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "E-mail";
             // 
+            // btnTestConnection
+            // 
+            this.btnTestConnection.Location = new System.Drawing.Point(29, 3);
+            this.btnTestConnection.Name = "btnTestConnection";
+            this.btnTestConnection.Size = new System.Drawing.Size(112, 23);
+            this.btnTestConnection.TabIndex = 13;
+            this.btnTestConnection.Text = "Test Connection";
+            this.btnTestConnection.UseVisualStyleBackColor = true;
+            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
+            // 
+            // lblTestConnection
+            // 
+            this.lblTestConnection.AutoSize = true;
+            this.lblTestConnection.Location = new System.Drawing.Point(28, 26);
+            this.lblTestConnection.Name = "lblTestConnection";
+            this.lblTestConnection.Size = new System.Drawing.Size(0, 13);
+            this.lblTestConnection.TabIndex = 14;
+            // 
             // InlogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,5 +437,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbNameContact;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnTestConnection;
+        private System.Windows.Forms.Label lblTestConnection;
     }
 }
