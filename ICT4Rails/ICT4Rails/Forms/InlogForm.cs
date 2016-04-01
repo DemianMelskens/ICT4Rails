@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICT4Rails.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,6 +76,14 @@ namespace ICT4Rails
         private void btnCancelContact_Click(object sender, EventArgs e)
         {
             pContactAdmin.Visible = false;
+        }
+
+        private void btnTestConnection_Click(object sender, EventArgs e)
+        {
+            using (Data.DbConnection.Connection)
+            {
+                lblTestConnection.Text = DbConnection.Connection.State.ToString();
+            }
         }
     }
 }
