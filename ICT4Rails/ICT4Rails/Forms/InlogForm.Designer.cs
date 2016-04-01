@@ -219,7 +219,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(31, 102);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(462, 96);
+            this.richTextBox1.Size = new System.Drawing.Size(358, 96);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
             // 
@@ -260,7 +260,7 @@
             this.tbNameContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNameContact.Location = new System.Drawing.Point(31, 70);
             this.tbNameContact.Name = "tbNameContact";
-            this.tbNameContact.Size = new System.Drawing.Size(463, 26);
+            this.tbNameContact.Size = new System.Drawing.Size(358, 26);
             this.tbNameContact.TabIndex = 0;
             // 
             // label10
