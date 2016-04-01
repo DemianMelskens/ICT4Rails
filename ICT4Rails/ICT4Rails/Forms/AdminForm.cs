@@ -47,20 +47,20 @@ namespace ICT4Rails
 
         public void hideChildbuttons()
         {
+            pLegenda.Hide();
             btnDrivers.Hide();
             btnTechnicians.Hide();
             btnCleaningStaff.Hide();
-            btnAddTram.Hide();
-            btnMoveTram.Hide();
-            btnDeleteTram.Hide();
-            btnTramStatus.Hide();
+            btnAddTramOverview.Hide();
+            btnMoveTramOverview.Hide();
+            btnDeleteTramOverview.Hide();
+            btnTramStatusOverview.Hide();
             btnReserveSegment.Hide();
             btnBlockSegment.Hide();
             btnDeblockSegment.Hide();
             btnRunSimulation.Hide();
-            btnPlannedMaitenance.Hide();
-            btnAddMaitenance.Hide();
-            btnMaitenanceHistory.Hide();
+            btnTramMenu.Hide();
+            btnMaintenanceSchedule.Hide();
         }
 
         public void showManageAccountsbuttons()
@@ -72,36 +72,49 @@ namespace ICT4Rails
 
         public void showTramManagementbuttons()
         {
-            btnAddTram.Location = new Point(3, 67);
-            btnMoveTram.Show();
-            btnMoveTram.Location = new Point(3, 99);
-            btnDeleteTram.Show();
-            btnAddTram.Show();
-            btnDeleteTram.Location = new Point(3, 131);
-            btnTramStatus.Show();
-            btnTramStatus.Location = new Point(3, 163);
+            pLegenda.Show();
+
+            btnAddTramOverview.Show();
+            btnAddTramOverview.Location = new Point(3, 67);
+
+            btnMoveTramOverview.Show();
+            btnMoveTramOverview.Location = new Point(3, 99);
+
+            btnDeleteTramOverview.Show();
+            btnDeleteTramOverview.Location = new Point(3, 131);
+
+            btnTramStatusOverview.Show();
+            btnTramStatusOverview.Location = new Point(3, 163);
+
             btnReserveSegment.Show();
             btnReserveSegment.Location = new Point(3, 195);
+
             btnBlockSegment.Show();
             btnBlockSegment.Location = new Point(3, 227);
+
             btnDeblockSegment.Show();
             btnDeblockSegment.Location = new Point(3, 259);
+
             btnRunSimulation.Show();
             btnRunSimulation.Location = new Point(3, 291);
         }
 
         public void showTramMaitenancebuttons()
         {
-            btnPlannedMaitenance.Show();
-            btnPlannedMaitenance.Location = new Point(3, 99);
-            btnAddMaitenance.Show();
-            btnAddMaitenance.Location = new Point(3, 131);
-            btnMaitenanceHistory.Show();
-            btnMaitenanceHistory.Location = new Point(3, 163);
+            btnTramMenu.Show();
+            btnTramMenu.Location = new Point(3, 99);
+
+            btnMaintenanceSchedule.Show();
+            btnMaintenanceSchedule.Location = new Point(3, 131);
         }
 
         private void btnManageAccounts_Click(object sender, EventArgs e)
         {
+            pDefault.Visible = true;
+            pTramManagement.Visible = false;
+            pAccountInfo.Visible = false;
+            pTramMaitenance.Visible = false;
+            pTramInfo.Visible = false;
             if (ManageAccountsOpen)
             {
                 ManageAccountsOpen = false;
@@ -110,9 +123,6 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
-                btnDrivers.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnTechnicians.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnCleaningStaff.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 TramManagement = false;
                 TramMaitenance = false;
                 ManageAccountsOpen = true;
@@ -125,9 +135,12 @@ namespace ICT4Rails
 
         private void btnTramManagement_Click(object sender, EventArgs e)
         {
+            pDefault.Visible = false;
+            pManageAccount.Visible = false;
             pTramManagement.Visible = true;
             pAccountInfo.Visible = false;
             pTramMaitenance.Visible = false;
+            pTramInfo.Visible = false;
             if (TramManagement)
             {
                 TramManagement = false;
@@ -136,13 +149,6 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
-                btnAddTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnMoveTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnDeleteTram.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnTramStatus.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnReserveSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnBlockSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnDeblockSegment.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 ManageAccountsOpen = false;
                 TramMaitenance = false;
                 TramManagement = true;
@@ -154,7 +160,12 @@ namespace ICT4Rails
 
         private void btnTramMaitenance_Click(object sender, EventArgs e)
         {
-            if(TramMaitenance)
+            pDefault.Visible = true;
+            pManageAccount.Visible = false;
+            pTramManagement.Visible = false;
+            pAccountInfo.Visible = false;
+            pTramInfo.Visible = false;
+            if (TramMaitenance)
             {
                 TramMaitenance = false;
                 StandartGUI();
@@ -162,9 +173,6 @@ namespace ICT4Rails
             else
             {
                 StandartGUI();
-                btnPlannedMaitenance.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnAddMaitenance.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-                btnMaitenanceHistory.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
                 ManageAccountsOpen = false;
                 TramManagement = false;
                 TramMaitenance = true;
@@ -191,6 +199,7 @@ namespace ICT4Rails
 
         private void btnDrivers_Click(object sender, EventArgs e)
         {
+            pDefault.Visible = false;
             pTramManagement.Visible = false;
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
@@ -202,6 +211,7 @@ namespace ICT4Rails
 
         private void btnTechnicians_Click(object sender, EventArgs e)
         {
+            pDefault.Visible = false;
             pTramManagement.Visible = false;
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
@@ -213,6 +223,7 @@ namespace ICT4Rails
 
         private void btnCleaningStaff_Click(object sender, EventArgs e)
         {
+            pDefault.Visible = false;
             pTramManagement.Visible = false;
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
@@ -226,17 +237,99 @@ namespace ICT4Rails
         {
             lblAccountInfo.Text = "Add Account";
             pAccountInfo.Visible = true;
+            btnDelete.Visible = false;
         }
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lblAccountInfo.Text = "Edit Account";
             pAccountInfo.Visible = true;
+            btnDelete.Visible = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             pAccountInfo.Visible = false;
+            pTramInfo.Visible = false;
+        }
+
+        private void btnAddTram_Click(object sender, EventArgs e)
+        {
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = false;
+            lbTramInfo.Text = "Add Tram";
+        }
+
+        private void btnTramMenu_Click(object sender, EventArgs e)
+        {
+            dgvTrams.Rows.Clear();
+            dgvTrams.Rows.Add("2009", "Combino's", "Ready for use", "2");
+            dgvTrams.ClearSelection();
+            lbTramList.Text = "List of Trams";
+            dgvMaitenanceSchedule.Visible = false;
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
+            dgvTrams.Visible = true;
+            pDefault.Visible = false;
+            pTramMaitenance.Visible = true;
+            pTramInfo.Visible = false;
+            btnAddTram.Visible = true;
+            btnAddMaitenance.Visible = false;
+            lblMaitenanceDescription.Visible = false;
+            rtbMaitenanceDescription.Visible = false;
+        }
+
+        private void btnMaintenanceSchedule_Click(object sender, EventArgs e)
+        {
+            dgvMaitenanceSchedule.Rows.Clear();
+            dgvMaitenanceSchedule.Rows.Add("2009", "Combino's", "Ready for use", "2", "12:30", " 14:30");
+            dgvMaitenanceSchedule.ClearSelection();
+            lbTramList.Text = "List of Maitenance";
+            pTramInfo.Visible = false;
+            dgvTrams.Visible = true;
+            pDefault.Visible = false;
+            dgvMaitenanceSchedule.Visible = true;
+            btnAddTram.Visible = false;
+            btnAddMaitenance.Visible = true;
+        }
+
+        private void dgvTrams_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lbTramInfo.Text = "Edit Tram";
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = true;
+            lblMaitenanceDescription.Visible = false;
+            rtbMaitenanceDescription.Visible = false;
+        }
+
+        private void dgvMaitenanceSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lbTramInfo.Text = "Edit Maitenance";
+            cbTramStatus.Visible = false;
+            lblTramStatus.Visible = false;
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = true;
+            lblMaitenanceDescription.Visible = true;
+            rtbMaitenanceDescription.Visible = true;
+        }
+
+        private void btnMaitenanceHistory_Click(object sender, EventArgs e)
+        {
+            lbTramInfo.Text = "Maitenance Info";
+            cbTramStatus.Visible = false;
+            lblTramStatus.Visible = false;
+            btnDeleteTram.Visible = true;
+            lblMaitenanceDescription.Visible = true;
+            rtbMaitenanceDescription.Visible = true;
+        }
+
+        private void btnAddMaitenance_Click(object sender, EventArgs e)
+        {
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = false;
+            lbTramInfo.Text = "Add Maitenance";
         }
     }
 }

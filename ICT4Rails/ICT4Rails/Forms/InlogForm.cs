@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ICT4Rails.Data.Oracle;
-using ICT4Rails.Exceptions;
+//using ICT4Rails.Data.Oracle;
+//using ICT4Rails.Exceptions;
 
 namespace ICT4Rails
 {
@@ -67,12 +67,14 @@ namespace ICT4Rails
 
         }
 
-        private void btnTestConnection_Click(object sender, EventArgs e)
+        private void btnSubmitContact_Click(object sender, EventArgs e)
         {
-            using (ICT4Rails.Data.Oracle.DbConnectie.Connection)
-            {
-                lblTestConnection.Text = DbConnectie.Connection.State.ToString();
-            }
+            pContactAdmin.Visible = false;
+        }
+
+        private void btnCancelContact_Click(object sender, EventArgs e)
+        {
+            pContactAdmin.Visible = false;
         }
     }
 }

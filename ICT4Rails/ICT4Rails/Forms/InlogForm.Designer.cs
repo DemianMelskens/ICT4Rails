@@ -43,8 +43,8 @@
             this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
             this.pContactAdmin = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelContact = new System.Windows.Forms.Button();
+            this.btnSubmitContact = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.tbNameContact = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,8 +56,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbEmailRecover = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnTestConnection = new System.Windows.Forms.Button();
-            this.lblTestConnection = new System.Windows.Forms.Label();
             this.pInlog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pl_Form_Total_Context.SuspendLayout();
@@ -188,8 +186,6 @@
             // 
             // pl_Form_Total_Context
             // 
-            this.pl_Form_Total_Context.Controls.Add(this.lblTestConnection);
-            this.pl_Form_Total_Context.Controls.Add(this.btnTestConnection);
             this.pl_Form_Total_Context.Controls.Add(this.pContactAdmin);
             this.pl_Form_Total_Context.Controls.Add(this.pRecoverPassword);
             this.pl_Form_Total_Context.Controls.Add(this.pictureBox1);
@@ -206,8 +202,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pContactAdmin.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pContactAdmin.Controls.Add(this.richTextBox1);
-            this.pContactAdmin.Controls.Add(this.button2);
-            this.pContactAdmin.Controls.Add(this.button3);
+            this.pContactAdmin.Controls.Add(this.btnCancelContact);
+            this.pContactAdmin.Controls.Add(this.btnSubmitContact);
             this.pContactAdmin.Controls.Add(this.label8);
             this.pContactAdmin.Controls.Add(this.tbNameContact);
             this.pContactAdmin.Controls.Add(this.label10);
@@ -222,29 +218,32 @@
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox1.Location = new System.Drawing.Point(31, 102);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.richTextBox1.Size = new System.Drawing.Size(358, 96);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
             // 
-            // button2
+            // btnCancelContact
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(499, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 30);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancelContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelContact.Location = new System.Drawing.Point(499, 161);
+            this.btnCancelContact.Name = "btnCancelContact";
+            this.btnCancelContact.Size = new System.Drawing.Size(98, 30);
+            this.btnCancelContact.TabIndex = 11;
+            this.btnCancelContact.Text = "Cancel";
+            this.btnCancelContact.UseVisualStyleBackColor = true;
+            this.btnCancelContact.Click += new System.EventHandler(this.btnCancelContact_Click);
             // 
-            // button3
+            // btnSubmitContact
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(395, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 30);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Submit";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSubmitContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitContact.Location = new System.Drawing.Point(499, 129);
+            this.btnSubmitContact.Name = "btnSubmitContact";
+            this.btnSubmitContact.Size = new System.Drawing.Size(98, 30);
+            this.btnSubmitContact.TabIndex = 10;
+            this.btnSubmitContact.Text = "Submit";
+            this.btnSubmitContact.UseVisualStyleBackColor = true;
+            this.btnSubmitContact.Click += new System.EventHandler(this.btnSubmitContact_Click);
             // 
             // label8
             // 
@@ -364,24 +363,6 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "E-mail";
             // 
-            // btnTestConnection
-            // 
-            this.btnTestConnection.Location = new System.Drawing.Point(18, 17);
-            this.btnTestConnection.Name = "btnTestConnection";
-            this.btnTestConnection.Size = new System.Drawing.Size(118, 23);
-            this.btnTestConnection.TabIndex = 13;
-            this.btnTestConnection.Text = "Test connection";
-            this.btnTestConnection.UseVisualStyleBackColor = true;
-            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
-            // 
-            // lblTestConnection
-            // 
-            this.lblTestConnection.AutoSize = true;
-            this.lblTestConnection.Location = new System.Drawing.Point(18, 47);
-            this.lblTestConnection.Name = "lblTestConnection";
-            this.lblTestConnection.Size = new System.Drawing.Size(0, 13);
-            this.lblTestConnection.TabIndex = 14;
-            // 
             // InlogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +378,6 @@
             this.pInlog.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pl_Form_Total_Context.ResumeLayout(false);
-            this.pl_Form_Total_Context.PerformLayout();
             this.pContactAdmin.ResumeLayout(false);
             this.pContactAdmin.PerformLayout();
             this.pRecoverPassword.ResumeLayout(false);
@@ -430,12 +410,10 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel pContactAdmin;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancelContact;
+        private System.Windows.Forms.Button btnSubmitContact;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbNameContact;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblTestConnection;
-        private System.Windows.Forms.Button btnTestConnection;
     }
 }
