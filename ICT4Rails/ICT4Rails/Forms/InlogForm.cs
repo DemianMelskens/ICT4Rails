@@ -110,19 +110,15 @@ namespace ICT4Rails
 
         private void btnTestConnection_Click(object sender, EventArgs e)
         {
-            try
+            int index = GeneralQueries.GetPrimairyKey("User", "UserID");
+            if(index == -1)
             {
-                using (ICT4Rails.Data.DbConnection.Connection)
-                {
-                    lblTestConnection.ForeColor = Color.Green;
-                    lblTestConnection.Text = DbConnection.Connection.State.ToString() + "!";
-                }
+                lblTestConnection.Text = "no connection established";
             }
-            catch(Exception ex)
+            else
             {
-                lblTestConnection.Text = DbConnection.Connection.State.ToString();
+                lblTestConnection.Text = "connection established";
             }
-            
         }
 
         private void tbUsername_KeyUp(object sender, KeyEventArgs e)
