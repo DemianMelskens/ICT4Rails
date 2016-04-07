@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // pl_Form_Total_Context
+            // 
+            this.pl_Form_Total_Context.Location = new System.Drawing.Point(3, 3);
+            this.pl_Form_Total_Context.Name = "pl_Form_Total_Context";
+            this.pl_Form_Total_Context.Size = new System.Drawing.Size(441, 373);
+            this.pl_Form_Total_Context.TabIndex = 0;
             // 
             // FDialogForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 465);
+            this.ClientSize = new System.Drawing.Size(446, 378);
+            this.Controls.Add(this.pl_Form_Total_Context);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FDialogForm";
             this.Text = "DialogForm";
             this.ResumeLayout(false);
@@ -42,5 +52,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pl_Form_Total_Context;
     }
 }
