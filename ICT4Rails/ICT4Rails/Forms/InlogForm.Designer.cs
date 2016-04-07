@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InlogForm));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.pInlog = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSignIn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,6 +42,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
             this.pContactAdmin = new System.Windows.Forms.Panel();
+            this.lblTestConnection = new System.Windows.Forms.Label();
+            this.btnTestConnection = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnCancelContact = new System.Windows.Forms.Button();
             this.btnSubmitContact = new System.Windows.Forms.Button();
@@ -56,8 +58,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbEmailRecover = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnTestConnection = new System.Windows.Forms.Button();
-            this.lblTestConnection = new System.Windows.Forms.Label();
             this.pInlog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pl_Form_Total_Context.SuspendLayout();
@@ -65,13 +65,13 @@
             this.pRecoverPassword.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbUsername
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(29, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(255, 26);
-            this.textBox1.TabIndex = 0;
+            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsername.Location = new System.Drawing.Point(29, 81);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(255, 26);
+            this.tbUsername.TabIndex = 0;
             // 
             // label1
             // 
@@ -93,43 +93,43 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
-            // textBox2
+            // tbPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(29, 129);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(255, 26);
-            this.textBox2.TabIndex = 2;
+            this.tbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPassword.Location = new System.Drawing.Point(29, 129);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(255, 26);
+            this.tbPassword.TabIndex = 2;
             // 
             // pInlog
             // 
             this.pInlog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pInlog.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pInlog.Controls.Add(this.button1);
+            this.pInlog.Controls.Add(this.btnSignIn);
             this.pInlog.Controls.Add(this.label5);
             this.pInlog.Controls.Add(this.linkLabel2);
             this.pInlog.Controls.Add(this.label3);
             this.pInlog.Controls.Add(this.linkLabel1);
-            this.pInlog.Controls.Add(this.textBox1);
+            this.pInlog.Controls.Add(this.tbUsername);
             this.pInlog.Controls.Add(this.label1);
             this.pInlog.Controls.Add(this.label2);
-            this.pInlog.Controls.Add(this.textBox2);
+            this.pInlog.Controls.Add(this.tbPassword);
             this.pInlog.Location = new System.Drawing.Point(9, 203);
             this.pInlog.Name = "pInlog";
             this.pInlog.Size = new System.Drawing.Size(608, 204);
             this.pInlog.TabIndex = 5;
             // 
-            // button1
+            // btnSignIn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(29, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 30);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Sign in";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignIn.Location = new System.Drawing.Point(29, 161);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(98, 30);
+            this.btnSignIn.TabIndex = 10;
+            this.btnSignIn.Text = "Sign in";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -216,6 +216,24 @@
             this.pContactAdmin.Size = new System.Drawing.Size(608, 204);
             this.pContactAdmin.TabIndex = 12;
             this.pContactAdmin.Visible = false;
+            // 
+            // lblTestConnection
+            // 
+            this.lblTestConnection.AutoSize = true;
+            this.lblTestConnection.Location = new System.Drawing.Point(28, 26);
+            this.lblTestConnection.Name = "lblTestConnection";
+            this.lblTestConnection.Size = new System.Drawing.Size(0, 13);
+            this.lblTestConnection.TabIndex = 14;
+            // 
+            // btnTestConnection
+            // 
+            this.btnTestConnection.Location = new System.Drawing.Point(29, 3);
+            this.btnTestConnection.Name = "btnTestConnection";
+            this.btnTestConnection.Size = new System.Drawing.Size(112, 23);
+            this.btnTestConnection.TabIndex = 13;
+            this.btnTestConnection.Text = "Test Connection";
+            this.btnTestConnection.UseVisualStyleBackColor = true;
+            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
             // 
             // richTextBox1
             // 
@@ -367,24 +385,6 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "E-mail";
             // 
-            // btnTestConnection
-            // 
-            this.btnTestConnection.Location = new System.Drawing.Point(29, 3);
-            this.btnTestConnection.Name = "btnTestConnection";
-            this.btnTestConnection.Size = new System.Drawing.Size(112, 23);
-            this.btnTestConnection.TabIndex = 13;
-            this.btnTestConnection.Text = "Test Connection";
-            this.btnTestConnection.UseVisualStyleBackColor = true;
-            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
-            // 
-            // lblTestConnection
-            // 
-            this.lblTestConnection.AutoSize = true;
-            this.lblTestConnection.Location = new System.Drawing.Point(28, 26);
-            this.lblTestConnection.Name = "lblTestConnection";
-            this.lblTestConnection.Size = new System.Drawing.Size(0, 13);
-            this.lblTestConnection.TabIndex = 14;
-            // 
             // InlogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,10 +410,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Panel pInlog;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label3;
@@ -421,7 +421,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pl_Form_Total_Context;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.Panel pRecoverPassword;
         private System.Windows.Forms.Button btnSubmitRecover;
         private System.Windows.Forms.Label label4;
