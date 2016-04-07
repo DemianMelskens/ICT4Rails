@@ -34,6 +34,11 @@
             this.btnAddMaitenance = new System.Windows.Forms.Button();
             this.btnMaitenanceHistory = new System.Windows.Forms.Button();
             this.dgvMaitenanceSchedule = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pTramInfo = new System.Windows.Forms.Panel();
             this.lblMaitenanceDescription = new System.Windows.Forms.Label();
             this.rtbMaitenanceDescription = new System.Windows.Forms.RichTextBox();
@@ -312,6 +317,14 @@
             this.ColumAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pDateSelect = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dtpTramSelect = new System.Windows.Forms.DateTimePicker();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.pLegenda = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox220 = new System.Windows.Forms.TextBox();
@@ -337,19 +350,6 @@
             this.btnTramMaitenance = new System.Windows.Forms.Button();
             this.btnTramManagement = new System.Windows.Forms.Button();
             this.btnManageAccounts = new System.Windows.Forms.Button();
-            this.btnLogOut = new System.Windows.Forms.Button();
-            this.pDateSelect = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dtpTramSelect = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramMaitenance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaitenanceSchedule)).BeginInit();
@@ -362,8 +362,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
-            this.pLegenda.SuspendLayout();
             this.pDateSelect.SuspendLayout();
+            this.pLegenda.SuspendLayout();
             this.SuspendLayout();
             // 
             // pl_Form_Total_Context
@@ -451,6 +451,37 @@
             this.dgvMaitenanceSchedule.TabStop = false;
             this.dgvMaitenanceSchedule.Visible = false;
             this.dgvMaitenanceSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaitenanceSchedule_CellClick);
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.FillWeight = 2F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Start Time";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "End Time";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
             // pTramInfo
             // 
@@ -4204,6 +4235,89 @@
             this.panel1.Size = new System.Drawing.Size(217, 612);
             this.panel1.TabIndex = 0;
             // 
+            // pDateSelect
+            // 
+            this.pDateSelect.BackColor = System.Drawing.SystemColors.Control;
+            this.pDateSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pDateSelect.Controls.Add(this.label15);
+            this.pDateSelect.Controls.Add(this.label13);
+            this.pDateSelect.Controls.Add(this.comboBox1);
+            this.pDateSelect.Controls.Add(this.dtpTramSelect);
+            this.pDateSelect.Controls.Add(this.panel4);
+            this.pDateSelect.Controls.Add(this.label17);
+            this.pDateSelect.Location = new System.Drawing.Point(3, 355);
+            this.pDateSelect.Name = "pDateSelect";
+            this.pDateSelect.Size = new System.Drawing.Size(209, 220);
+            this.pDateSelect.TabIndex = 24;
+            this.pDateSelect.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label15.Location = new System.Drawing.Point(3, 86);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(113, 16);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Maitenance Date:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label13.Location = new System.Drawing.Point(1, 37);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 16);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Tram Number:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(3, 55);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(201, 21);
+            this.comboBox1.TabIndex = 20;
+            // 
+            // dtpTramSelect
+            // 
+            this.dtpTramSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dtpTramSelect.Location = new System.Drawing.Point(3, 105);
+            this.dtpTramSelect.Name = "dtpTramSelect";
+            this.dtpTramSelect.Size = new System.Drawing.Size(201, 22);
+            this.dtpTramSelect.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel4.Location = new System.Drawing.Point(4, 26);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 1);
+            this.panel4.TabIndex = 18;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(49, 3);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(105, 20);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Select Tram";
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(3, 577);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(209, 30);
+            this.btnLogOut.TabIndex = 18;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // pLegenda
             // 
             this.pLegenda.BackColor = System.Drawing.SystemColors.Control;
@@ -4509,120 +4623,6 @@
             this.btnManageAccounts.UseVisualStyleBackColor = false;
             this.btnManageAccounts.Click += new System.EventHandler(this.btnManageAccounts_Click);
             // 
-            // btnLogOut
-            // 
-            this.btnLogOut.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(3, 577);
-            this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(209, 30);
-            this.btnLogOut.TabIndex = 18;
-            this.btnLogOut.Text = "Log Out";
-            this.btnLogOut.UseVisualStyleBackColor = false;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
-            // 
-            // pDateSelect
-            // 
-            this.pDateSelect.BackColor = System.Drawing.SystemColors.Control;
-            this.pDateSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pDateSelect.Controls.Add(this.label15);
-            this.pDateSelect.Controls.Add(this.label13);
-            this.pDateSelect.Controls.Add(this.comboBox1);
-            this.pDateSelect.Controls.Add(this.dtpTramSelect);
-            this.pDateSelect.Controls.Add(this.panel4);
-            this.pDateSelect.Controls.Add(this.label17);
-            this.pDateSelect.Location = new System.Drawing.Point(3, 355);
-            this.pDateSelect.Name = "pDateSelect";
-            this.pDateSelect.Size = new System.Drawing.Size(209, 220);
-            this.pDateSelect.TabIndex = 24;
-            this.pDateSelect.Visible = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel4.Location = new System.Drawing.Point(4, 26);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 1);
-            this.panel4.TabIndex = 18;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(49, 3);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(105, 20);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Select Tram";
-            // 
-            // dtpTramSelect
-            // 
-            this.dtpTramSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.dtpTramSelect.Location = new System.Drawing.Point(3, 105);
-            this.dtpTramSelect.Name = "dtpTramSelect";
-            this.dtpTramSelect.Size = new System.Drawing.Size(201, 22);
-            this.dtpTramSelect.TabIndex = 19;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 55);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 21);
-            this.comboBox1.TabIndex = 20;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label13.Location = new System.Drawing.Point(1, 37);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(94, 16);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Tram Number:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label15.Location = new System.Drawing.Point(3, 86);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 16);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Maitenance Date:";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.FillWeight = 2F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Start Time";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "End Time";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4652,10 +4652,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.pLegenda.ResumeLayout(false);
-            this.pLegenda.PerformLayout();
             this.pDateSelect.ResumeLayout(false);
             this.pDateSelect.PerformLayout();
+            this.pLegenda.ResumeLayout(false);
+            this.pLegenda.PerformLayout();
             this.ResumeLayout(false);
 
         }
