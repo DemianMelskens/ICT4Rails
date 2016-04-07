@@ -1,6 +1,6 @@
 ﻿namespace ICT4Rails.Forms
 {
-    partial class TechnicianForm
+    partial class CleanerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,10 +48,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pTramMaitenance = new System.Windows.Forms.Panel();
@@ -99,6 +95,10 @@
             this.btnTasks = new System.Windows.Forms.Button();
             this.btnTramMaitenance = new System.Windows.Forms.Button();
             this.btnWorkSchedule = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTasks.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -123,7 +123,7 @@
             this.pl_Form_Total_Context.Location = new System.Drawing.Point(12, 12);
             this.pl_Form_Total_Context.Name = "pl_Form_Total_Context";
             this.pl_Form_Total_Context.Size = new System.Drawing.Size(1326, 705);
-            this.pl_Form_Total_Context.TabIndex = 1;
+            this.pl_Form_Total_Context.TabIndex = 2;
             // 
             // pDefault
             // 
@@ -322,26 +322,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(518, 541);
             this.dataGridView1.TabIndex = 34;
             this.dataGridView1.TabStop = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Technician";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "TramID";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "TramStatus";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Tijdsduur";
-            this.Column4.Name = "Column4";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaitenanceSchedule_CellClick);
             // 
             // panel3
             // 
@@ -646,7 +627,7 @@
             this.dgvTrams.Size = new System.Drawing.Size(518, 541);
             this.dgvTrams.TabIndex = 34;
             this.dgvTrams.TabStop = false;
-            this.dgvTrams.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrams_CellClick);
+            this.dgvTrams.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrams_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -839,16 +820,35 @@
             this.btnWorkSchedule.UseVisualStyleBackColor = false;
             this.btnWorkSchedule.Click += new System.EventHandler(this.btnWorkSchedule_Click);
             // 
-            // TechnicianForm
+            // Column1
+            // 
+            this.Column1.HeaderText = "Cleaner";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "TramID";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "TramStatus";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Tijdsduur";
+            this.Column4.Name = "Column4";
+            // 
+            // CleanerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pl_Form_Total_Context);
-            this.Name = "TechnicianForm";
-            this.Text = "Technician";
+            this.Name = "CleanerForm";
+            this.Text = "Cleaner";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Resize += new System.EventHandler(this.TechnicianForm_Resize);
             this.pl_Form_Total_Context.ResumeLayout(false);
             this.pTasks.ResumeLayout(false);
             this.pTasks.PerformLayout();
@@ -873,55 +873,10 @@
         #endregion
 
         private System.Windows.Forms.Panel pl_Form_Total_Context;
+        private System.Windows.Forms.Panel pDefault;
         private System.Windows.Forms.Panel pTasks;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pTramMaitenance;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnMaitenanceSchedule;
-        private System.Windows.Forms.Button btnTasks;
-        private System.Windows.Forms.Button btnTramMaitenance;
-        private System.Windows.Forms.Button btnWorkSchedule;
-        private System.Windows.Forms.DataGridView dgvMaitenanceSchedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.Label lbListInfo;
-        private System.Windows.Forms.Panel pTramInfo;
-        private System.Windows.Forms.Label lblMaitenanceDescription;
-        private System.Windows.Forms.RichTextBox rtbMaitenanceDescription;
-        private System.Windows.Forms.Label lblTramStatus;
-        private System.Windows.Forms.ComboBox cbTramStatus;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnSubmitTram;
-        private System.Windows.Forms.Label lbTramInfo;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox tbTramLenght;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox tbTramType;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox tbTramID;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvTrams;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.Button btnTrams;
-        private System.Windows.Forms.Button btnAddMaitenance;
-        private System.Windows.Forms.Button btnMaitenanceHistory;
-        private System.Windows.Forms.Panel pDateSelect;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dtpTramSelect;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -937,11 +892,56 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pTramMaitenance;
+        private System.Windows.Forms.Button btnAddMaitenance;
+        private System.Windows.Forms.Button btnMaitenanceHistory;
+        private System.Windows.Forms.Panel pTramInfo;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMaitenanceDescription;
+        private System.Windows.Forms.RichTextBox rtbMaitenanceDescription;
+        private System.Windows.Forms.Label lblTramStatus;
+        private System.Windows.Forms.ComboBox cbTramStatus;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSubmitTram;
+        private System.Windows.Forms.Label lbTramInfo;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbTramLenght;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tbTramType;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbTramID;
+        private System.Windows.Forms.Label lbListInfo;
+        private System.Windows.Forms.DataGridView dgvMaitenanceSchedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridView dgvTrams;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pDateSelect;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dtpTramSelect;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnMaitenanceSchedule;
+        private System.Windows.Forms.Button btnTrams;
+        private System.Windows.Forms.Button btnTasks;
+        private System.Windows.Forms.Button btnTramMaitenance;
+        private System.Windows.Forms.Button btnWorkSchedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel pDefault;
     }
 }

@@ -72,6 +72,7 @@
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(255, 26);
             this.tbUsername.TabIndex = 0;
+            this.tbUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyUp);
             // 
             // label1
             // 
@@ -100,6 +101,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(255, 26);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyUp);
             // 
             // pInlog
             // 

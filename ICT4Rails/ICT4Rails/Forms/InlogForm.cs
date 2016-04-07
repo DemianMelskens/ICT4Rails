@@ -37,7 +37,7 @@ namespace ICT4Rails
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbUsername.Text == "Beheerder")
+            if (tbUsername.Text == "Admin")
             {
                 this.Hide();
                 var AdminForm = new AdminForm();
@@ -50,6 +50,20 @@ namespace ICT4Rails
                 var TechnicianForm = new TechnicianForm();
                 TechnicianForm.Closed += (s, args) => this.Close();
                 TechnicianForm.Show();
+            }
+            else if (tbUsername.Text == "Cleaner")
+            {
+                this.Hide();
+                var CleanerForm = new CleanerForm();
+                CleanerForm.Closed += (s, args) => this.Close();
+                CleanerForm.Show();
+            }
+            else if (tbUsername.Text == "Driver")
+            {
+                this.Hide();
+                var DriverForm = new DriverForm();
+                DriverForm.Closed += (s, args) => this.Close();
+                DriverForm.Show();
             }
             else if (tbUsername.Text == "")
             {
@@ -109,6 +123,21 @@ namespace ICT4Rails
                 lblTestConnection.Text = DbConnection.Connection.State.ToString();
             }
             
+        }
+
+        private void tbUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnSignIn.PerformClick();
+            }
+        }
+        private void tbPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSignIn.PerformClick();
+            }
         }
     }
 }
