@@ -21,6 +21,19 @@ namespace ICT4Rails.Forms
             DefaultLayout();
         }
 
+        private void DriverForm_Resize(object sender, EventArgs e)
+        {
+            AutoCenterContextSection();
+        }
+
+        //makes the content of the form center to the size
+        public void AutoCenterContextSection()
+        {
+            pl_Form_Total_Context.Location = new Point(this.ClientSize.Width / 2 - pl_Form_Total_Context.Size.Width / 2,
+                                                       this.ClientSize.Height / 2 - pl_Form_Total_Context.Size.Height / 2);
+            pl_Form_Total_Context.Anchor = AnchorStyles.None;
+        }
+
         private void DefaultLayout()
         {
             btnWorkSchedule.Location = new Point(3, 3);
@@ -36,6 +49,7 @@ namespace ICT4Rails.Forms
             {
                 WorkScheduleOpen = false;
                 pTasks.Visible = false;
+                pDefault.Visible = true;
                 DefaultLayout();
             }
             else
@@ -54,6 +68,7 @@ namespace ICT4Rails.Forms
             if (TramToolsOpen)
             {
                 TramToolsOpen = false;
+                pDefault.Visible = true;
                 DefaultLayout();
             }
             else
@@ -73,6 +88,7 @@ namespace ICT4Rails.Forms
         private void btnTasks_Click(object sender, EventArgs e)
         {
             pTasks.Visible = true;
+            pDefault.Visible = false;
             pTramTools.Visible = false;
         }
 
@@ -81,6 +97,7 @@ namespace ICT4Rails.Forms
             pTasks.Visible = false;
             pTramTools.Visible = true;
             pSide2.Visible = true;
+            pDefault.Visible = false;
             pSide1.Visible = false;
         }
 
@@ -89,7 +106,16 @@ namespace ICT4Rails.Forms
             pTasks.Visible = false;
             pTramTools.Visible = true;
             pSide2.Visible = false;
+            pDefault.Visible = false;
             pSide1.Visible = true;
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var inlogform = new InlogForm();
+            inlogform.Closed += (s, args) => this.Close();
+            inlogform.Show();
         }
     }
 }
