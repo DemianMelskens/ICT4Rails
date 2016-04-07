@@ -41,6 +41,7 @@ namespace ICT4Rails.Forms
             btnTramMaitenance.Location = new Point(3, 35);
             btnTrams.Visible = false;
             btnMaitenanceSchedule.Visible = false;
+            pDateSelect.Visible = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -56,9 +57,9 @@ namespace ICT4Rails.Forms
             pTramInfo.Visible = true;
             rtbMaitenanceDescription.Visible = true;
             lblMaitenanceDescription.Visible = true;
-            cbTramStatus.Visible = false;
-            lblTramStatus.Visible = false;
-            lbTramInfo.Text = "Add Maitenance";
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
+            lbTramInfo.Text = "Add Maintenance";
         }
 
         private void btnTramMaitenance_Click(object sender, EventArgs e)
@@ -72,6 +73,7 @@ namespace ICT4Rails.Forms
             {
                 DefaultLayout();
                 TramMaitenanceOpen = true;
+                WorkScheduleOpen = false;
                 btnTramMaitenance.Location = new Point(3, 35);
                 btnTrams.Visible = true;
                 btnTrams.Location = new Point(3, 67);
@@ -90,6 +92,7 @@ namespace ICT4Rails.Forms
             else
             {
                 DefaultLayout();
+                TramMaitenanceOpen = false;
                 WorkScheduleOpen = true;
                 btnTasks.Visible = true;
                 btnTramMaitenance.Location = new Point(3, 67);
@@ -98,16 +101,74 @@ namespace ICT4Rails.Forms
 
         private void btnTrams_Click(object sender, EventArgs e)
         {
+            pTasks.Visible = false;
+            pDefault.Visible = false;
             pTramMaitenance.Visible = true;
+            lbListInfo.Text = "List Of Trams";
+            dgvTrams.Rows.Clear();
+            dgvTrams.Rows.Add("2009", "Combino's", "Ready for use", "2");
+            dgvTrams.ClearSelection();
             dgvTrams.Visible = true;
             dgvMaitenanceSchedule.Visible = false;
+            pDateSelect.Visible = false;
+            pTramInfo.Visible = false;
         }
 
         private void btnMaitenanceSchedule_Click(object sender, EventArgs e)
         {
+            pTasks.Visible = false;
+            pDefault.Visible = false;
             pTramMaitenance.Visible = true;
+            lbListInfo.Text = "List Of Maintenance";
+            dgvMaitenanceSchedule.Rows.Clear();
+            dgvMaitenanceSchedule.Rows.Add("2009", "Cleaning", "Ready for use", "12:30", " 14:30");
+            dgvMaitenanceSchedule.ClearSelection();
             dgvTrams.Visible = false;
             dgvMaitenanceSchedule.Visible = true;
+            pDateSelect.Visible = false;
+            pTramInfo.Visible = false;
+        }
+
+        private void btnMaitenanceHistory_Click(object sender, EventArgs e)
+        {
+            pTasks.Visible = false;
+            pDefault.Visible = false;
+            pDateSelect.Visible = true;
+            lbTramInfo.Text = "Maintenance Info";
+            lbListInfo.Text = "List Of Maintenance";
+            pTramInfo.Visible = true;
+            dgvTrams.Visible = false;
+            dgvMaitenanceSchedule.Visible = true;
+            dgvMaitenanceSchedule.Rows.Clear();
+            dgvMaitenanceSchedule.ClearSelection();
+        }
+
+        private void dgvMaitenanceSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lbTramInfo.Text = "Edit Maitenance";
+            cbTramStatus.Visible = false;
+            lblTramStatus.Visible = false;
+            pTramInfo.Visible = true;
+            lblMaitenanceDescription.Visible = true;
+            rtbMaitenanceDescription.Visible = true;
+        }
+
+        private void dgvTrams_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lbTramInfo.Text = "Edit Tram";
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
+            pTramInfo.Visible = true;
+            pDateSelect.Visible = false;
+            lblMaitenanceDescription.Visible = false;
+            rtbMaitenanceDescription.Visible = false;
+        }
+
+        private void btnTasks_Click(object sender, EventArgs e)
+        {
+            pDefault.Visible = false;
+            pTramMaitenance.Visible = false;
+            pTasks.Visible = true;
         }
     }
 }

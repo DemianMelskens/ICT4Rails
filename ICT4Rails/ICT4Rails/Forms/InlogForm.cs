@@ -75,6 +75,7 @@ namespace ICT4Rails
         private void btnSubmitRecover_Click(object sender, EventArgs e)
         {
             pRecoverPassword.Visible = false;
+            pInlog.Visible = true;
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
