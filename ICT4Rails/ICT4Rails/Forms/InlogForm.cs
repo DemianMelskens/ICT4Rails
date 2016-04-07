@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ICT4Rails.Forms;
 //using ICT4Rails.Data.Oracle;
 //using ICT4Rails.Exceptions;
 
@@ -36,10 +37,24 @@ namespace ICT4Rails
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var AdminForm = new AdminForm();
-            AdminForm.Closed += (s, args) => this.Close();
-            AdminForm.Show();
+            if (tbUsername.Text == "Beheerder")
+            {
+                this.Hide();
+                var AdminForm = new AdminForm();
+                AdminForm.Closed += (s, args) => this.Close();
+                AdminForm.Show();
+            }
+            else if (tbUsername.Text == "Technician")
+            {
+                this.Hide();
+                var TechnicianForm = new TechnicianForm();
+                TechnicianForm.Closed += (s, args) => this.Close();
+                TechnicianForm.Show();
+            }
+            else if (tbUsername.Text == "")
+            {
+                MessageBox.Show("fill in a username");
+            }
 
         }
 

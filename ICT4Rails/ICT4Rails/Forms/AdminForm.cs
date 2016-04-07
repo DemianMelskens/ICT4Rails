@@ -257,6 +257,10 @@ namespace ICT4Rails
         {
             pTramInfo.Visible = true;
             btnDeleteTram.Visible = false;
+            rtbMaitenanceDescription.Visible = false;
+            lblMaitenanceDescription.Visible = false;
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
             lbTramInfo.Text = "Add Tram";
         }
 
@@ -266,6 +270,7 @@ namespace ICT4Rails
             dgvTrams.Rows.Add("2009", "Combino's", "Ready for use", "2");
             dgvTrams.ClearSelection();
             lbTramList.Text = "List of Trams";
+            pDateSelect.Visible = false;
             dgvMaitenanceSchedule.Visible = false;
             cbTramStatus.Visible = true;
             lblTramStatus.Visible = true;
@@ -282,11 +287,13 @@ namespace ICT4Rails
         private void btnMaintenanceSchedule_Click(object sender, EventArgs e)
         {
             dgvMaitenanceSchedule.Rows.Clear();
-            dgvMaitenanceSchedule.Rows.Add("2009", "Combino's", "Ready for use", "2", "12:30", " 14:30");
+            dgvMaitenanceSchedule.Rows.Add("2009", "Cleaning", "Ready for use", "12:30", " 14:30");
             dgvMaitenanceSchedule.ClearSelection();
             lbTramList.Text = "List of Maitenance";
             pTramInfo.Visible = false;
+            pDateSelect.Visible = false;
             dgvTrams.Visible = true;
+            pTramMaitenance.Visible = true;
             pDefault.Visible = false;
             dgvMaitenanceSchedule.Visible = true;
             btnAddTram.Visible = false;
@@ -299,6 +306,7 @@ namespace ICT4Rails
             cbTramStatus.Visible = true;
             lblTramStatus.Visible = true;
             pTramInfo.Visible = true;
+            pDateSelect.Visible = false;
             btnDeleteTram.Visible = true;
             lblMaitenanceDescription.Visible = false;
             rtbMaitenanceDescription.Visible = false;
@@ -319,17 +327,36 @@ namespace ICT4Rails
         {
             lbTramInfo.Text = "Maitenance Info";
             cbTramStatus.Visible = false;
+            dtpTramSelect.Value = DateTime.Today;
+            pTramInfo.Visible = true;
             lblTramStatus.Visible = false;
             btnDeleteTram.Visible = true;
+            dgvTrams.Visible = false;
+            pDateSelect.Visible = true;
+            dgvMaitenanceSchedule.Visible = true;
+            lbTramList.Text = "List of Maitenance";
             lblMaitenanceDescription.Visible = true;
             rtbMaitenanceDescription.Visible = true;
+            dgvMaitenanceSchedule.Rows.Clear();
         }
 
         private void btnAddMaitenance_Click(object sender, EventArgs e)
         {
             pTramInfo.Visible = true;
             btnDeleteTram.Visible = false;
+            rtbMaitenanceDescription.Visible = true;
+            lblMaitenanceDescription.Visible = true;
+            cbTramStatus.Visible = false;
+            lblTramStatus.Visible = false;
             lbTramInfo.Text = "Add Maitenance";
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var inlogform = new InlogForm();
+            inlogform.Closed += (s, args) => this.Close();
+            inlogform.Show();
         }
     }
 }
