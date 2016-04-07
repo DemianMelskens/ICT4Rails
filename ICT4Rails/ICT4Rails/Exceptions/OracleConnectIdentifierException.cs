@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ICT4Rails.Exceptions
 {
-    public class OracleTimeOutException : Exception
+    class OracleConnectIdentifierException : Exception
     {
-        public static readonly string TimeOutErrorCode = "ORA-12170";
-        public static bool CheckIfTimeOutException(Exception exception)
+        public static readonly string TimeOutErrorCode = "ORA-12154";
+        public static bool CheckIfIdentifierExeption(Exception exception)
         {
             return exception.Message.IndexOf(TimeOutErrorCode) > -1;
         }

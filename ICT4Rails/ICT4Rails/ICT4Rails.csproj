@@ -37,7 +37,8 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.ManagedDataAccess">
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>res\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -54,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DbConnection.cs" />
+    <Compile Include="Exceptions\OracleConnectIdentifierException.cs" />
     <Compile Include="Exceptions\OracleTimeOutException.cs" />
     <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>

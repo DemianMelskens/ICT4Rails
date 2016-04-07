@@ -41,9 +41,13 @@ namespace ICT4Rails.Data
                 }
                 catch (Exception e)
                 {
-                    if (ICT4Rails.Exceptions.OracleTimeOutException.CheckIfTimeOutException(e))
+                    if (Exceptions.OracleTimeOutException.CheckIfTimeOutException(e))
                     {
                         throw new Exceptions.OracleTimeOutException();
+                    }
+                    else if(Exceptions.OracleConnectIdentifierException.CheckIfIdentifierExeption(e))
+                    {
+                        throw new Exceptions.OracleConnectIdentifierException(); // ben je verbonden met vpn?
                     }
                     else
                     {

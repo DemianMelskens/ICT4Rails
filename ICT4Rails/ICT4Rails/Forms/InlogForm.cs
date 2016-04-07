@@ -80,10 +80,19 @@ namespace ICT4Rails
 
         private void btnTestConnection_Click(object sender, EventArgs e)
         {
-            using (Data.DbConnection.Connection)
+            try
+            {
+                using (ICT4Rails.Data.DbConnection.Connection)
+                {
+                    lblTestConnection.ForeColor = Color.Green;
+                    lblTestConnection.Text = DbConnection.Connection.State.ToString() + "!";
+                }
+            }
+            catch(Exception ex)
             {
                 lblTestConnection.Text = DbConnection.Connection.State.ToString();
             }
+            
         }
     }
 }
