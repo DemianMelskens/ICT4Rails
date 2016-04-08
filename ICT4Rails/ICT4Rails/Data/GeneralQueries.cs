@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.OracleClient;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ICT4Rails.Data
 {
@@ -13,7 +13,7 @@ namespace ICT4Rails.Data
 
         public static int GetPrimairyKey(string tableName, string columnName)
         {
-            using (var database = Database.Connection)
+            using (var database = DbConnection.Connection)
             using (var command = database.CreateCommand())
             {
                 command.CommandText = "SELECT MAX(" + @columnName + ") " +
@@ -33,7 +33,7 @@ namespace ICT4Rails.Data
                         return pk + 1;
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     return -1;
                 }
