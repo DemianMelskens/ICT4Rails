@@ -19,14 +19,11 @@ namespace ICT4Rails.Forms
         {
             InitializeComponent();
             DefaultLayout();
-        }
-
-        private void DriverForm_Resize(object sender, EventArgs e)
-        {
             AutoCenterContextSection();
         }
 
-        //makes the content of the form center to the size
+        //GUI Methodes
+        #region GUI Methodes
         public void AutoCenterContextSection()
         {
             pl_Form_Total_Context.Location = new Point(this.ClientSize.Width / 2 - pl_Form_Total_Context.Size.Width / 2,
@@ -42,7 +39,13 @@ namespace ICT4Rails.Forms
             btnTramStatus.Visible = false;
             btnPlaceTram.Visible = false;
         }
+        #endregion
 
+        //Event Handlers
+        #region Event Handlers
+
+        //Work Schedule Menu Items
+        #region Work Schedule Menu Items
         private void btnWorkSchedule_Click(object sender, EventArgs e)
         {
             if (WorkScheduleOpen)
@@ -63,6 +66,17 @@ namespace ICT4Rails.Forms
             }
         }
 
+
+        private void btnTasks_Click(object sender, EventArgs e)
+        {
+            pTasks.Visible = true;
+            pDefault.Visible = false;
+            pTramTools.Visible = false;
+        }
+        #endregion
+
+        //Tram Tools Menu Items
+        #region Tram Tools Menu Items
         private void btnTramTools_Click(object sender, EventArgs e)
         {
             if (TramToolsOpen)
@@ -85,13 +99,6 @@ namespace ICT4Rails.Forms
             }
         }
 
-        private void btnTasks_Click(object sender, EventArgs e)
-        {
-            pTasks.Visible = true;
-            pDefault.Visible = false;
-            pTramTools.Visible = false;
-        }
-
         private void btnTramStatus_Click(object sender, EventArgs e)
         {
             pTasks.Visible = false;
@@ -109,6 +116,14 @@ namespace ICT4Rails.Forms
             pDefault.Visible = false;
             pSide1.Visible = true;
         }
+        #endregion
+
+        //Other Tools
+        #region Other Tools
+        private void DriverForm_Resize(object sender, EventArgs e)
+        {
+            AutoCenterContextSection();
+        }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
@@ -117,5 +132,7 @@ namespace ICT4Rails.Forms
             inlogform.Closed += (s, args) => this.Close();
             inlogform.Show();
         }
+        #endregion
+        #endregion
     }
 }

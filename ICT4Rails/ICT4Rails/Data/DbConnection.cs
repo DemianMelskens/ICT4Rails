@@ -47,7 +47,7 @@ namespace ICT4Rails.Data
                     }
                     else if (Exceptions.OracleConnectIdentifierException.CheckIfIdentifierExeption(e))
                     {
-                        throw new Exceptions.OracleConnectIdentifierException(); // als deze exeption word gethrowed betekent dat je niet bent verbonden met vpn (vdi.fhict.nl(SSL))
+                        throw new Exceptions.OracleConnectIdentifierException(); //als deze exeption word gethrowed betekent dat je niet bent verbonden met vpn (vdi.fhict.nl(SSL))
                     }
                     else
                     {

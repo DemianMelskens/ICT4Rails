@@ -9,8 +9,6 @@ namespace ICT4Rails.Data
 {
     public static class GeneralQueries
     {
-        private static string query;
-
         public static int GetPrimairyKey(string tableName, string columnName)
         {
             using (var database = DbConnection.Connection)

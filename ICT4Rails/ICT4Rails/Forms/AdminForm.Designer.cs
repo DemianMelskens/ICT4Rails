@@ -4434,6 +4434,7 @@
             this.btnRunSimulation.TabIndex = 16;
             this.btnRunSimulation.Text = "Run Simulation";
             this.btnRunSimulation.UseVisualStyleBackColor = false;
+            this.btnRunSimulation.Click += new System.EventHandler(this.btnRunSimulation_Click);
             // 
             // btnMaintenanceSchedule
             // 
@@ -4472,6 +4473,7 @@
             this.btnDeblockSegment.TabIndex = 12;
             this.btnDeblockSegment.Text = "Deblock Segment";
             this.btnDeblockSegment.UseVisualStyleBackColor = false;
+            this.btnDeblockSegment.Click += new System.EventHandler(this.btnDeblockSegment_Click);
             // 
             // btnBlockSegment
             // 
@@ -4484,6 +4486,7 @@
             this.btnBlockSegment.TabIndex = 11;
             this.btnBlockSegment.Text = "Block Segment";
             this.btnBlockSegment.UseVisualStyleBackColor = false;
+            this.btnBlockSegment.Click += new System.EventHandler(this.btnBlockSegment_Click);
             // 
             // btnTramStatusOverview
             // 
@@ -4496,6 +4499,7 @@
             this.btnTramStatusOverview.TabIndex = 10;
             this.btnTramStatusOverview.Text = "Tram Status";
             this.btnTramStatusOverview.UseVisualStyleBackColor = false;
+            this.btnTramStatusOverview.Click += new System.EventHandler(this.btnTramStatusOverview_Click);
             // 
             // btnReserveSegment
             // 
@@ -4508,6 +4512,7 @@
             this.btnReserveSegment.TabIndex = 9;
             this.btnReserveSegment.Text = "Reserve Segment";
             this.btnReserveSegment.UseVisualStyleBackColor = false;
+            this.btnReserveSegment.Click += new System.EventHandler(this.btnReserveSegment_Click);
             // 
             // btnDeleteTramOverview
             // 
@@ -4520,6 +4525,7 @@
             this.btnDeleteTramOverview.TabIndex = 8;
             this.btnDeleteTramOverview.Text = "Delete Tram";
             this.btnDeleteTramOverview.UseVisualStyleBackColor = false;
+            this.btnDeleteTramOverview.Click += new System.EventHandler(this.btnDeleteTramOverview_Click);
             // 
             // btnMoveTramOverview
             // 
@@ -4532,6 +4538,7 @@
             this.btnMoveTramOverview.TabIndex = 7;
             this.btnMoveTramOverview.Text = "Move Tram";
             this.btnMoveTramOverview.UseVisualStyleBackColor = false;
+            this.btnMoveTramOverview.Click += new System.EventHandler(this.btnMoveTramOverview_Click);
             // 
             // btnAddTramOverview
             // 
@@ -4544,6 +4551,7 @@
             this.btnAddTramOverview.TabIndex = 6;
             this.btnAddTramOverview.Text = "Add Tram";
             this.btnAddTramOverview.UseVisualStyleBackColor = false;
+            this.btnAddTramOverview.Click += new System.EventHandler(this.btnAddTramOverview_Click);
             // 
             // btnCleaningStaff
             // 
