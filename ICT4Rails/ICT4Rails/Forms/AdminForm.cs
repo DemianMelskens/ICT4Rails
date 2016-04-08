@@ -24,12 +24,9 @@ namespace ICT4Rails
             UpdateFont();
         }
 
-        private void AdminForm_Resize(object sender, EventArgs e)
-        {
-            AutoCenterContextSection();
-        }
+        //Methodes
+        #region GUI Methodes
 
-        //makes the content of the form center to the size
         public void AutoCenterContextSection()
         {
             pl_Form_Total_Context.Location = new Point(this.ClientSize.Width / 2 - pl_Form_Total_Context.Size.Width / 2,
@@ -37,7 +34,6 @@ namespace ICT4Rails
             pl_Form_Total_Context.Anchor = AnchorStyles.None;
         }
 
-        #region GUILogic
         public void StandartGUI()
         {
             hideChildbuttons();
@@ -108,6 +104,21 @@ namespace ICT4Rails
             btnMaintenanceSchedule.Location = new Point(3, 131);
         }
 
+        private void UpdateFont()
+        {
+            //Change cell font
+            foreach (DataGridViewColumn c in dgvUsers.Columns)
+            {
+                c.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8);
+            }
+        }
+        #endregion
+
+        //EventHandlers
+        #region EventHandlers
+
+        //Manage Account menu Items
+        #region ManageAccountMenuEvents
         private void btnManageAccounts_Click(object sender, EventArgs e)
         {
             pDefault.Visible = true;
@@ -131,70 +142,6 @@ namespace ICT4Rails
                 btnTramMaitenance.Location = new Point(3, 162);
             }
             
-        }
-
-        private void btnTramManagement_Click(object sender, EventArgs e)
-        {
-            pDefault.Visible = false;
-            pManageAccount.Visible = false;
-            pTramManagement.Visible = true;
-            pAccountInfo.Visible = false;
-            pTramMaitenance.Visible = false;
-            pTramInfo.Visible = false;
-            if (TramManagement)
-            {
-                TramManagement = false;
-                StandartGUI();
-            }
-            else
-            {
-                StandartGUI();
-                ManageAccountsOpen = false;
-                TramMaitenance = false;
-                TramManagement = true;
-                showTramManagementbuttons();
-                btnTramManagement.Location = new Point(3, 35);
-                btnTramMaitenance.Location = new Point(3, 323);
-            }
-        }
-
-        private void btnTramMaitenance_Click(object sender, EventArgs e)
-        {
-            pDefault.Visible = true;
-            pManageAccount.Visible = false;
-            pTramManagement.Visible = false;
-            pAccountInfo.Visible = false;
-            pTramInfo.Visible = false;
-            if (TramMaitenance)
-            {
-                TramMaitenance = false;
-                StandartGUI();
-            }
-            else
-            {
-                StandartGUI();
-                ManageAccountsOpen = false;
-                TramManagement = false;
-                TramMaitenance = true;
-                showTramMaitenancebuttons();
-                btnTramManagement.Location = new Point(3, 35);
-                btnTramMaitenance.Location = new Point(3, 67);
-            }
-        }
-
-        private void UpdateFont()
-        {
-            //Change cell font
-            foreach (DataGridViewColumn c in dgvUsers.Columns)
-            {
-                c.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8);
-            }
-        }
-        #endregion
-
-        private void btnDeleteAccount_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnDrivers_Click(object sender, EventArgs e)
@@ -233,35 +180,100 @@ namespace ICT4Rails
             dgvUsers.ClearSelection();
         }
 
-        private void btnAddAccount_Click(object sender, EventArgs e)
+        #endregion
+
+        //Tram Management Menu Items
+        #region TramManagementMenuEvents
+        private void btnTramManagement_Click(object sender, EventArgs e)
         {
-            lblAccountInfo.Text = "Add Account";
-            pAccountInfo.Visible = true;
-            btnDelete.Visible = false;
+            pDefault.Visible = false;
+            pManageAccount.Visible = false;
+            pTramManagement.Visible = true;
+            pAccountInfo.Visible = false;
+            pTramMaitenance.Visible = false;
+            pTramInfo.Visible = false;
+            if (TramManagement)
+            {
+                TramManagement = false;
+                StandartGUI();
+            }
+            else
+            {
+                StandartGUI();
+                ManageAccountsOpen = false;
+                TramMaitenance = false;
+                TramManagement = true;
+                showTramManagementbuttons();
+                btnTramManagement.Location = new Point(3, 35);
+                btnTramMaitenance.Location = new Point(3, 323);
+            }
         }
 
-        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnAddTramOverview_Click(object sender, EventArgs e)
         {
-            lblAccountInfo.Text = "Edit Account";
-            pAccountInfo.Visible = true;
-            btnDelete.Visible = true;
+            //Not implemented yet!
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnMoveTramOverview_Click(object sender, EventArgs e)
         {
+            //Not implemented yet!
+        }
+
+        private void btnDeleteTramOverview_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void btnTramStatusOverview_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void btnReserveSegment_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void btnBlockSegment_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void btnDeblockSegment_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void btnRunSimulation_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+        #endregion
+
+        //Tram Maintenance Menu Items
+        #region TramMaintenanceMenuEvents
+        private void btnTramMaitenance_Click(object sender, EventArgs e)
+        {
+            pDefault.Visible = true;
+            pManageAccount.Visible = false;
+            pTramManagement.Visible = false;
             pAccountInfo.Visible = false;
             pTramInfo.Visible = false;
-        }
-
-        private void btnAddTram_Click(object sender, EventArgs e)
-        {
-            pTramInfo.Visible = true;
-            btnDeleteTram.Visible = false;
-            rtbMaitenanceDescription.Visible = false;
-            lblMaitenanceDescription.Visible = false;
-            cbTramStatus.Visible = true;
-            lblTramStatus.Visible = true;
-            lbTramInfo.Text = "Add Tram";
+            if (TramMaitenance)
+            {
+                TramMaitenance = false;
+                StandartGUI();
+            }
+            else
+            {
+                StandartGUI();
+                ManageAccountsOpen = false;
+                TramManagement = false;
+                TramMaitenance = true;
+                showTramMaitenancebuttons();
+                btnTramManagement.Location = new Point(3, 35);
+                btnTramMaitenance.Location = new Point(3, 67);
+            }
         }
 
         private void btnTramMenu_Click(object sender, EventArgs e)
@@ -299,6 +311,45 @@ namespace ICT4Rails
             btnAddTram.Visible = false;
             btnAddMaitenance.Visible = true;
         }
+        #endregion
+
+        //Add, Delete & Other Tools Items
+        #region Add, Delete & Other Tools Events
+
+        //User Tools
+        #region User Tools
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            lblAccountInfo.Text = "Add Account";
+            pAccountInfo.Visible = true;
+            btnDelete.Visible = false;
+        }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            //Not implemented yet!
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            lblAccountInfo.Text = "Edit Account";
+            pAccountInfo.Visible = true;
+            btnDelete.Visible = true;
+        }
+
+        #endregion
+        //Tram Tools
+        #region Tram Tools
+        private void btnAddTram_Click(object sender, EventArgs e)
+        {
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = false;
+            rtbMaitenanceDescription.Visible = false;
+            lblMaitenanceDescription.Visible = false;
+            cbTramStatus.Visible = true;
+            lblTramStatus.Visible = true;
+            lbTramInfo.Text = "Add Tram";
+        }
 
         private void dgvTrams_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -310,6 +361,19 @@ namespace ICT4Rails
             btnDeleteTram.Visible = true;
             lblMaitenanceDescription.Visible = false;
             rtbMaitenanceDescription.Visible = false;
+        }
+        #endregion
+        //Maintenance Tools
+        #region Maintenance Tools
+        private void btnAddMaitenance_Click(object sender, EventArgs e)
+        {
+            pTramInfo.Visible = true;
+            btnDeleteTram.Visible = false;
+            rtbMaitenanceDescription.Visible = true;
+            lblMaitenanceDescription.Visible = true;
+            cbTramStatus.Visible = false;
+            lblTramStatus.Visible = false;
+            lbTramInfo.Text = "Add Maitenance";
         }
 
         private void dgvMaitenanceSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -339,16 +403,13 @@ namespace ICT4Rails
             rtbMaitenanceDescription.Visible = true;
             dgvMaitenanceSchedule.Rows.Clear();
         }
-
-        private void btnAddMaitenance_Click(object sender, EventArgs e)
+        #endregion
+        //Other Tools
+        #region Other Tools
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            pTramInfo.Visible = true;
-            btnDeleteTram.Visible = false;
-            rtbMaitenanceDescription.Visible = true;
-            lblMaitenanceDescription.Visible = true;
-            cbTramStatus.Visible = false;
-            lblTramStatus.Visible = false;
-            lbTramInfo.Text = "Add Maitenance";
+            pAccountInfo.Visible = false;
+            pTramInfo.Visible = false;
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -358,5 +419,13 @@ namespace ICT4Rails
             inlogform.Closed += (s, args) => this.Close();
             inlogform.Show();
         }
+
+        private void AdminForm_Resize(object sender, EventArgs e)
+        {
+            AutoCenterContextSection();
+        }
+        #endregion
+        #endregion
+        #endregion
     }
 }

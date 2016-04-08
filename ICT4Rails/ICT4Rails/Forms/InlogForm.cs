@@ -9,8 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Forms;
-//using ICT4Rails.Data.Oracle;
-//using ICT4Rails.Exceptions;
 
 namespace ICT4Rails
 {
@@ -22,19 +20,21 @@ namespace ICT4Rails
             AutoCenterContextSection();
         }
 
-        private void pl_Form_Total_Context_Resize(object sender, EventArgs e)
-        {
-            AutoCenterContextSection();
-        }
-
-        //makes the content of the form center to the size
+        //GUI Methodes
+        #region GUI Methodes
         public void AutoCenterContextSection()
         {
             pl_Form_Total_Context.Location = new Point(this.ClientSize.Width / 2 - pl_Form_Total_Context.Size.Width / 2,
                                                        this.ClientSize.Height / 2 - pl_Form_Total_Context.Size.Height / 2);
             pl_Form_Total_Context.Anchor = AnchorStyles.None;
         }
+        #endregion
 
+        //Event Handlers
+        #region Event Handlers
+
+        //login event
+        #region Login
         private void button1_Click(object sender, EventArgs e)
         {
             if (tbUsername.Text == "Admin")
@@ -69,9 +69,11 @@ namespace ICT4Rails
             {
                 MessageBox.Show("fill in a username");
             }
-
         }
+        #endregion
 
+        //Recover Password Section
+        #region Recover Password Section
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pRecoverPassword.Visible = true;
@@ -91,7 +93,10 @@ namespace ICT4Rails
             pRecoverPassword.Visible = false;
             pInlog.Visible = true;
         }
+        #endregion
 
+        //Contact Admin Section
+        #region Contact Admin Section
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pContactAdmin.Visible = true;
@@ -107,6 +112,14 @@ namespace ICT4Rails
         {
             pContactAdmin.Visible = false;
         }
+        #endregion
+
+        //Other Tools
+        #region Other Tools
+        private void pl_Form_Total_Context_Resize(object sender, EventArgs e)
+        {
+            AutoCenterContextSection();
+        }
 
         private void btnTestConnection_Click(object sender, EventArgs e)
         {
@@ -118,25 +131,15 @@ namespace ICT4Rails
                     lblTestConnection.Text = DbConnection.Connection.State.ToString() + "!";
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 lblTestConnection.Text = DbConnection.Connection.State.ToString();
             }
-
-            //int index = GeneralQueries.GetPrimairyKey("User", "UserID");
-            //if(index == -1)
-            //{
-            //    lblTestConnection.Text = "no connection established";
-            //}
-            //else
-            //{
-            //    lblTestConnection.Text = "connection established";
-            //}
         }
 
         private void tbUsername_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnSignIn.PerformClick();
             }
@@ -148,5 +151,7 @@ namespace ICT4Rails
                 btnSignIn.PerformClick();
             }
         }
+        #endregion
+        #endregion
     }
 }
