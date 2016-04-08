@@ -118,11 +118,20 @@ namespace ICT4Rails
                     lblTestConnection.Text = DbConnection.Connection.State.ToString() + "!";
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 lblTestConnection.Text = DbConnection.Connection.State.ToString();
             }
-            
+
+            //int index = GeneralQueries.GetPrimairyKey("User", "UserID");
+            //if(index == -1)
+            //{
+            //    lblTestConnection.Text = "no connection established";
+            //}
+            //else
+            //{
+            //    lblTestConnection.Text = "connection established";
+            //}
         }
 
         private void tbUsername_KeyUp(object sender, KeyEventArgs e)
