@@ -238,47 +238,47 @@
             this.Track_57 = new System.Windows.Forms.TextBox();
             this.textBox45 = new System.Windows.Forms.TextBox();
             this.textBox46 = new System.Windows.Forms.TextBox();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.textBox48 = new System.Windows.Forms.TextBox();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.textBox50 = new System.Windows.Forms.TextBox();
-            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.tb3405 = new System.Windows.Forms.TextBox();
+            this.tb3505 = new System.Windows.Forms.TextBox();
+            this.tb3605 = new System.Windows.Forms.TextBox();
+            this.tb3705 = new System.Windows.Forms.TextBox();
+            this.tb3805 = new System.Windows.Forms.TextBox();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.textBox40 = new System.Windows.Forms.TextBox();
-            this.textBox41 = new System.Windows.Forms.TextBox();
-            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.tb3404 = new System.Windows.Forms.TextBox();
+            this.tb3504 = new System.Windows.Forms.TextBox();
+            this.tb3604 = new System.Windows.Forms.TextBox();
+            this.tb3704 = new System.Windows.Forms.TextBox();
+            this.tb3804 = new System.Windows.Forms.TextBox();
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.tb3403 = new System.Windows.Forms.TextBox();
+            this.tb3503 = new System.Windows.Forms.TextBox();
+            this.tb3603 = new System.Windows.Forms.TextBox();
+            this.tb3703 = new System.Windows.Forms.TextBox();
+            this.tb3803 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.tb3402 = new System.Windows.Forms.TextBox();
+            this.tb3502 = new System.Windows.Forms.TextBox();
+            this.tb3602 = new System.Windows.Forms.TextBox();
+            this.tb3702 = new System.Windows.Forms.TextBox();
+            this.tb3802 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.tb3401 = new System.Windows.Forms.TextBox();
+            this.tb3501 = new System.Windows.Forms.TextBox();
+            this.tb3601 = new System.Windows.Forms.TextBox();
+            this.tb3701 = new System.Windows.Forms.TextBox();
+            this.tb3801 = new System.Windows.Forms.TextBox();
             this.Track_30 = new System.Windows.Forms.TextBox();
             this.Track_31 = new System.Windows.Forms.TextBox();
             this.Track_32 = new System.Windows.Forms.TextBox();
@@ -384,9 +384,9 @@
             // 
             this.pDefault.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pDefault.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pDefault.Location = new System.Drawing.Point(226, 90);
+            this.pDefault.Location = new System.Drawing.Point(226, 668);
             this.pDefault.Name = "pDefault";
-            this.pDefault.Size = new System.Drawing.Size(1097, 612);
+            this.pDefault.Size = new System.Drawing.Size(1097, 34);
             this.pDefault.TabIndex = 20;
             // 
             // pTramMaitenance
@@ -401,9 +401,9 @@
             this.pTramMaitenance.Controls.Add(this.lbTramList);
             this.pTramMaitenance.Controls.Add(this.dgvTrams);
             this.pTramMaitenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.pTramMaitenance.Location = new System.Drawing.Point(226, 90);
+            this.pTramMaitenance.Location = new System.Drawing.Point(226, 654);
             this.pTramMaitenance.Name = "pTramMaitenance";
-            this.pTramMaitenance.Size = new System.Drawing.Size(1097, 612);
+            this.pTramMaitenance.Size = new System.Drawing.Size(1097, 48);
             this.pTramMaitenance.TabIndex = 1;
             this.pTramMaitenance.Visible = false;
             // 
@@ -892,47 +892,47 @@
             this.pTramManagement.Controls.Add(this.Track_57);
             this.pTramManagement.Controls.Add(this.textBox45);
             this.pTramManagement.Controls.Add(this.textBox46);
-            this.pTramManagement.Controls.Add(this.textBox47);
-            this.pTramManagement.Controls.Add(this.textBox48);
-            this.pTramManagement.Controls.Add(this.textBox49);
-            this.pTramManagement.Controls.Add(this.textBox50);
-            this.pTramManagement.Controls.Add(this.textBox51);
+            this.pTramManagement.Controls.Add(this.tb3405);
+            this.pTramManagement.Controls.Add(this.tb3505);
+            this.pTramManagement.Controls.Add(this.tb3605);
+            this.pTramManagement.Controls.Add(this.tb3705);
+            this.pTramManagement.Controls.Add(this.tb3805);
             this.pTramManagement.Controls.Add(this.textBox34);
             this.pTramManagement.Controls.Add(this.textBox35);
             this.pTramManagement.Controls.Add(this.textBox36);
             this.pTramManagement.Controls.Add(this.textBox37);
-            this.pTramManagement.Controls.Add(this.textBox38);
-            this.pTramManagement.Controls.Add(this.textBox39);
-            this.pTramManagement.Controls.Add(this.textBox40);
-            this.pTramManagement.Controls.Add(this.textBox41);
-            this.pTramManagement.Controls.Add(this.textBox42);
+            this.pTramManagement.Controls.Add(this.tb3404);
+            this.pTramManagement.Controls.Add(this.tb3504);
+            this.pTramManagement.Controls.Add(this.tb3604);
+            this.pTramManagement.Controls.Add(this.tb3704);
+            this.pTramManagement.Controls.Add(this.tb3804);
             this.pTramManagement.Controls.Add(this.textBox25);
             this.pTramManagement.Controls.Add(this.textBox26);
             this.pTramManagement.Controls.Add(this.textBox27);
             this.pTramManagement.Controls.Add(this.textBox28);
-            this.pTramManagement.Controls.Add(this.textBox29);
-            this.pTramManagement.Controls.Add(this.textBox30);
-            this.pTramManagement.Controls.Add(this.textBox31);
-            this.pTramManagement.Controls.Add(this.textBox32);
-            this.pTramManagement.Controls.Add(this.textBox33);
+            this.pTramManagement.Controls.Add(this.tb3403);
+            this.pTramManagement.Controls.Add(this.tb3503);
+            this.pTramManagement.Controls.Add(this.tb3603);
+            this.pTramManagement.Controls.Add(this.tb3703);
+            this.pTramManagement.Controls.Add(this.tb3803);
             this.pTramManagement.Controls.Add(this.textBox16);
             this.pTramManagement.Controls.Add(this.textBox17);
             this.pTramManagement.Controls.Add(this.textBox18);
             this.pTramManagement.Controls.Add(this.textBox19);
-            this.pTramManagement.Controls.Add(this.textBox20);
-            this.pTramManagement.Controls.Add(this.textBox21);
-            this.pTramManagement.Controls.Add(this.textBox22);
-            this.pTramManagement.Controls.Add(this.textBox23);
-            this.pTramManagement.Controls.Add(this.textBox24);
+            this.pTramManagement.Controls.Add(this.tb3402);
+            this.pTramManagement.Controls.Add(this.tb3502);
+            this.pTramManagement.Controls.Add(this.tb3602);
+            this.pTramManagement.Controls.Add(this.tb3702);
+            this.pTramManagement.Controls.Add(this.tb3802);
             this.pTramManagement.Controls.Add(this.textBox7);
             this.pTramManagement.Controls.Add(this.textBox8);
             this.pTramManagement.Controls.Add(this.textBox9);
             this.pTramManagement.Controls.Add(this.textBox10);
-            this.pTramManagement.Controls.Add(this.textBox11);
-            this.pTramManagement.Controls.Add(this.textBox12);
-            this.pTramManagement.Controls.Add(this.textBox13);
-            this.pTramManagement.Controls.Add(this.textBox14);
-            this.pTramManagement.Controls.Add(this.textBox15);
+            this.pTramManagement.Controls.Add(this.tb3401);
+            this.pTramManagement.Controls.Add(this.tb3501);
+            this.pTramManagement.Controls.Add(this.tb3601);
+            this.pTramManagement.Controls.Add(this.tb3701);
+            this.pTramManagement.Controls.Add(this.tb3801);
             this.pTramManagement.Controls.Add(this.Track_30);
             this.pTramManagement.Controls.Add(this.Track_31);
             this.pTramManagement.Controls.Add(this.Track_32);
@@ -3265,70 +3265,70 @@
             this.textBox46.TabIndex = 50;
             this.textBox46.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox47
+            // tb3405
             // 
-            this.textBox47.BackColor = System.Drawing.Color.White;
-            this.textBox47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox47.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox47.Location = new System.Drawing.Point(237, 233);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.ReadOnly = true;
-            this.textBox47.Size = new System.Drawing.Size(50, 26);
-            this.textBox47.TabIndex = 49;
-            this.textBox47.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3405.BackColor = System.Drawing.Color.White;
+            this.tb3405.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3405.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3405.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3405.Location = new System.Drawing.Point(237, 233);
+            this.tb3405.Name = "tb3405";
+            this.tb3405.ReadOnly = true;
+            this.tb3405.Size = new System.Drawing.Size(50, 26);
+            this.tb3405.TabIndex = 49;
+            this.tb3405.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox48
+            // tb3505
             // 
-            this.textBox48.BackColor = System.Drawing.Color.White;
-            this.textBox48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox48.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox48.Location = new System.Drawing.Point(181, 233);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.ReadOnly = true;
-            this.textBox48.Size = new System.Drawing.Size(50, 26);
-            this.textBox48.TabIndex = 48;
-            this.textBox48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3505.BackColor = System.Drawing.Color.White;
+            this.tb3505.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3505.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3505.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3505.Location = new System.Drawing.Point(181, 233);
+            this.tb3505.Name = "tb3505";
+            this.tb3505.ReadOnly = true;
+            this.tb3505.Size = new System.Drawing.Size(50, 26);
+            this.tb3505.TabIndex = 48;
+            this.tb3505.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox49
+            // tb3605
             // 
-            this.textBox49.BackColor = System.Drawing.Color.White;
-            this.textBox49.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox49.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox49.Location = new System.Drawing.Point(125, 233);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.ReadOnly = true;
-            this.textBox49.Size = new System.Drawing.Size(50, 26);
-            this.textBox49.TabIndex = 47;
-            this.textBox49.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3605.BackColor = System.Drawing.Color.White;
+            this.tb3605.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3605.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3605.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3605.Location = new System.Drawing.Point(125, 233);
+            this.tb3605.Name = "tb3605";
+            this.tb3605.ReadOnly = true;
+            this.tb3605.Size = new System.Drawing.Size(50, 26);
+            this.tb3605.TabIndex = 47;
+            this.tb3605.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox50
+            // tb3705
             // 
-            this.textBox50.BackColor = System.Drawing.Color.White;
-            this.textBox50.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox50.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox50.Location = new System.Drawing.Point(69, 233);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.ReadOnly = true;
-            this.textBox50.Size = new System.Drawing.Size(50, 26);
-            this.textBox50.TabIndex = 46;
-            this.textBox50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3705.BackColor = System.Drawing.Color.White;
+            this.tb3705.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3705.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3705.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3705.Location = new System.Drawing.Point(69, 233);
+            this.tb3705.Name = "tb3705";
+            this.tb3705.ReadOnly = true;
+            this.tb3705.Size = new System.Drawing.Size(50, 26);
+            this.tb3705.TabIndex = 46;
+            this.tb3705.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox51
+            // tb3805
             // 
-            this.textBox51.BackColor = System.Drawing.Color.White;
-            this.textBox51.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox51.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox51.Location = new System.Drawing.Point(13, 233);
-            this.textBox51.Name = "textBox51";
-            this.textBox51.ReadOnly = true;
-            this.textBox51.Size = new System.Drawing.Size(50, 26);
-            this.textBox51.TabIndex = 45;
-            this.textBox51.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3805.BackColor = System.Drawing.Color.White;
+            this.tb3805.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3805.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3805.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3805.Location = new System.Drawing.Point(13, 233);
+            this.tb3805.Name = "tb3805";
+            this.tb3805.ReadOnly = true;
+            this.tb3805.Size = new System.Drawing.Size(50, 26);
+            this.tb3805.TabIndex = 45;
+            this.tb3805.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox34
             // 
@@ -3382,70 +3382,70 @@
             this.textBox37.TabIndex = 41;
             this.textBox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox38
+            // tb3404
             // 
-            this.textBox38.BackColor = System.Drawing.Color.White;
-            this.textBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox38.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox38.Location = new System.Drawing.Point(237, 201);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.ReadOnly = true;
-            this.textBox38.Size = new System.Drawing.Size(50, 26);
-            this.textBox38.TabIndex = 40;
-            this.textBox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3404.BackColor = System.Drawing.Color.White;
+            this.tb3404.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3404.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3404.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3404.Location = new System.Drawing.Point(237, 201);
+            this.tb3404.Name = "tb3404";
+            this.tb3404.ReadOnly = true;
+            this.tb3404.Size = new System.Drawing.Size(50, 26);
+            this.tb3404.TabIndex = 40;
+            this.tb3404.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox39
+            // tb3504
             // 
-            this.textBox39.BackColor = System.Drawing.Color.White;
-            this.textBox39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox39.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox39.Location = new System.Drawing.Point(181, 201);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.ReadOnly = true;
-            this.textBox39.Size = new System.Drawing.Size(50, 26);
-            this.textBox39.TabIndex = 39;
-            this.textBox39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3504.BackColor = System.Drawing.Color.White;
+            this.tb3504.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3504.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3504.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3504.Location = new System.Drawing.Point(181, 201);
+            this.tb3504.Name = "tb3504";
+            this.tb3504.ReadOnly = true;
+            this.tb3504.Size = new System.Drawing.Size(50, 26);
+            this.tb3504.TabIndex = 39;
+            this.tb3504.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox40
+            // tb3604
             // 
-            this.textBox40.BackColor = System.Drawing.Color.White;
-            this.textBox40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox40.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox40.Location = new System.Drawing.Point(125, 201);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.ReadOnly = true;
-            this.textBox40.Size = new System.Drawing.Size(50, 26);
-            this.textBox40.TabIndex = 38;
-            this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3604.BackColor = System.Drawing.Color.White;
+            this.tb3604.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3604.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3604.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3604.Location = new System.Drawing.Point(125, 201);
+            this.tb3604.Name = "tb3604";
+            this.tb3604.ReadOnly = true;
+            this.tb3604.Size = new System.Drawing.Size(50, 26);
+            this.tb3604.TabIndex = 38;
+            this.tb3604.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox41
+            // tb3704
             // 
-            this.textBox41.BackColor = System.Drawing.Color.White;
-            this.textBox41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox41.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox41.Location = new System.Drawing.Point(69, 201);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.ReadOnly = true;
-            this.textBox41.Size = new System.Drawing.Size(50, 26);
-            this.textBox41.TabIndex = 37;
-            this.textBox41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3704.BackColor = System.Drawing.Color.White;
+            this.tb3704.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3704.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3704.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3704.Location = new System.Drawing.Point(69, 201);
+            this.tb3704.Name = "tb3704";
+            this.tb3704.ReadOnly = true;
+            this.tb3704.Size = new System.Drawing.Size(50, 26);
+            this.tb3704.TabIndex = 37;
+            this.tb3704.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox42
+            // tb3804
             // 
-            this.textBox42.BackColor = System.Drawing.Color.White;
-            this.textBox42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox42.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox42.Location = new System.Drawing.Point(13, 201);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.ReadOnly = true;
-            this.textBox42.Size = new System.Drawing.Size(50, 26);
-            this.textBox42.TabIndex = 36;
-            this.textBox42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3804.BackColor = System.Drawing.Color.White;
+            this.tb3804.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3804.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3804.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3804.Location = new System.Drawing.Point(13, 201);
+            this.tb3804.Name = "tb3804";
+            this.tb3804.ReadOnly = true;
+            this.tb3804.Size = new System.Drawing.Size(50, 26);
+            this.tb3804.TabIndex = 36;
+            this.tb3804.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox25
             // 
@@ -3499,70 +3499,70 @@
             this.textBox28.TabIndex = 32;
             this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox29
+            // tb3403
             // 
-            this.textBox29.BackColor = System.Drawing.Color.White;
-            this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox29.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox29.Location = new System.Drawing.Point(237, 169);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.ReadOnly = true;
-            this.textBox29.Size = new System.Drawing.Size(50, 26);
-            this.textBox29.TabIndex = 31;
-            this.textBox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3403.BackColor = System.Drawing.Color.White;
+            this.tb3403.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3403.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3403.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3403.Location = new System.Drawing.Point(237, 169);
+            this.tb3403.Name = "tb3403";
+            this.tb3403.ReadOnly = true;
+            this.tb3403.Size = new System.Drawing.Size(50, 26);
+            this.tb3403.TabIndex = 31;
+            this.tb3403.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox30
+            // tb3503
             // 
-            this.textBox30.BackColor = System.Drawing.Color.White;
-            this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox30.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox30.Location = new System.Drawing.Point(181, 169);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.ReadOnly = true;
-            this.textBox30.Size = new System.Drawing.Size(50, 26);
-            this.textBox30.TabIndex = 30;
-            this.textBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3503.BackColor = System.Drawing.Color.White;
+            this.tb3503.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3503.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3503.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3503.Location = new System.Drawing.Point(181, 169);
+            this.tb3503.Name = "tb3503";
+            this.tb3503.ReadOnly = true;
+            this.tb3503.Size = new System.Drawing.Size(50, 26);
+            this.tb3503.TabIndex = 30;
+            this.tb3503.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox31
+            // tb3603
             // 
-            this.textBox31.BackColor = System.Drawing.Color.White;
-            this.textBox31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox31.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox31.Location = new System.Drawing.Point(125, 169);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.ReadOnly = true;
-            this.textBox31.Size = new System.Drawing.Size(50, 26);
-            this.textBox31.TabIndex = 29;
-            this.textBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3603.BackColor = System.Drawing.Color.White;
+            this.tb3603.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3603.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3603.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3603.Location = new System.Drawing.Point(125, 169);
+            this.tb3603.Name = "tb3603";
+            this.tb3603.ReadOnly = true;
+            this.tb3603.Size = new System.Drawing.Size(50, 26);
+            this.tb3603.TabIndex = 29;
+            this.tb3603.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox32
+            // tb3703
             // 
-            this.textBox32.BackColor = System.Drawing.Color.White;
-            this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox32.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox32.Location = new System.Drawing.Point(69, 169);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(50, 26);
-            this.textBox32.TabIndex = 28;
-            this.textBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3703.BackColor = System.Drawing.Color.White;
+            this.tb3703.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3703.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3703.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3703.Location = new System.Drawing.Point(69, 169);
+            this.tb3703.Name = "tb3703";
+            this.tb3703.ReadOnly = true;
+            this.tb3703.Size = new System.Drawing.Size(50, 26);
+            this.tb3703.TabIndex = 28;
+            this.tb3703.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox33
+            // tb3803
             // 
-            this.textBox33.BackColor = System.Drawing.Color.White;
-            this.textBox33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox33.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox33.Location = new System.Drawing.Point(13, 169);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.ReadOnly = true;
-            this.textBox33.Size = new System.Drawing.Size(50, 26);
-            this.textBox33.TabIndex = 27;
-            this.textBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3803.BackColor = System.Drawing.Color.White;
+            this.tb3803.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3803.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3803.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3803.Location = new System.Drawing.Point(13, 169);
+            this.tb3803.Name = "tb3803";
+            this.tb3803.ReadOnly = true;
+            this.tb3803.Size = new System.Drawing.Size(50, 26);
+            this.tb3803.TabIndex = 27;
+            this.tb3803.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox16
             // 
@@ -3616,70 +3616,70 @@
             this.textBox19.TabIndex = 23;
             this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox20
+            // tb3402
             // 
-            this.textBox20.BackColor = System.Drawing.Color.White;
-            this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox20.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox20.Location = new System.Drawing.Point(237, 137);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.ReadOnly = true;
-            this.textBox20.Size = new System.Drawing.Size(50, 26);
-            this.textBox20.TabIndex = 22;
-            this.textBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3402.BackColor = System.Drawing.Color.White;
+            this.tb3402.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3402.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3402.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3402.Location = new System.Drawing.Point(237, 137);
+            this.tb3402.Name = "tb3402";
+            this.tb3402.ReadOnly = true;
+            this.tb3402.Size = new System.Drawing.Size(50, 26);
+            this.tb3402.TabIndex = 22;
+            this.tb3402.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox21
+            // tb3502
             // 
-            this.textBox21.BackColor = System.Drawing.Color.White;
-            this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox21.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox21.Location = new System.Drawing.Point(181, 137);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.ReadOnly = true;
-            this.textBox21.Size = new System.Drawing.Size(50, 26);
-            this.textBox21.TabIndex = 21;
-            this.textBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3502.BackColor = System.Drawing.Color.White;
+            this.tb3502.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3502.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3502.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3502.Location = new System.Drawing.Point(181, 137);
+            this.tb3502.Name = "tb3502";
+            this.tb3502.ReadOnly = true;
+            this.tb3502.Size = new System.Drawing.Size(50, 26);
+            this.tb3502.TabIndex = 21;
+            this.tb3502.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox22
+            // tb3602
             // 
-            this.textBox22.BackColor = System.Drawing.Color.White;
-            this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox22.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox22.Location = new System.Drawing.Point(125, 137);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.ReadOnly = true;
-            this.textBox22.Size = new System.Drawing.Size(50, 26);
-            this.textBox22.TabIndex = 20;
-            this.textBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3602.BackColor = System.Drawing.Color.White;
+            this.tb3602.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3602.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3602.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3602.Location = new System.Drawing.Point(125, 137);
+            this.tb3602.Name = "tb3602";
+            this.tb3602.ReadOnly = true;
+            this.tb3602.Size = new System.Drawing.Size(50, 26);
+            this.tb3602.TabIndex = 20;
+            this.tb3602.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox23
+            // tb3702
             // 
-            this.textBox23.BackColor = System.Drawing.Color.White;
-            this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox23.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox23.Location = new System.Drawing.Point(69, 137);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.ReadOnly = true;
-            this.textBox23.Size = new System.Drawing.Size(50, 26);
-            this.textBox23.TabIndex = 19;
-            this.textBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3702.BackColor = System.Drawing.Color.White;
+            this.tb3702.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3702.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3702.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3702.Location = new System.Drawing.Point(69, 137);
+            this.tb3702.Name = "tb3702";
+            this.tb3702.ReadOnly = true;
+            this.tb3702.Size = new System.Drawing.Size(50, 26);
+            this.tb3702.TabIndex = 19;
+            this.tb3702.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox24
+            // tb3802
             // 
-            this.textBox24.BackColor = System.Drawing.Color.White;
-            this.textBox24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox24.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox24.Location = new System.Drawing.Point(13, 137);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(50, 26);
-            this.textBox24.TabIndex = 18;
-            this.textBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3802.BackColor = System.Drawing.Color.White;
+            this.tb3802.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3802.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3802.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3802.Location = new System.Drawing.Point(13, 137);
+            this.tb3802.Name = "tb3802";
+            this.tb3802.ReadOnly = true;
+            this.tb3802.Size = new System.Drawing.Size(50, 26);
+            this.tb3802.TabIndex = 18;
+            this.tb3802.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox7
             // 
@@ -3733,70 +3733,70 @@
             this.textBox10.TabIndex = 14;
             this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox11
+            // tb3401
             // 
-            this.textBox11.BackColor = System.Drawing.Color.White;
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox11.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox11.Location = new System.Drawing.Point(237, 105);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(50, 26);
-            this.textBox11.TabIndex = 13;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3401.BackColor = System.Drawing.Color.White;
+            this.tb3401.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3401.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3401.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3401.Location = new System.Drawing.Point(237, 105);
+            this.tb3401.Name = "tb3401";
+            this.tb3401.ReadOnly = true;
+            this.tb3401.Size = new System.Drawing.Size(50, 26);
+            this.tb3401.TabIndex = 13;
+            this.tb3401.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox12
+            // tb3501
             // 
-            this.textBox12.BackColor = System.Drawing.Color.White;
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox12.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox12.Location = new System.Drawing.Point(181, 105);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(50, 26);
-            this.textBox12.TabIndex = 12;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3501.BackColor = System.Drawing.Color.White;
+            this.tb3501.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3501.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3501.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3501.Location = new System.Drawing.Point(181, 105);
+            this.tb3501.Name = "tb3501";
+            this.tb3501.ReadOnly = true;
+            this.tb3501.Size = new System.Drawing.Size(50, 26);
+            this.tb3501.TabIndex = 12;
+            this.tb3501.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox13
+            // tb3601
             // 
-            this.textBox13.BackColor = System.Drawing.Color.White;
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox13.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox13.Location = new System.Drawing.Point(125, 105);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(50, 26);
-            this.textBox13.TabIndex = 11;
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3601.BackColor = System.Drawing.Color.White;
+            this.tb3601.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3601.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3601.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3601.Location = new System.Drawing.Point(125, 105);
+            this.tb3601.Name = "tb3601";
+            this.tb3601.ReadOnly = true;
+            this.tb3601.Size = new System.Drawing.Size(50, 26);
+            this.tb3601.TabIndex = 11;
+            this.tb3601.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox14
+            // tb3701
             // 
-            this.textBox14.BackColor = System.Drawing.Color.White;
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox14.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox14.Location = new System.Drawing.Point(69, 105);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(50, 26);
-            this.textBox14.TabIndex = 10;
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3701.BackColor = System.Drawing.Color.White;
+            this.tb3701.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3701.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3701.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3701.Location = new System.Drawing.Point(69, 105);
+            this.tb3701.Name = "tb3701";
+            this.tb3701.ReadOnly = true;
+            this.tb3701.Size = new System.Drawing.Size(50, 26);
+            this.tb3701.TabIndex = 10;
+            this.tb3701.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox15
+            // tb3801
             // 
-            this.textBox15.BackColor = System.Drawing.Color.White;
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox15.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox15.Location = new System.Drawing.Point(13, 105);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(50, 26);
-            this.textBox15.TabIndex = 9;
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb3801.BackColor = System.Drawing.Color.White;
+            this.tb3801.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb3801.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb3801.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb3801.Location = new System.Drawing.Point(13, 105);
+            this.tb3801.Name = "tb3801";
+            this.tb3801.ReadOnly = true;
+            this.tb3801.Size = new System.Drawing.Size(50, 26);
+            this.tb3801.TabIndex = 9;
+            this.tb3801.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Track_30
             // 
@@ -4738,47 +4738,47 @@
         private System.Windows.Forms.TextBox Track_57;
         private System.Windows.Forms.TextBox textBox45;
         private System.Windows.Forms.TextBox textBox46;
-        private System.Windows.Forms.TextBox textBox47;
-        private System.Windows.Forms.TextBox textBox48;
-        private System.Windows.Forms.TextBox textBox49;
-        private System.Windows.Forms.TextBox textBox50;
-        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.TextBox tb3405;
+        private System.Windows.Forms.TextBox tb3505;
+        private System.Windows.Forms.TextBox tb3605;
+        private System.Windows.Forms.TextBox tb3705;
+        private System.Windows.Forms.TextBox tb3805;
         private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.TextBox textBox37;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.TextBox textBox40;
-        private System.Windows.Forms.TextBox textBox41;
-        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.TextBox tb3404;
+        private System.Windows.Forms.TextBox tb3504;
+        private System.Windows.Forms.TextBox tb3604;
+        private System.Windows.Forms.TextBox tb3704;
+        private System.Windows.Forms.TextBox tb3804;
         private System.Windows.Forms.TextBox textBox25;
         private System.Windows.Forms.TextBox textBox26;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox tb3403;
+        private System.Windows.Forms.TextBox tb3503;
+        private System.Windows.Forms.TextBox tb3603;
+        private System.Windows.Forms.TextBox tb3703;
+        private System.Windows.Forms.TextBox tb3803;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox tb3402;
+        private System.Windows.Forms.TextBox tb3502;
+        private System.Windows.Forms.TextBox tb3602;
+        private System.Windows.Forms.TextBox tb3702;
+        private System.Windows.Forms.TextBox tb3802;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox tb3401;
+        private System.Windows.Forms.TextBox tb3501;
+        private System.Windows.Forms.TextBox tb3601;
+        private System.Windows.Forms.TextBox tb3701;
+        private System.Windows.Forms.TextBox tb3801;
         private System.Windows.Forms.TextBox Track_30;
         private System.Windows.Forms.TextBox Track_31;
         private System.Windows.Forms.TextBox Track_32;
