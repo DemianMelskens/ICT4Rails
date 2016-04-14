@@ -113,6 +113,9 @@ namespace ICT4Rails.Forms
             pSide2.Visible = true;
             pDefault.Visible = false;
             pSide1.Visible = false;
+            pTramStatus.Visible = true;
+            pPlaceTram.Visible = false;
+
             foreach(string value in cache.trams)
             {
                 string[] values = value.Split(',');
@@ -127,6 +130,10 @@ namespace ICT4Rails.Forms
             pSide2.Visible = false;
             pDefault.Visible = false;
             pSide1.Visible = true;
+            pTramStatus.Visible = false;
+            pPlaceTram.Visible = true;
+
+        
         }
         #endregion
 
@@ -176,6 +183,10 @@ namespace ICT4Rails.Forms
             tbTramID.Text = Convert.ToString(row.Cells[0].Value);
             tbTramType.Text = Convert.ToString(row.Cells[1].Value);
             tbTramLenght.Text = Convert.ToString(row.Cells[3].Value);
+
+            tbPtramID.Text = Convert.ToString(row.Cells[0].Value);
+            tbPtramType.Text = Convert.ToString(row.Cells[1].Value);
+            tbPtramLenght.Text = Convert.ToString(row.Cells[3].Value);
         }
     }
 }

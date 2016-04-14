@@ -37,7 +37,7 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pPlaceTram = new System.Windows.Forms.Panel();
+            this.pTramStatus = new System.Windows.Forms.Panel();
             this.pSide2 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -49,18 +49,18 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tbTramLenght = new System.Windows.Forms.TextBox();
-            this.pTramStatus = new System.Windows.Forms.Panel();
+            this.pPlaceTram = new System.Windows.Forms.Panel();
             this.pSide1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.btnArrived = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tbPtramID = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbPtramType = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbPtramLenght = new System.Windows.Forms.TextBox();
             this.pTasks = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -95,9 +95,9 @@
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrams)).BeginInit();
-            this.pPlaceTram.SuspendLayout();
-            this.pSide2.SuspendLayout();
             this.pTramStatus.SuspendLayout();
+            this.pSide2.SuspendLayout();
+            this.pPlaceTram.SuspendLayout();
             this.pSide1.SuspendLayout();
             this.pTasks.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -126,7 +126,7 @@
             this.pDefault.Location = new System.Drawing.Point(301, 111);
             this.pDefault.Margin = new System.Windows.Forms.Padding(4);
             this.pDefault.Name = "pDefault";
-            this.pDefault.Size = new System.Drawing.Size(1463, 753);
+            this.pDefault.Size = new System.Drawing.Size(693, 753);
             this.pDefault.TabIndex = 22;
             // 
             // pTramTools
@@ -134,8 +134,8 @@
             this.pTramTools.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pTramTools.Controls.Add(this.lbListInfo);
             this.pTramTools.Controls.Add(this.dgvTrams);
-            this.pTramTools.Controls.Add(this.pPlaceTram);
             this.pTramTools.Controls.Add(this.pTramStatus);
+            this.pTramTools.Controls.Add(this.pPlaceTram);
             this.pTramTools.Location = new System.Drawing.Point(301, 111);
             this.pTramTools.Margin = new System.Windows.Forms.Padding(4);
             this.pTramTools.Name = "pTramTools";
@@ -196,16 +196,16 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "Tram Lenght";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
-            // pPlaceTram
+            // pTramStatus
             // 
-            this.pPlaceTram.BackColor = System.Drawing.Color.Gainsboro;
-            this.pPlaceTram.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pPlaceTram.Controls.Add(this.pSide2);
-            this.pPlaceTram.Location = new System.Drawing.Point(733, 63);
-            this.pPlaceTram.Margin = new System.Windows.Forms.Padding(4);
-            this.pPlaceTram.Name = "pPlaceTram";
-            this.pPlaceTram.Size = new System.Drawing.Size(690, 665);
-            this.pPlaceTram.TabIndex = 38;
+            this.pTramStatus.BackColor = System.Drawing.Color.Gainsboro;
+            this.pTramStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pTramStatus.Controls.Add(this.pSide2);
+            this.pTramStatus.Location = new System.Drawing.Point(733, 63);
+            this.pTramStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.pTramStatus.Name = "pTramStatus";
+            this.pTramStatus.Size = new System.Drawing.Size(706, 665);
+            this.pTramStatus.TabIndex = 38;
             // 
             // pSide2
             // 
@@ -219,10 +219,10 @@
             this.pSide2.Controls.Add(this.label15);
             this.pSide2.Controls.Add(this.label14);
             this.pSide2.Controls.Add(this.tbTramLenght);
-            this.pSide2.Location = new System.Drawing.Point(4, 4);
+            this.pSide2.Location = new System.Drawing.Point(-1, -1);
             this.pSide2.Margin = new System.Windows.Forms.Padding(4);
             this.pSide2.Name = "pSide2";
-            this.pSide2.Size = new System.Drawing.Size(680, 656);
+            this.pSide2.Size = new System.Drawing.Size(706, 661);
             this.pSide2.TabIndex = 32;
             // 
             // label13
@@ -334,29 +334,29 @@
             this.tbTramLenght.Size = new System.Drawing.Size(569, 22);
             this.tbTramLenght.TabIndex = 4;
             // 
-            // pTramStatus
+            // pPlaceTram
             // 
-            this.pTramStatus.BackColor = System.Drawing.Color.Gainsboro;
-            this.pTramStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pTramStatus.Controls.Add(this.pSide1);
-            this.pTramStatus.Location = new System.Drawing.Point(733, 63);
-            this.pTramStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.pTramStatus.Name = "pTramStatus";
-            this.pTramStatus.Size = new System.Drawing.Size(706, 665);
-            this.pTramStatus.TabIndex = 37;
+            this.pPlaceTram.BackColor = System.Drawing.Color.Gainsboro;
+            this.pPlaceTram.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pPlaceTram.Controls.Add(this.pSide1);
+            this.pPlaceTram.Location = new System.Drawing.Point(733, 63);
+            this.pPlaceTram.Margin = new System.Windows.Forms.Padding(4);
+            this.pPlaceTram.Name = "pPlaceTram";
+            this.pPlaceTram.Size = new System.Drawing.Size(706, 665);
+            this.pPlaceTram.TabIndex = 37;
             // 
             // pSide1
             // 
             this.pSide1.Controls.Add(this.label11);
             this.pSide1.Controls.Add(this.btnArrived);
-            this.pSide1.Controls.Add(this.textBox9);
+            this.pSide1.Controls.Add(this.tbPtramID);
             this.pSide1.Controls.Add(this.textBox10);
             this.pSide1.Controls.Add(this.label19);
             this.pSide1.Controls.Add(this.label2);
-            this.pSide1.Controls.Add(this.textBox8);
+            this.pSide1.Controls.Add(this.tbPtramType);
             this.pSide1.Controls.Add(this.label18);
             this.pSide1.Controls.Add(this.label17);
-            this.pSide1.Controls.Add(this.textBox7);
+            this.pSide1.Controls.Add(this.tbPtramLenght);
             this.pSide1.Location = new System.Drawing.Point(4, 4);
             this.pSide1.Margin = new System.Windows.Forms.Padding(4);
             this.pSide1.Name = "pSide1";
@@ -387,14 +387,14 @@
             this.btnArrived.Text = "Arrived";
             this.btnArrived.UseVisualStyleBackColor = false;
             // 
-            // textBox9
+            // tbPtramID
             // 
-            this.textBox9.Location = new System.Drawing.Point(53, 92);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(569, 22);
-            this.textBox9.TabIndex = 26;
+            this.tbPtramID.Location = new System.Drawing.Point(53, 92);
+            this.tbPtramID.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPtramID.Name = "tbPtramID";
+            this.tbPtramID.ReadOnly = true;
+            this.tbPtramID.Size = new System.Drawing.Size(569, 22);
+            this.tbPtramID.TabIndex = 26;
             // 
             // textBox10
             // 
@@ -425,14 +425,14 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Assigned Segment";
             // 
-            // textBox8
+            // tbPtramType
             // 
-            this.textBox8.Location = new System.Drawing.Point(53, 161);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(569, 22);
-            this.textBox8.TabIndex = 28;
+            this.tbPtramType.Location = new System.Drawing.Point(53, 161);
+            this.tbPtramType.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPtramType.Name = "tbPtramType";
+            this.tbPtramType.ReadOnly = true;
+            this.tbPtramType.Size = new System.Drawing.Size(569, 22);
+            this.tbPtramType.TabIndex = 28;
             // 
             // label18
             // 
@@ -454,14 +454,14 @@
             this.label17.TabIndex = 31;
             this.label17.Text = "Tram Lenght:";
             // 
-            // textBox7
+            // tbPtramLenght
             // 
-            this.textBox7.Location = new System.Drawing.Point(53, 230);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(569, 22);
-            this.textBox7.TabIndex = 30;
+            this.tbPtramLenght.Location = new System.Drawing.Point(53, 230);
+            this.tbPtramLenght.Margin = new System.Windows.Forms.Padding(4);
+            this.tbPtramLenght.Name = "tbPtramLenght";
+            this.tbPtramLenght.ReadOnly = true;
+            this.tbPtramLenght.Size = new System.Drawing.Size(569, 22);
+            this.tbPtramLenght.TabIndex = 30;
             // 
             // pTasks
             // 
@@ -828,10 +828,10 @@
             this.pTramTools.ResumeLayout(false);
             this.pTramTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrams)).EndInit();
-            this.pPlaceTram.ResumeLayout(false);
+            this.pTramStatus.ResumeLayout(false);
             this.pSide2.ResumeLayout(false);
             this.pSide2.PerformLayout();
-            this.pTramStatus.ResumeLayout(false);
+            this.pPlaceTram.ResumeLayout(false);
             this.pSide1.ResumeLayout(false);
             this.pSide1.PerformLayout();
             this.pTasks.ResumeLayout(false);
@@ -881,18 +881,18 @@
         private System.Windows.Forms.Button btnTramTools;
         private System.Windows.Forms.Button btnWorkSchedule;
         private System.Windows.Forms.Panel pTramTools;
-        private System.Windows.Forms.Panel pPlaceTram;
+        private System.Windows.Forms.Panel pTramStatus;
         private System.Windows.Forms.Button btnArrived;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbPtramLenght;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tbPtramType;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Panel pTramStatus;
+        private System.Windows.Forms.TextBox tbPtramID;
+        private System.Windows.Forms.Panel pPlaceTram;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cbTramStatus;

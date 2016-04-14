@@ -107,5 +107,15 @@ namespace ICT4Rails.Data
                 }
             }
         }
+
+        public void RFIDSegment()
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "Select s.SegmentID" +
+                                      "From Segment s";
+
+        }
     }
 }
