@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
+using ICT4Rails.Models;
 
 namespace ICT4Rails
 {
@@ -15,6 +16,8 @@ namespace ICT4Rails
     {
         private CacheData cache;
         private TramQueries tramQueries = new TramQueries();
+        private List<Segment> segments = new List<Segment>();
+
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
@@ -26,7 +29,32 @@ namespace ICT4Rails
             AutoCenterContextSection();
             UpdateFont();
             this.cache = cache;
+            SetSegmentsVariables();
         }
+
+        //logic Methodes
+        #region Logic Methodes
+        public void SetSegmentsVariables()
+        {
+            foreach(string value in cache.segments)
+            {
+                string[] values = value.Split(',');
+                var textbox = new TextBox();
+                foreach(TextBox text in Controls)
+                {
+                    if("tb" + values[0] == text.Name)
+                    {
+                        textbox = text;
+                        break;
+                    }
+                }
+                var segment = new Segment(Convert.ToBoolean(Convert.ToInt32(values[3])), new Track(Convert.ToInt32(values[1]), Convert.ToInt32(values[1] + "01")), textbox);
+                segments.Add(segment);
+            }
+        }
+        
+
+        #endregion
 
         //Methodes
         #region GUI Methodes
@@ -236,6 +264,15 @@ namespace ICT4Rails
                 showTramManagementbuttons();
                 btnTramManagement.Location = new Point(3, 35);
                 btnTramMaitenance.Location = new Point(3, 323);
+
+                foreach (string value in cache.segments)
+                {
+                    string[] values = value.Split(',');
+                    if(values[4] != "")
+                    {
+                        Console.WriteLine("Segment: " + values[0] + ", Track:" + values[1] + ", ChildSegment:" + values[2] + ", Blocked:" + values[3] + ", TramID:" + values[4]);
+                    }
+                }
             }
         }
 

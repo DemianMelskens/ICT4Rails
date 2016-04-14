@@ -8,12 +8,13 @@ namespace ICT4Rails.Models
 {
     class Track
     {
-        private Segment BeginsOn;
+        private int BeginsOn;
         public int LineID { get; set; }
 
-        public Track(int lineid)
+        public Track(int lineid, int beginson)
         {
             this.LineID = lineid;
+            this.BeginsOn = beginson;
         }
     }
 }
