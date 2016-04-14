@@ -13,12 +13,21 @@ namespace ICT4Rails.Models
         public MaintenanceType Type { get; set; }
         public int Date { get; set; }
         public int Duration { get; set; }
+        
 
         public Maintenance(MaintenanceType type, int date, int duration)
         {
             this.Type = type;
             this.Date = date;
             this.Duration = duration;
+            
         }
+
+        public Maintenance(MaintenanceType type)
+        {
+            this.Type = type;
+        }
+
+       
     }
 }
