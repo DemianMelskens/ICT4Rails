@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ICT4Rails.Data;
 using ICT4Rails.Models.Enums;
 using ICT4Rails.Models;
 
@@ -14,14 +15,16 @@ namespace ICT4Rails.Forms
 {
     public partial class DriverForm : Form
     {
+        private CacheData cache;
         private bool WorkScheduleOpen = false;
         private bool TramToolsOpen = false;
 
-        public DriverForm()
+        public DriverForm(CacheData cache)
         {
             InitializeComponent();
             DefaultLayout();
             AutoCenterContextSection();
+            this.cache = cache;
         }
 
         //GUI Methodes
@@ -149,18 +152,13 @@ namespace ICT4Rails.Forms
             if(comboBox1.SelectedIndex == 0)
             {
                 
-                
-                
-                
             }
             else if(comboBox1.SelectedIndex == 1)
             {
-                Status reperation = Status.NeedsReperation;
               
             }
             else if(comboBox1.SelectedIndex == 2)
             {
-                Status ready = Status.ReadyForUse;
                 
             }
         }

@@ -7,21 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ICT4Rails.Data;
 
 namespace ICT4Rails
 {
     public partial class AdminForm : Form
     {
+        private CacheData cache;
+        private TramQueries tramQueries = new TramQueries();
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
 
-        public AdminForm()
+        public AdminForm(CacheData cache)
         {
             InitializeComponent();
             StandartGUI();
             AutoCenterContextSection();
             UpdateFont();
+            this.cache = cache;
         }
 
         //Methodes
@@ -279,7 +283,11 @@ namespace ICT4Rails
         private void btnTramMenu_Click(object sender, EventArgs e)
         {
             dgvTrams.Rows.Clear();
-            dgvTrams.Rows.Add("2009", "Combino's", "Ready for use", "2");
+            foreach (string value in cache.trams)
+            {
+                string[] values = value.Split(',');
+                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+            }
             dgvTrams.ClearSelection();
             lbTramList.Text = "List of Trams";
             pDateSelect.Visible = false;
@@ -361,6 +369,25 @@ namespace ICT4Rails
             btnDeleteTram.Visible = true;
             lblMaitenanceDescription.Visible = false;
             rtbMaitenanceDescription.Visible = false;
+
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dgvTrams.Rows[rowIndex];
+            tbTramID.Text = Convert.ToString(row.Cells[0].Value);
+            tbTramType.Text = Convert.ToString(row.Cells[1].Value);
+            if (Convert.ToString(row.Cells[2].Value) == "Defect")
+            {
+                cbTramStatus.DisplayMember = "Reperation required";
+            }
+            else if(Convert.ToString(row.Cells[2].Value) == "")
+            {
+                cbTramStatus.SelectedIndex = 1;
+            }
+            else if (Convert.ToString(row.Cells[2].Value) == "Dienst")
+            {
+                cbTramStatus.SelectedIndex = 2;
+            }
+            tbTramLenght.Text = Convert.ToString(row.Cells[3].Value);
+
         }
         #endregion
         //Maintenance Tools
