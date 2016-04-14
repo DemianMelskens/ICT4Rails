@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ICT4Rails.Data;
 
 namespace ICT4Rails.Forms
 {
     public partial class DriverForm : Form
     {
+        private CacheData cache;
         private bool WorkScheduleOpen = false;
         private bool TramToolsOpen = false;
 
-        public DriverForm()
+        public DriverForm(CacheData cache)
         {
             InitializeComponent();
             DefaultLayout();
             AutoCenterContextSection();
+            this.cache = cache;
         }
 
         //GUI Methodes

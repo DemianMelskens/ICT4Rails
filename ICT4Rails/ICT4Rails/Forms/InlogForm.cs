@@ -14,10 +14,12 @@ namespace ICT4Rails
 {
     public partial class InlogForm : Form
     {
+        CacheData cache = new CacheData();
         public InlogForm()
         {
             InitializeComponent();
             AutoCenterContextSection();
+            cache.LoadData();
         }
 
         //GUI Methodes
@@ -40,28 +42,28 @@ namespace ICT4Rails
             if (tbUsername.Text == "Admin")
             {
                 this.Hide();
-                var AdminForm = new AdminForm();
+                var AdminForm = new AdminForm(cache);
                 AdminForm.Closed += (s, args) => this.Close();
                 AdminForm.Show();
             }
             else if (tbUsername.Text == "Technician")
             {
                 this.Hide();
-                var TechnicianForm = new TechnicianForm();
+                var TechnicianForm = new TechnicianForm(cache);
                 TechnicianForm.Closed += (s, args) => this.Close();
                 TechnicianForm.Show();
             }
             else if (tbUsername.Text == "Cleaner")
             {
                 this.Hide();
-                var CleanerForm = new CleanerForm();
+                var CleanerForm = new CleanerForm(cache);
                 CleanerForm.Closed += (s, args) => this.Close();
                 CleanerForm.Show();
             }
             else if (tbUsername.Text == "Driver")
             {
                 this.Hide();
-                var DriverForm = new DriverForm();
+                var DriverForm = new DriverForm(cache);
                 DriverForm.Closed += (s, args) => this.Close();
                 DriverForm.Show();
             }

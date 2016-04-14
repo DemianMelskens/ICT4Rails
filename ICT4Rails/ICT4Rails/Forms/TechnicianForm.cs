@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ICT4Rails.Data;
 
 namespace ICT4Rails.Forms
 {
     public partial class TechnicianForm : Form
     {
+        private CacheData cache;
         private bool WorkScheduleOpen = false;
         private bool TramMaitenanceOpen = false;
 
-        public TechnicianForm()
+        public TechnicianForm(CacheData cache)
         {
             InitializeComponent();
             DefaultLayout();
             AutoCenterContextSection();
+            this.cache = cache;
         }
 
         //Methodes
@@ -102,13 +105,19 @@ namespace ICT4Rails.Forms
             pDefault.Visible = false;
             pTramMaitenance.Visible = true;
             lbListInfo.Text = "List Of Trams";
-            dgvTrams.Rows.Clear();
-            dgvTrams.Rows.Add("2009", "Combino's", "Ready for use", "2");
-            dgvTrams.ClearSelection();
             dgvTrams.Visible = true;
             dgvMaitenanceSchedule.Visible = false;
             pDateSelect.Visible = false;
             pTramInfo.Visible = false;
+
+            //Load in Trams From Cache
+            dgvTrams.Rows.Clear();
+            foreach (string value in cache.trams)
+            {
+                string[] values = value.Split(',');
+                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+            }
+            dgvTrams.ClearSelection();
         }
 
         private void btnMaitenanceSchedule_Click(object sender, EventArgs e)

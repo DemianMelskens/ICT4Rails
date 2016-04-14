@@ -48,6 +48,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pTramMaitenance = new System.Windows.Forms.Panel();
@@ -95,10 +99,6 @@
             this.btnTasks = new System.Windows.Forms.Button();
             this.btnTramMaitenance = new System.Windows.Forms.Button();
             this.btnWorkSchedule = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTasks.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -323,6 +323,26 @@
             this.dataGridView1.TabIndex = 34;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaitenanceSchedule_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Cleaner";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "TramID";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "TramStatus";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Tijdsduur";
+            this.Column4.Name = "Column4";
             // 
             // panel3
             // 
@@ -819,26 +839,6 @@
             this.btnWorkSchedule.Text = "Work Schedule";
             this.btnWorkSchedule.UseVisualStyleBackColor = false;
             this.btnWorkSchedule.Click += new System.EventHandler(this.btnWorkSchedule_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Cleaner";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "TramID";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "TramStatus";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Tijdsduur";
-            this.Column4.Name = "Column4";
             // 
             // CleanerForm
             // 
