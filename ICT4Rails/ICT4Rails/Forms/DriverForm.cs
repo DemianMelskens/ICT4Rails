@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
+using ICT4Rails.Models.Enums;
+using ICT4Rails.Models;
 
 namespace ICT4Rails.Forms
 {
@@ -136,6 +138,29 @@ namespace ICT4Rails.Forms
             inlogform.Show();
         }
         #endregion
+
         #endregion
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedIndex == 0)
+            {
+                
+            }
+            else if(comboBox1.SelectedIndex == 1)
+            {
+              
+            }
+            else if(comboBox1.SelectedIndex == 2)
+            {
+                
+            }
+        }
     }
 }
