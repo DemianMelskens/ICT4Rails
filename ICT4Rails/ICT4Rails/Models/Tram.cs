@@ -14,6 +14,7 @@ namespace ICT4Rails.Models
         public int TramID { get; set; }
         public Status Status { get; set; }
         public int Length { get; set; }
+       
 
         public Tram(int tramid, Status status, int lenght)
         {
@@ -21,5 +22,7 @@ namespace ICT4Rails.Models
             this.Status = status;
             this.Length = lenght;
         }
+
+       
     }
 }
