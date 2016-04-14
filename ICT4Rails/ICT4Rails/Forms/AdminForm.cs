@@ -155,8 +155,18 @@ namespace ICT4Rails
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of drivers";
+
+
             dgvUsers.Rows.Clear();
-            dgvUsers.Rows.Add("Rob", "23", "robeer");
+            foreach (string value in cache.users)
+            {
+                string[] values = value.Split(',');
+                if(values[4] == "Bestuurder")
+                {
+                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                }
+               
+            }
             dgvUsers.ClearSelection();
         }
 
@@ -168,7 +178,15 @@ namespace ICT4Rails
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Technicians";
             dgvUsers.Rows.Clear();
-            dgvUsers.Rows.Add("Romal", "19", "romalrio");
+            foreach (string value in cache.users)
+            {
+                string[] values = value.Split(',');
+                if (values[4] == "Technicus")
+                {
+                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                }
+
+            }
             dgvUsers.ClearSelection();
         }
 
@@ -180,7 +198,15 @@ namespace ICT4Rails
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
             dgvUsers.Rows.Clear();
-            dgvUsers.Rows.Add("Abdo", "24", "abdojan");
+            foreach (string value in cache.users)
+            {
+                string[] values = value.Split(',');
+                if (values[4] == "Schoonmaker")
+                {
+                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                }
+
+            }
             dgvUsers.ClearSelection();
         }
 
@@ -331,6 +357,13 @@ namespace ICT4Rails
             lblAccountInfo.Text = "Add Account";
             pAccountInfo.Visible = true;
             btnDelete.Visible = false;
+            tbFirstname.Text = "";
+            tbSurname.Text = "";
+            tbSurnamePrefix.Text = "";
+            tbUsername.Text = "";
+            tbPassword.Text = "";
+            tbEmail.Text = "";
+            nudAge.Value = 0;
         }
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
@@ -343,6 +376,27 @@ namespace ICT4Rails
             lblAccountInfo.Text = "Edit Account";
             pAccountInfo.Visible = true;
             btnDelete.Visible = true;
+            int rowIndex = e.RowIndex;
+            DataGridViewRow row = dgvUsers.Rows[rowIndex];
+            foreach (string value in cache.users)
+            {
+                string[] values = value.Split(',');
+                if(values[5] == Convert.ToString(row.Cells[0].Value))
+                {
+                    tbFirstname.Text = values[5];
+                    tbSurname.Text = values[6];
+                    tbSurnamePrefix.Text = values[7];
+                    tbUsername.Text = values[1];
+                    tbPassword.Text = values[2];
+                    tbEmail.Text = values[8];
+                    nudAge.Value = Convert.ToInt32(values[3]);
+                }
+            }
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -452,7 +506,14 @@ namespace ICT4Rails
             AutoCenterContextSection();
         }
         #endregion
+
         #endregion
+
         #endregion
+
+        private void btnSubmitTram_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

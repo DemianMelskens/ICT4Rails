@@ -76,7 +76,9 @@
     <Compile Include="Data\DbConnection.cs" />
     <Compile Include="Data\GeneralQueries.cs" />
     <Compile Include="Data\ITramContext.cs" />
+    <Compile Include="Data\IUserContext.cs" />
     <Compile Include="Data\TramQueries.cs" />
+    <Compile Include="Data\UserQueries.cs" />
     <Compile Include="Exceptions\OracleConnectIdentifierException.cs" />
     <Compile Include="Exceptions\OracleTimeOutException.cs" />
     <Compile Include="Forms\AdminForm.cs">
