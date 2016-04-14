@@ -55,6 +55,10 @@
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>.\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="Phidget21.NET, Version=2.1.8.243, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Phidget21.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -111,6 +115,7 @@
     <Compile Include="Forms\TechnicianForm.Designer.cs">
       <DependentUpon>TechnicianForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\RFID.cs" />
     <Compile Include="Models\Enums\MaintenanceType.cs" />
     <Compile Include="Models\Maintenance.cs" />
     <Compile Include="Models\Reservation.cs" />
@@ -167,7 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Logic\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
