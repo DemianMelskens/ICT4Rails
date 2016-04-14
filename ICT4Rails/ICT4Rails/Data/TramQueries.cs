@@ -92,7 +92,7 @@ namespace ICT4Rails.Data
 
                 try
                 {
-                    if(command.ExecuteScalar() == null)
+                    if (command.ExecuteScalar() == null)
                     {
                         return false;
                     }
@@ -101,7 +101,7 @@ namespace ICT4Rails.Data
                         return true;
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     return false;
                 }
@@ -116,6 +116,7 @@ namespace ICT4Rails.Data
                 command.CommandText = "Select s.SegmentID" +
                                       "From Segment s";
 
+            }
         }
     }
 }
