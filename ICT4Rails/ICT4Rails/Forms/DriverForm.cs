@@ -16,8 +16,10 @@ namespace ICT4Rails.Forms
     public partial class DriverForm : Form
     {
         private CacheData cache;
+        private TramQueries tramqueries = new TramQueries();
         private bool WorkScheduleOpen = false;
         private bool TramToolsOpen = false;
+        private int rowIndex;
 
         public DriverForm(CacheData cache)
         {
@@ -111,6 +113,11 @@ namespace ICT4Rails.Forms
             pSide2.Visible = true;
             pDefault.Visible = false;
             pSide1.Visible = false;
+            foreach(string value in cache.trams)
+            {
+                string[] values = value.Split(',');
+                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+            }
         }
 
         private void btnPlaceTram_Click(object sender, EventArgs e)
@@ -149,18 +156,26 @@ namespace ICT4Rails.Forms
         
         private void button2_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedIndex == 0)
-            {
-                
-            }
-            else if(comboBox1.SelectedIndex == 1)
-            {
-              
-            }
-            else if(comboBox1.SelectedIndex == 2)
-            {
-                
-            }
+            DataGridViewRow dataRow = dgvTrams.Rows[rowIndex];
+            dataRow.Cells[0].Value = tbTramID.Text;
+            dataRow.Cells[1].Value = tbTramType.Text;
+            dataRow.Cells[2].Value = cbTramStatus.Text;
+            dataRow.Cells[3].Value = tbTramLenght.Text;
+
+            string value = tbTramID.Text + "," + tbTramType.Text + "," + cbTramStatus.Text + "," + tbTramLenght.Text;
+            cache.trams.RemoveAt(rowIndex);
+            cache.trams.Insert(rowIndex, value);
+            tramqueries.ChangeTramStatus(cbTramStatus.SelectedIndex + 1, Convert.ToInt32(tbTramID.Text));
+            
+        }
+
+        private void dgvTrams_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowIndex = e.RowIndex;
+            DataGridViewRow row = dgvTrams.Rows[rowIndex];
+            tbTramID.Text = Convert.ToString(row.Cells[0].Value);
+            tbTramType.Text = Convert.ToString(row.Cells[1].Value);
+            tbTramLenght.Text = Convert.ToString(row.Cells[3].Value);
         }
     }
 }

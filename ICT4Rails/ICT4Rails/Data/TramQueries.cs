@@ -43,6 +43,69 @@ namespace ICT4Rails.Data
                 }
             }
         }
-       
+
+        public void ChangeTramStatus(int status, int tramid)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                if (CheckIfTramHasStatus(tramid))
+                {
+                    command.CommandText = "UPDATE Status_has_Tram " +
+                                          "SET StatusID=" + @status +
+                                          "WHERE TramID=" + @tramid;
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                else
+                {
+                    command.CommandText = "INSERT INTO Status_has_Tram (StatusID, TramID)" +
+                                          "VALUES (" + @status + ", " + @tramid + ")";
+
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public bool CheckIfTramHasStatus(int tramid)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "SELECT st.TramID " +
+                                      "FROM Status_has_Tram st " +
+                                      "WHERE st.TramID =" + @tramid;
+
+                try
+                {
+                    if(command.ExecuteScalar() == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                catch(Exception)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
