@@ -296,20 +296,20 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudAge = new System.Windows.Forms.NumericUpDown();
             this.lblAccountInfo = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbSurnamePrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbSurname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbFirstname = new System.Windows.Forms.TextBox();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.lblTableText = new System.Windows.Forms.Label();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
@@ -359,7 +359,7 @@
             this.panel3.SuspendLayout();
             this.pManageAccount.SuspendLayout();
             this.pAccountInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.pDateSelect.SuspendLayout();
@@ -585,6 +585,7 @@
             this.btnSubmitTram.TabIndex = 19;
             this.btnSubmitTram.Text = "Submit";
             this.btnSubmitTram.UseVisualStyleBackColor = false;
+            this.btnSubmitTram.Click += new System.EventHandler(this.btnSubmitTram_Click);
             // 
             // lbTramInfo
             // 
@@ -3966,20 +3967,20 @@
             this.pAccountInfo.Controls.Add(this.btnCancel);
             this.pAccountInfo.Controls.Add(this.btnSubmit);
             this.pAccountInfo.Controls.Add(this.label8);
-            this.pAccountInfo.Controls.Add(this.numericUpDown1);
+            this.pAccountInfo.Controls.Add(this.nudAge);
             this.pAccountInfo.Controls.Add(this.lblAccountInfo);
             this.pAccountInfo.Controls.Add(this.label7);
-            this.pAccountInfo.Controls.Add(this.textBox6);
+            this.pAccountInfo.Controls.Add(this.tbEmail);
             this.pAccountInfo.Controls.Add(this.label6);
-            this.pAccountInfo.Controls.Add(this.textBox5);
+            this.pAccountInfo.Controls.Add(this.tbPassword);
             this.pAccountInfo.Controls.Add(this.label5);
-            this.pAccountInfo.Controls.Add(this.textBox4);
+            this.pAccountInfo.Controls.Add(this.tbUsername);
             this.pAccountInfo.Controls.Add(this.label4);
-            this.pAccountInfo.Controls.Add(this.textBox3);
+            this.pAccountInfo.Controls.Add(this.tbSurnamePrefix);
             this.pAccountInfo.Controls.Add(this.label3);
-            this.pAccountInfo.Controls.Add(this.textBox2);
+            this.pAccountInfo.Controls.Add(this.tbSurname);
             this.pAccountInfo.Controls.Add(this.label2);
-            this.pAccountInfo.Controls.Add(this.textBox1);
+            this.pAccountInfo.Controls.Add(this.tbFirstname);
             this.pAccountInfo.Location = new System.Drawing.Point(549, 52);
             this.pAccountInfo.Name = "pAccountInfo";
             this.pAccountInfo.Size = new System.Drawing.Size(530, 505);
@@ -4023,6 +4024,7 @@
             this.btnSubmit.TabIndex = 19;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label8
             // 
@@ -4033,12 +4035,12 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Age:";
             // 
-            // numericUpDown1
+            // nudAge
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(47, 412);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 20;
+            this.nudAge.Location = new System.Drawing.Point(47, 412);
+            this.nudAge.Name = "nudAge";
+            this.nudAge.Size = new System.Drawing.Size(120, 22);
+            this.nudAge.TabIndex = 20;
             // 
             // lblAccountInfo
             // 
@@ -4059,12 +4061,12 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "E-mail:";
             // 
-            // textBox6
+            // tbEmail
             // 
-            this.textBox6.Location = new System.Drawing.Point(47, 356);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(428, 22);
-            this.textBox6.TabIndex = 10;
+            this.tbEmail.Location = new System.Drawing.Point(47, 356);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(428, 22);
+            this.tbEmail.TabIndex = 10;
             // 
             // label6
             // 
@@ -4075,13 +4077,13 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Password:";
             // 
-            // textBox5
+            // tbPassword
             // 
-            this.textBox5.Location = new System.Drawing.Point(47, 298);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PasswordChar = '*';
-            this.textBox5.Size = new System.Drawing.Size(428, 22);
-            this.textBox5.TabIndex = 8;
+            this.tbPassword.Location = new System.Drawing.Point(47, 298);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(428, 22);
+            this.tbPassword.TabIndex = 8;
             // 
             // label5
             // 
@@ -4092,12 +4094,12 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Username:";
             // 
-            // textBox4
+            // tbUsername
             // 
-            this.textBox4.Location = new System.Drawing.Point(47, 243);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(428, 22);
-            this.textBox4.TabIndex = 6;
+            this.tbUsername.Location = new System.Drawing.Point(47, 243);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(428, 22);
+            this.tbUsername.TabIndex = 6;
             // 
             // label4
             // 
@@ -4108,12 +4110,12 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Surname Prefix:";
             // 
-            // textBox3
+            // tbSurnamePrefix
             // 
-            this.textBox3.Location = new System.Drawing.Point(47, 188);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(428, 22);
-            this.textBox3.TabIndex = 4;
+            this.tbSurnamePrefix.Location = new System.Drawing.Point(47, 188);
+            this.tbSurnamePrefix.Name = "tbSurnamePrefix";
+            this.tbSurnamePrefix.Size = new System.Drawing.Size(428, 22);
+            this.tbSurnamePrefix.TabIndex = 4;
             // 
             // label3
             // 
@@ -4124,12 +4126,12 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Surname:";
             // 
-            // textBox2
+            // tbSurname
             // 
-            this.textBox2.Location = new System.Drawing.Point(47, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(428, 22);
-            this.textBox2.TabIndex = 2;
+            this.tbSurname.Location = new System.Drawing.Point(47, 132);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(428, 22);
+            this.tbSurname.TabIndex = 2;
             // 
             // label2
             // 
@@ -4140,12 +4142,12 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "First Name:";
             // 
-            // textBox1
+            // tbFirstname
             // 
-            this.textBox1.Location = new System.Drawing.Point(47, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(428, 22);
-            this.textBox1.TabIndex = 0;
+            this.tbFirstname.Location = new System.Drawing.Point(47, 76);
+            this.tbFirstname.Name = "tbFirstname";
+            this.tbFirstname.Size = new System.Drawing.Size(428, 22);
+            this.tbFirstname.TabIndex = 0;
             // 
             // btnAddAccount
             // 
@@ -4657,7 +4659,7 @@
             this.pManageAccount.PerformLayout();
             this.pAccountInfo.ResumeLayout(false);
             this.pAccountInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pDateSelect.ResumeLayout(false);
@@ -4698,20 +4700,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumAge;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumUsername;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbFirstname;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbSurnamePrefix;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSurname;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudAge;
         private System.Windows.Forms.Label lblAccountInfo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnDelete;
