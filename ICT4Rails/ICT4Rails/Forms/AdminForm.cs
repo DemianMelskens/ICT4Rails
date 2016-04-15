@@ -36,23 +36,27 @@ namespace ICT4Rails
         #region Logic Methodes
         public void SetSegmentsVariables()
         {
-            foreach(string value in cache.segments)
+            segments.Clear();
+            foreach (string value in cache.segments)
             {
                 string[] values = value.Split(',');
-                var textbox = new TextBox();
-                foreach(TextBox text in Controls)
+                TextBox textbox = new TextBox();
+
+                foreach (var tb in pTramManagement.Controls)
                 {
-                    if("tb" + values[0] == text.Name)
+                    if (tb is TextBox)
                     {
-                        textbox = text;
-                        break;
+                        var text = tb as TextBox;
+                        if (text.Name.Equals("tb" + values[0]))
+                        {
+                            segments.Add(new Segment(values[0], Convert.ToBoolean(Convert.ToInt32(values[3])), new Track(Convert.ToInt32(values[1]), Convert.ToInt32(values[1] + "01")), text));
+                            break;
+                        }
                     }
-                }
-                var segment = new Segment(Convert.ToBoolean(Convert.ToInt32(values[3])), new Track(Convert.ToInt32(values[1]), Convert.ToInt32(values[1] + "01")), textbox);
-                segments.Add(segment);
+                }     
             }
         }
-        
+
 
         #endregion
 
@@ -265,12 +269,15 @@ namespace ICT4Rails
                 btnTramManagement.Location = new Point(3, 35);
                 btnTramMaitenance.Location = new Point(3, 323);
 
-                foreach (string value in cache.segments)
+                foreach (Segment segment in segments)
                 {
-                    string[] values = value.Split(',');
-                    if(values[4] != "")
+                    foreach(string value in cache.segments)
                     {
-                        Console.WriteLine("Segment: " + values[0] + ", Track:" + values[1] + ", ChildSegment:" + values[2] + ", Blocked:" + values[3] + ", TramID:" + values[4]);
+                        string[] values = value.Split(',');
+                        if(segment.Name == values[0])
+                        {
+                            segment.Textbox.Text = values[4];
+                        }
                     }
                 }
             }
