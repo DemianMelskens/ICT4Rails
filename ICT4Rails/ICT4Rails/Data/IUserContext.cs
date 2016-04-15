@@ -8,5 +8,6 @@ namespace ICT4Rails.Data
 {
     interface IUserContext
     {
+        List<string> GetUsers();
     }
 }

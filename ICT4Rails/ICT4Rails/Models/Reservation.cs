@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Rails.Models
 {
-    class Reservation
+    public class Reservation
     {
         public int BeginDate { get; set; }
         public int EndDate { get; set; }

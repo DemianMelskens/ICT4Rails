@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
+using ICT4Rails.Models;
+using ICT4Rails.Forms;
 
 namespace ICT4Rails
 {
@@ -15,9 +17,14 @@ namespace ICT4Rails
     {
         private CacheData cache;
         private TramQueries tramQueries = new TramQueries();
+        private List<Segment> segments = new List<Segment>();
+
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
+
+        private int index;
+        private DialogForm dfrom;
 
         public AdminForm(CacheData cache)
         {
@@ -26,7 +33,36 @@ namespace ICT4Rails
             AutoCenterContextSection();
             UpdateFont();
             this.cache = cache;
+            SetSegmentsVariables();
         }
+
+        //logic Methodes
+        #region Logic Methodes
+        public void SetSegmentsVariables()
+        {
+            segments.Clear();
+            foreach (string value in cache.segments)
+            {
+                string[] values = value.Split(',');
+                TextBox textbox = new TextBox();
+
+                foreach (var tb in pTramManagement.Controls)
+                {
+                    if (tb is TextBox)
+                    {
+                        var text = tb as TextBox;
+                        if (text.Name.Equals("tb" + values[0]))
+                        {
+                            segments.Add(new Segment(values[0], Convert.ToBoolean(Convert.ToInt32(values[3])), new Track(Convert.ToInt32(values[1]), Convert.ToInt32(values[1] + "01")), text));
+                            break;
+                        }
+                    }
+                }     
+            }
+        }
+
+
+        #endregion
 
         //Methodes
         #region GUI Methodes
@@ -236,47 +272,123 @@ namespace ICT4Rails
                 showTramManagementbuttons();
                 btnTramManagement.Location = new Point(3, 35);
                 btnTramMaitenance.Location = new Point(3, 323);
+
+                foreach (Segment segment in segments)
+                {
+                    foreach(string value in cache.segments)
+                    {
+                        string[] values = value.Split(',');
+                        if(segment.Name == values[0])
+                        {
+                            segment.Textbox.Text = values[4];
+                        }
+                    }
+                }
             }
         }
 
         private void btnAddTramOverview_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 1;
+            btnAddTramOverview.BackColor = Color.DimGray;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnMoveTramOverview_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 2;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.DimGray;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnDeleteTramOverview_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 3;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.DimGray;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnTramStatusOverview_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 4;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.DimGray;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnReserveSegment_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 5;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.DimGray;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnBlockSegment_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 6;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.DimGray;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnDeblockSegment_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 7;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.DimGray;
+            btnRunSimulation.BackColor = Color.White;
         }
 
         private void btnRunSimulation_Click(object sender, EventArgs e)
         {
-            //Not implemented yet!
+            index = 8;
+            btnAddTramOverview.BackColor = Color.White;
+            btnMoveTramOverview.BackColor = Color.White;
+            btnDeleteTramOverview.BackColor = Color.White;
+            btnTramStatusOverview.BackColor = Color.White;
+            btnReserveSegment.BackColor = Color.White;
+            btnBlockSegment.BackColor = Color.White;
+            btnDeblockSegment.BackColor = Color.White;
+            btnRunSimulation.BackColor = Color.DimGray;
         }
         #endregion
 
@@ -513,6 +625,105 @@ namespace ICT4Rails
 
         private void btnSubmitTram_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void schematic_Click(object sender, EventArgs e)
+        {
+            switch (index)
+            {
+                case 1:
+                    if (((TextBox)sender).Text == "")
+                    {
+                        dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                        dfrom.AddTramToOverview();
+                        dfrom.ShowDialog();
+                        ((TextBox)sender).Name = Convert.ToString(dfrom.Tram.TramID);
+                        //add database
+                    }
+                    else
+                    {
+                        MessageBox.Show("dit segment heeft al een tram");
+                    }
+                    break;
+
+                case 2:
+                    dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                    dfrom.MoveTramToOverview();
+                    dfrom.ShowDialog();
+                    if (dfrom.Tram != null && dfrom.OldSegment != null)
+                    {
+                        foreach (var tb in pTramManagement.Controls)
+                        {
+                            if (tb is TextBox)
+                            {
+                                TextBox text = tb as TextBox;
+                                if (text.Name.Equals("tb" + dfrom.OldSegment.Name))
+                                {
+                                    text.Name = "";
+                                    break;
+                                }
+                            }
+                        }
+
+                        ((TextBox)sender).Text = Convert.ToString(dfrom.Tram.TramID);
+                    }
+                    break;
+
+                case 3:
+                    if (((TextBox)sender).Text != "")
+                    {
+                        dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                        dfrom.DeleteTramToOverview();
+                        dfrom.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("dit segment heeft geen tram");
+                    }
+                    break;
+
+                case 4:
+                    dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                    dfrom.TramStatusOverview();
+                    dfrom.ShowDialog();
+                    break;
+
+                case 5:
+                    dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                    dfrom.ReserveSegmentOverview();
+                    dfrom.ShowDialog();
+                    break;
+
+                case 6:
+                    foreach (Segment segment in segments)
+                    {
+                        if ("tb" + segment.Name == ((TextBox)sender).Name)
+                        {
+                            segment.Blocked = true;
+                            ((TextBox)sender).BackColor = Color.Red;
+                            break;
+                        }
+                    }
+                    break;
+
+                case 7:
+                    foreach (Segment segment in segments)
+                    {
+                        if ("tb" + segment.Name == ((TextBox)sender).Name)
+                        {
+                            segment.Blocked = false;
+                            ((TextBox)sender).BackColor = Color.White;
+                            break;
+                        }
+                    }
+                    break;
+
+                case 8:
+                    //simulation
+
+                    break;
+            }
 
         }
     }
