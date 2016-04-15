@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICT4Rails.Models
 {
-    class Track
+    public class Track
     {
         private int BeginsOn;
         public int LineID { get; set; }

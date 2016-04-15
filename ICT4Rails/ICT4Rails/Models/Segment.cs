@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ICT4Rails.Models
 {
-    class Segment
+    public class Segment
     {
         public string Name { get; set; }
         public bool Blocked { get; set; }
@@ -20,6 +20,11 @@ namespace ICT4Rails.Models
             this.Track = track;
             this.Blocked = blocked;
             this.Textbox = textbox;
+        }
+
+        public Segment(string name)
+        {
+            this.Name = name;
         }
     }
 }

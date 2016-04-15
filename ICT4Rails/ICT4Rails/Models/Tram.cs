@@ -7,7 +7,7 @@ using ICT4Rails.Models.Enums;
 
 namespace ICT4Rails.Models
 {
-    class Tram
+    public class Tram
     {
         private List<Reservation> Reservations = new List<Reservation>();
         private List<Maintenance> Maintenances = new List<Maintenance>();
@@ -23,6 +23,11 @@ namespace ICT4Rails.Models
             this.Length = lenght;
         }
 
-       
+        public Tram(int tramid)
+        {
+            this.TramID = tramid;
+        }
+
+
     }
 }
