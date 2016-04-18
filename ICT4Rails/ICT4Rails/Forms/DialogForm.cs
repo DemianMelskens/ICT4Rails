@@ -28,6 +28,11 @@ namespace ICT4Rails.Forms
             this.segmentid = segmentid;
             this.cache = cache;
             tbSegmentID.Text = segmentid;
+            foreach(string value in cache.trams)
+            {
+                string[] values = value.Split(',');
+                tbTramID.Items.Add(values[0]);
+            }
         }
 
         private void AdminForm_Resize(object sender, EventArgs e)
@@ -103,8 +108,11 @@ namespace ICT4Rails.Forms
             {
                 if(task == "Add/Delete")
                 {
-                    Tram = new Tram(Convert.ToInt32(tbTramID.Text));
-                    DialogResult = DialogResult.OK;
+                    if (tbTramID.Text != "")
+                    {
+                        Tram = new Tram(Convert.ToInt32(tbTramID.Text));
+                        DialogResult = DialogResult.OK;
+                    }
                 }
                 else if (task == "Move")
                 {

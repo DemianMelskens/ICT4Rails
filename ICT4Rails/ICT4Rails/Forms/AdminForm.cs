@@ -651,18 +651,20 @@ namespace ICT4Rails
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
                         dfrom.AddTramToOverview();
                         dfrom.ShowDialog();
-                        foreach (var tb in pTramManagement.Controls) {
-                            if (tb is TextBox) {
-                                var text = tb as TextBox;
-                                if (Convert.ToString(dfrom.Tram.TramID) == text.Text) {
+                        foreach (string value in cache.segments)
+                        {
+                            string[] values = value.Split(',');
+                            if (dfrom.Tram != null)
+                            {
+                                if (values[4] == Convert.ToString(dfrom.Tram.TramID)) {
                                     MessageBox.Show("this tram is already on a segment");
                                 }
                                 else
                                 {
-                                    foreach(string value in cache.trams)
+                                    foreach (string tramvalue in cache.trams)
                                     {
-                                        string[] values = value.Split(',');
-                                        if (Convert.ToString(dfrom.Tram.TramID) == values[0])
+                                        string[] tramvalues = tramvalue.Split(',');
+                                        if (Convert.ToString(dfrom.Tram.TramID) == tramvalues[0])
                                         {
                                             add = true;
                                         }
@@ -691,6 +693,24 @@ namespace ICT4Rails
                     else
                     {
                         add = true;
+                        bool notexist = false;
+                        if (dfrom.Tram != null)
+                        {
+                            notexist = true;
+                            foreach (string tramvalue in cache.trams)
+                            {
+                                string[] tramvalues = tramvalue.Split(',');
+                                if (Convert.ToString(dfrom.Tram.TramID) == tramvalues[0])
+                                {
+                                    notexist = false;
+                                }
+                            }
+                        }
+                        if (notexist)
+                        {
+                            MessageBox.Show("tram doesnt exist");
+                        }
+
                     }
                     break;
 
@@ -703,20 +723,16 @@ namespace ICT4Rails
                         dfrom.ShowDialog();
                         if (dfrom.Tram != null && dfrom.OldSegment != null)
                         {
-                            foreach (var tb in pTramManagement.Controls)
+                            foreach (Segment segment in segments)
                             {
-                                if (tb is TextBox)
+                                if (segment.Textbox.Text.Equals(Convert.ToString(dfrom.Tram.TramID)))
                                 {
-                                    TextBox text = tb as TextBox;
-                                    if (text.Text.Equals(Convert.ToString(dfrom.Tram.TramID)))
-                                    {
-                                        move = true;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        move = false;
-                                    }
+                                    move = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    move = false;
                                 }
                             }
 
@@ -736,23 +752,19 @@ namespace ICT4Rails
                     {
                         if (dfrom.Tram != null && dfrom.OldSegment != null)
                         {
-                            foreach (var tb in pTramManagement.Controls)
+                            foreach (Segment segment in segments)
                             {
-                                if (tb is TextBox)
+                                if (segment.Textbox.Name.Equals("tb" + dfrom.OldSegment.Name))
                                 {
-                                    TextBox text = tb as TextBox;
-                                    if (text.Name.Equals("tb" + dfrom.OldSegment.Name))
+                                    segment.Textbox.Text = "";
+                                    foreach(Segment lsegment in segments)
                                     {
-                                        text.Text = "";
-                                        foreach(Segment segment in segments)
+                                        if("tb" + lsegment.Name == segment.Textbox.Name)
                                         {
-                                            if("tb" + segment.Name == text.Name)
-                                            {
-                                                segmentqueries.ChangeSegmentTram(segment.Name, "null");
-                                            }
+                                            segmentqueries.ChangeSegmentTram(lsegment.Name, "null");
                                         }
-                                        break;
                                     }
+                                    break;
                                 }
                             }
                             ((TextBox)sender).Text = Convert.ToString(dfrom.Tram.TramID);
