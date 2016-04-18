@@ -40,10 +40,10 @@ namespace ICT4Rails
         private void button1_Click(object sender, EventArgs e)
         {
             //added inlog check
-            string username = cache.username;
-            string password = cache.password;
-            if ((this.tbUsername.Text == username) && (this.tbPassword.Text == password))
-            {
+            //string username = cache.username;
+            //string password = cache.password;
+            //if ((this.tbUsername.Text == username) && (this.tbPassword.Text == password))
+            //{
                 if (tbUsername.Text == "Admin")
                 {
                     this.Hide();
@@ -76,11 +76,11 @@ namespace ICT4Rails
                 {
                     MessageBox.Show("fill in a username");
                 }
-            }
-            else
-            {
-                MessageBox.Show("wrong username/password");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("wrong username/password");
+            //}
         }
         #endregion
 

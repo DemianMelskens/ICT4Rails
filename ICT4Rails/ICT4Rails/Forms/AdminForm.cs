@@ -645,7 +645,7 @@ namespace ICT4Rails
             switch (index)
             {
                 case 1:
-                    bool add = true;
+                    bool add = false;
                     if (((TextBox)sender).Text == "")
                     {
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
@@ -655,8 +655,18 @@ namespace ICT4Rails
                             if (tb is TextBox) {
                                 var text = tb as TextBox;
                                 if (Convert.ToString(dfrom.Tram.TramID) == text.Text) {
-                                    add = false;
                                     MessageBox.Show("this tram is already on a segment");
+                                }
+                                else
+                                {
+                                    foreach(string value in cache.trams)
+                                    {
+                                        string[] values = value.Split(',');
+                                        if (Convert.ToString(dfrom.Tram.TramID) == values[0])
+                                        {
+                                            add = true;
+                                        }
+                                    }
                                 }
                             }
                         }
