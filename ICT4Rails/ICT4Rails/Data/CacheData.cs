@@ -15,12 +15,20 @@ namespace ICT4Rails.Data
         public List<string> trams { get; set; }
         public List<string> users { get; set; }
         public List<string> segments { get; set; }
+        //added username property
+        public string username { get; set; }
+        //added password property
+        public string password { get; set; }
 
         public void LoadData()
         {
             trams = tramqueries.GetTrams();
             users = userqueries.GetUsers();
             segments = segmentqueries.GetSegments();
+            //added username
+            username = userqueries.GetUserName();
+            //added password
+            password = userqueries.GetPassword();
         }
     }
 }

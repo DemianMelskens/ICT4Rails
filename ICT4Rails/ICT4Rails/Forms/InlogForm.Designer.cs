@@ -213,9 +213,9 @@
             this.pContactAdmin.Controls.Add(this.label8);
             this.pContactAdmin.Controls.Add(this.tbNameContact);
             this.pContactAdmin.Controls.Add(this.label10);
-            this.pContactAdmin.Location = new System.Drawing.Point(9, 203);
+            this.pContactAdmin.Location = new System.Drawing.Point(600, 203);
             this.pContactAdmin.Name = "pContactAdmin";
-            this.pContactAdmin.Size = new System.Drawing.Size(608, 204);
+            this.pContactAdmin.Size = new System.Drawing.Size(17, 204);
             this.pContactAdmin.TabIndex = 12;
             this.pContactAdmin.Visible = false;
             // 
@@ -391,7 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 437);
+            this.ClientSize = new System.Drawing.Size(654, 438);
             this.Controls.Add(this.pl_Form_Total_Context);
             this.MinimumSize = new System.Drawing.Size(670, 476);
             this.Name = "InlogForm";

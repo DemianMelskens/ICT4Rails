@@ -39,37 +39,47 @@ namespace ICT4Rails
         #region Login
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbUsername.Text == "Admin")
+            //added inlog check
+            string username = cache.username;
+            string password = cache.password;
+            if ((this.tbUsername.Text == username) && (this.tbPassword.Text == password))
             {
-                this.Hide();
-                var AdminForm = new AdminForm(cache);
-                AdminForm.Closed += (s, args) => this.Close();
-                AdminForm.Show();
+                if (tbUsername.Text == "Admin")
+                {
+                    this.Hide();
+                    var AdminForm = new AdminForm(cache);
+                    AdminForm.Closed += (s, args) => this.Close();
+                    AdminForm.Show();
+                }
+                else if (tbUsername.Text == "Technician")
+                {
+                    this.Hide();
+                    var TechnicianForm = new TechnicianForm(cache);
+                    TechnicianForm.Closed += (s, args) => this.Close();
+                    TechnicianForm.Show();
+                }
+                else if (tbUsername.Text == "Cleaner")
+                {
+                    this.Hide();
+                    var CleanerForm = new CleanerForm(cache);
+                    CleanerForm.Closed += (s, args) => this.Close();
+                    CleanerForm.Show();
+                }
+                else if (tbUsername.Text == "Driver")
+                {
+                    this.Hide();
+                    var DriverForm = new DriverForm(cache);
+                    DriverForm.Closed += (s, args) => this.Close();
+                    DriverForm.Show();
+                }
+                else if (tbUsername.Text == "")
+                {
+                    MessageBox.Show("fill in a username");
+                }
             }
-            else if (tbUsername.Text == "Technician")
+            else
             {
-                this.Hide();
-                var TechnicianForm = new TechnicianForm(cache);
-                TechnicianForm.Closed += (s, args) => this.Close();
-                TechnicianForm.Show();
-            }
-            else if (tbUsername.Text == "Cleaner")
-            {
-                this.Hide();
-                var CleanerForm = new CleanerForm(cache);
-                CleanerForm.Closed += (s, args) => this.Close();
-                CleanerForm.Show();
-            }
-            else if (tbUsername.Text == "Driver")
-            {
-                this.Hide();
-                var DriverForm = new DriverForm(cache);
-                DriverForm.Closed += (s, args) => this.Close();
-                DriverForm.Show();
-            }
-            else if (tbUsername.Text == "")
-            {
-                MessageBox.Show("fill in a username");
+                MessageBox.Show("wrong username/password");
             }
         }
         #endregion
@@ -154,6 +164,7 @@ namespace ICT4Rails
             }
         }
         #endregion
+
         #endregion
     }
 }
