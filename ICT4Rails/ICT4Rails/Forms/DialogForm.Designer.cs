@@ -60,6 +60,7 @@
             this.pl_Form_Total_Context.Controls.Add(this.panel2);
             this.pl_Form_Total_Context.Controls.Add(this.pAddMoveDelete);
             this.pl_Form_Total_Context.Controls.Add(this.panel3);
+            this.pl_Form_Total_Context.Controls.Add(this.pStatusOverview);
             this.pl_Form_Total_Context.Location = new System.Drawing.Point(3, 3);
             this.pl_Form_Total_Context.Name = "pl_Form_Total_Context";
             this.pl_Form_Total_Context.Size = new System.Drawing.Size(441, 359);
@@ -108,7 +109,6 @@
             this.pAddMoveDelete.Controls.Add(this.dtpBeginDate);
             this.pAddMoveDelete.Controls.Add(this.lblEndDate);
             this.pAddMoveDelete.Controls.Add(this.lblBeginDate);
-            this.pAddMoveDelete.Controls.Add(this.pStatusOverview);
             this.pAddMoveDelete.Controls.Add(this.tbSegmentID);
             this.pAddMoveDelete.Controls.Add(this.label2);
             this.pAddMoveDelete.Controls.Add(this.tbTramID);
@@ -165,9 +165,9 @@
             this.pStatusOverview.Controls.Add(this.label3);
             this.pStatusOverview.Controls.Add(this.tbTramStatusID);
             this.pStatusOverview.Controls.Add(this.label4);
-            this.pStatusOverview.Location = new System.Drawing.Point(0, 0);
+            this.pStatusOverview.Location = new System.Drawing.Point(4, 90);
             this.pStatusOverview.Name = "pStatusOverview";
-            this.pStatusOverview.Size = new System.Drawing.Size(435, 205);
+            this.pStatusOverview.Size = new System.Drawing.Size(434, 205);
             this.pStatusOverview.TabIndex = 7;
             // 
             // cbTramStatus

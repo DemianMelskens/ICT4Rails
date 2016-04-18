@@ -42,5 +42,47 @@ namespace ICT4Rails.Data
                 }
             }
         }
+
+        public void ChangeSegmentBlocked(int segmentid, int blocked)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            { 
+
+                command.CommandText = "UPDATE " + '"' + "Segment" + '"' +
+                                      "SET Blocked=" + @blocked + " " +
+                                      "WHERE SegmentID=" + @segmentid;
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+
+        public void ChangeSegmentTram(string segmentid, string tramid)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE " + '"' + "Segment" + '"' +
+                                      "SET TramID=" + @tramid + " " +
+                                      "WHERE SegmentID=" + @segmentid;
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
     }
 }
