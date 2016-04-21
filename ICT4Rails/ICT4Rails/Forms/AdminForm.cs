@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ICT4Rails.Data;
 using ICT4Rails.Models;
 using ICT4Rails.Models.Users;
+using ICT4Rails.Models.Enums;
 using ICT4Rails.Forms;
 
 namespace ICT4Rails
@@ -28,6 +29,7 @@ namespace ICT4Rails
         private bool addreservation = true;
 
         private string profession;
+        private string linenumber;
 
         private int index;
         private DialogForm dfrom;
@@ -77,6 +79,33 @@ namespace ICT4Rails
             }
         }
 
+        public string ConvertToLineNumber(Tramtype tramtype)
+        {
+            string line = "";
+            if(tramtype == Tramtype.Combinos)
+            {
+                line = "undefined";
+            }
+            else if (tramtype == Tramtype.DubbelekopCombinos)
+            {
+                line = "undefined";
+            }
+            else if (tramtype == Tramtype.elevenG)
+            {
+                line = "5";
+            }
+            else if (tramtype == Tramtype.twelfG)
+            {
+                line = "16/24";
+            }
+            else if (tramtype == Tramtype.Opleidingstram)
+            {
+                line = "undefined";
+            }
+
+            return line;
+        }
+
         public bool IsNextSegmentEmpty(Segment previousSegment)
         {
             bool noNextSegment = true;
@@ -86,6 +115,10 @@ namespace ICT4Rails
                 {
                     noNextSegment = false;
                     if(segment.Textbox.Text != "")
+                    {
+                        return false;
+                    }
+                    else if (segment.Blocked == true)
                     {
                         return false;
                     }
@@ -768,25 +801,56 @@ namespace ICT4Rails
                                         if (segment.Tram == null)
                                         {
                                             add = true;
-                                            break;
                                         }
                                         else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
                                             MessageBox.Show("this tram is already on a segment");
                                             add = false;
-                                            break;
                                         }
-                                        else
+
+                                        foreach (Tram tram in cache.trams)
                                         {
-                                            foreach (Tram tram in cache.trams)
+                                            if (dfrom.Tram.TramID == tram.TramID)
                                             {
-                                                if (dfrom.Tram.TramID == tram.TramID)
+                                                linenumber = ConvertToLineNumber(tram.TramType);
+                                                if(linenumber == "undefined")
                                                 {
                                                     add = true;
                                                     addtram = tram;
                                                     break;
                                                 }
+                                                else if(linenumber == "5")
+                                                {
+                                                    if (segment.Track.LineNumber == linenumber)
+                                                    {
+                                                        add = true;
+                                                        addtram = tram;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        add = false;
+                                                        MessageBox.Show("dit type tram kan niet op dit type spoor");
+                                                        break;
+                                                    }
+                                                }
+                                                else if(linenumber == "16/24")
+                                                {
+                                                    if (segment.Track.LineNumber == linenumber)
+                                                    {
+                                                        add = true;
+                                                        addtram = tram;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        add = false;
+                                                        MessageBox.Show("dit type tram kan niet op dit type spoor");
+                                                        break;
+                                                    }
+                                                }
+
                                             }
-                                        }
+                                        }                                           
                                     }
                                     else
                                     {
@@ -873,8 +937,43 @@ namespace ICT4Rails
                                 {
                                     if (IsNextSegmentEmpty(segment))
                                     {
-                                        move = true;
-                                        NextSegment = segment;
+                                        linenumber = ConvertToLineNumber(dfrom.Tram.TramType);
+                                        if (linenumber == "undefined")
+                                        {
+                                            move = true;
+                                            NextSegment = segment;
+                                            break;
+                                        }
+                                        else if (linenumber == "5")
+                                        {
+                                            if (segment.Track.LineNumber == linenumber)
+                                            {
+                                                move = true;
+                                                NextSegment = segment;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                move = false;
+                                                MessageBox.Show("dit type tram kan niet op dit type spoor");
+                                                break;
+                                            }
+                                        }
+                                        else if (linenumber == "16/24")
+                                        {
+                                            if (segment.Track.LineNumber == linenumber)
+                                            {
+                                                move = true;
+                                                NextSegment = segment;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                move = false;
+                                                MessageBox.Show("dit type tram kan niet op dit type spoor");
+                                                break;
+                                            }
+                                        }                                        
                                     }
                                     else
                                     {

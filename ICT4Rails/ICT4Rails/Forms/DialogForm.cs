@@ -123,7 +123,13 @@ namespace ICT4Rails.Forms
                 {
                     if (tbTramID.Text != "")
                     {
-                        Tram = new Tram(tbTramID.Text);
+                        foreach (Tram tram in cache.trams)
+                        {
+                            if (tbTramID.Text == tram.TramID)
+                            {
+                                Tram = tram;
+                            }
+                        }
                         DialogResult = DialogResult.OK;
                     }
                 }
@@ -131,7 +137,13 @@ namespace ICT4Rails.Forms
                 {
                     if (tbTramID.Text != "")
                     {
-                        Tram = new Tram(tbTramID.Text);
+                        foreach (Tram tram in cache.trams)
+                        {
+                            if(tbTramID.Text == tram.TramID)
+                            {
+                                Tram = tram;
+                            }
+                        }
                         DialogResult = DialogResult.OK;
                     }
                 }
