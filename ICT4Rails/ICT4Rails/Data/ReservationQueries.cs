@@ -96,7 +96,7 @@ namespace ICT4Rails.Data
             using (var command = database.CreateCommand())
             {
                 command.CommandText = "INSERT INTO Reservation (TramID, SegmentID, Begindate, Enddate) " +
-                                      "VALUES ("+ @tramid + ", " + @segmentid + ", to_date("+'"'+ @begindate.ToString("yyyy-MM-dd HH:mm:ss") + '"' + ", 'yyyy-mm-dd hh24:mi:ss')" + ", to_date("+'"'+ @enddate.ToString("yyyy-MM-dd HH:mm:ss") + '"' + ", 'yyyy-mm-dd hh24:mi:ss')";
+                                      "VALUES ("+ @tramid + ", " + @segmentid + ", to_date('"+ @begindate.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss')" + ", to_date('" + @enddate.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss'))";
 
                 try
                 {

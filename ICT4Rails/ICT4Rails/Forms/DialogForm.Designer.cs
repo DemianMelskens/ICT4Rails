@@ -120,6 +120,7 @@
             // 
             // tbTramID
             // 
+            this.tbTramID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbTramID.FormattingEnabled = true;
             this.tbTramID.Location = new System.Drawing.Point(101, 37);
             this.tbTramID.Name = "tbTramID";
@@ -228,6 +229,7 @@
             // 
             // cbTramStatus
             // 
+            this.cbTramStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTramStatus.FormattingEnabled = true;
             this.cbTramStatus.Items.AddRange(new object[] {
             "ReadyForUse",

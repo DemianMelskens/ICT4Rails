@@ -19,10 +19,6 @@ namespace ICT4Rails.Data
         public List<User> users { get; set; }
         public List<Segment> segments { get; set; }
         public List<Reservation> reservations { get; set; }
-        //added username property
-        public string username { get; set; }
-        //added password property
-        public string password { get; set; }
 
         public void LoadData()
         {
@@ -30,11 +26,6 @@ namespace ICT4Rails.Data
             users = userqueries.GetUsers();
             segments = segmentqueries.GetSegments(trams);
             reservations = reservationqueries.GetReservations(trams, segments);
-
-            //added username
-            username = userqueries.GetUserName();
-            //added password
-            password = userqueries.GetPassword();
         }
     }
 }

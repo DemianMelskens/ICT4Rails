@@ -73,23 +73,6 @@ namespace ICT4Rails
                     bsegment.Textbox.BackColor = Color.White;
                 }
             }
-
-            foreach(Reservation reservation in cache.reservations)
-            {
-                if(reservation.BeginDate.Date > DateTime.Today.Date)
-                {
-                    reservation.Segment.Textbox.BackColor = Color.Blue;
-                }
-                else if(reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
-                {
-                    reservation.Segment.Textbox.Text = reservation.Tram.TramID;
-                }
-                else if (reservation.EndDate.Date < DateTime.Today.Date)
-                {
-                    cache.reservations.Remove(reservation);
-                    reservationqueries.RemoveReservation(reservation.Segment.Name);
-                }
-            }
         }
 
 
@@ -310,6 +293,23 @@ namespace ICT4Rails
                     else
                     {
                         segment.Textbox.Text = "";
+                    }
+                }
+
+                foreach (Reservation reservation in cache.reservations)
+                {
+                    if (reservation.BeginDate.Date > DateTime.Today.Date)
+                    {
+                        reservation.Segment.Textbox.BackColor = Color.Blue;
+                    }
+                    else if (reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
+                    {
+                        reservation.Segment.Textbox.Text = reservation.Tram.TramID;
+                    }
+                    else if (reservation.EndDate.Date < DateTime.Today.Date)
+                    {
+                        cache.reservations.Remove(reservation);
+                        reservationqueries.RemoveReservation(reservation.Segment.Name);
                     }
                 }
             }
@@ -859,7 +859,6 @@ namespace ICT4Rails
                     {
                         MessageBox.Show("dit segment heeft geen tram");
                     }
-                    //add database
                     break;
 
                 case 5:
@@ -899,23 +898,58 @@ namespace ICT4Rails
 
                         if (addreservation)
                         {
-                            cache.reservations.Add(reservation);
-                            reservation.Segment.Textbox.BackColor = Color.Blue;
-                            reservationqueries.AddReservation(reservation.Tram.TramID, reservation.Segment.Name, reservation.BeginDate, reservation.EndDate);
+                            if (reservation.BeginDate.Date > DateTime.Today.Date)
+                            {
+                                reservation.Segment.Textbox.BackColor = Color.Blue;
+                                cache.reservations.Add(reservation);
+                                reservationqueries.AddReservation(reservation.Tram.TramID, reservation.Segment.Name, reservation.BeginDate, reservation.EndDate);
+                            }
+                            else if (reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
+                            {
+                                reservation.Segment.Textbox.Text = reservation.Tram.TramID;
+                                cache.reservations.Add(reservation);
+                                reservationqueries.AddReservation(reservation.Tram.TramID, reservation.Segment.Name, reservation.BeginDate, reservation.EndDate);
+                            }
                         }
                     }
                     break;
 
                 case 6:
-                    foreach (Segment segment in cache.segments)
+                    if (((TextBox)sender).Text == "")
                     {
-                        if ("tb" + segment.Name == ((TextBox)sender).Name)
+                        foreach (Segment segment in cache.segments)
                         {
-                            segment.Blocked = true;
-                            ((TextBox)sender).BackColor = Color.Red;
-                            segmentqueries.ChangeSegmentBlocked(Convert.ToInt32(segment.Name), 1);
-                            break;
-                        }
+                            if ("tb" + segment.Name == ((TextBox)sender).Name)
+                            {
+                                if (((TextBox)sender).BackColor == Color.Blue)
+                                {
+                                    foreach (Reservation reservation in cache.reservations)
+                                    {
+                                        if (reservation.Segment.Textbox.Name == ((TextBox)sender).Name)
+                                        {
+                                            cache.reservations.Remove(reservation);
+                                            reservationqueries.RemoveReservation(reservation.Segment.Name);
+                                            break;
+                                        }
+                                    }
+                                    segment.Blocked = true;
+                                    ((TextBox)sender).BackColor = Color.Red;
+                                    segmentqueries.ChangeSegmentBlocked(Convert.ToInt32(segment.Name), 1);
+                                    break;
+                                }
+                                else
+                                {
+                                    segment.Blocked = true;
+                                    ((TextBox)sender).BackColor = Color.Red;
+                                    segmentqueries.ChangeSegmentBlocked(Convert.ToInt32(segment.Name), 1);
+                                    break;
+                                }
+                            }
+                        }      
+                    }
+                    else
+                    {
+                        MessageBox.Show("Er staat in Tram op dit Segment");
                     }
                     break;
 
