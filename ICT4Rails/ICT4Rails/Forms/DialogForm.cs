@@ -128,6 +128,7 @@ namespace ICT4Rails.Forms
                             if (tbTramID.Text == tram.TramID)
                             {
                                 Tram = tram;
+                                break;
                             }
                         }
                         DialogResult = DialogResult.OK;
@@ -142,6 +143,7 @@ namespace ICT4Rails.Forms
                             if(tbTramID.Text == tram.TramID)
                             {
                                 Tram = tram;
+                                break;
                             }
                         }
                         DialogResult = DialogResult.OK;

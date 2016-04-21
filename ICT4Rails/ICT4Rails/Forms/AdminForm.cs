@@ -32,6 +32,7 @@ namespace ICT4Rails
         private string linenumber;
 
         private int index;
+        private Tram movetram;
         private DialogForm dfrom;
 
         public AdminForm(CacheData cache)
@@ -116,7 +117,15 @@ namespace ICT4Rails
                     noNextSegment = false;
                     if(segment.Textbox.Text != "")
                     {
-                        return false;
+                        if(segment.Tram.TramID == movetram.TramID)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                        
                     }
                     else if (segment.Blocked == true)
                     {
@@ -916,10 +925,11 @@ namespace ICT4Rails
                         {
                             foreach (Segment segment in cache.segments)
                             {
-                                if(segment.Tram != null)
-                                { 
+                                if (segment.Tram != null)
+                                {
                                     if (segment.Tram.TramID == dfrom.Tram.TramID)
                                     {
+                                        movetram = segment.Tram;
                                         if (IsNextSegmentEmpty(segment))
                                         {
                                             move = true;
@@ -942,7 +952,6 @@ namespace ICT4Rails
                                         {
                                             move = true;
                                             NextSegment = segment;
-                                            break;
                                         }
                                         else if (linenumber == "5")
                                         {
@@ -950,7 +959,6 @@ namespace ICT4Rails
                                             {
                                                 move = true;
                                                 NextSegment = segment;
-                                                break;
                                             }
                                             else
                                             {
@@ -965,7 +973,6 @@ namespace ICT4Rails
                                             {
                                                 move = true;
                                                 NextSegment = segment;
-                                                break;
                                             }
                                             else
                                             {
@@ -994,8 +1001,10 @@ namespace ICT4Rails
                     {
                         NextSegment.Tram = PreviousSegment.Tram;
                         NextSegment.Textbox.Text = PreviousSegment.Tram.TramID;
+                        segmentqueries.ChangeSegmentTram(NextSegment.Name, NextSegment.Tram.TramID);
                         PreviousSegment.Tram = null;
                         PreviousSegment.Textbox.Text = "";
+                        segmentqueries.ChangeSegmentTram(PreviousSegment.Name, "null");
                     }     
                     break;
 
@@ -1103,6 +1112,38 @@ namespace ICT4Rails
                         foreach(Reservation lreservation in cache.reservations)
                         {
                             if(lreservation == reservation)
+                            {
+                                addreservation = false;
+                            }
+                            else if(reservation.BeginDate >= lreservation.BeginDate && reservation.BeginDate <= lreservation.EndDate)
+                            {
+                                addreservation = false;
+                            }
+                            else if (reservation.EndDate >= lreservation.BeginDate && reservation.EndDate <= lreservation.EndDate)
+                            {
+                                addreservation = false;
+                            }
+                        }
+
+                        linenumber = ConvertToLineNumber(addtram2.TramType);
+                        if (linenumber == "5")
+                        {
+                            if (addsegment.Track.LineNumber == linenumber)
+                            {
+                                addreservation = true;
+                            }
+                            else
+                            {
+                                addreservation = false;
+                            }
+                        }
+                        else if (linenumber == "16/24")
+                        {
+                            if (addsegment.Track.LineNumber == linenumber)
+                            {
+                                addreservation = true;
+                            }
+                            else
                             {
                                 addreservation = false;
                             }
