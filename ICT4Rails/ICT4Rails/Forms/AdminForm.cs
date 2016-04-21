@@ -32,6 +32,8 @@ namespace ICT4Rails
         private string linenumber;
 
         private int index;
+        private int Timer = 0;
+
         private Tram movetram;
         private DialogForm dfrom;
 
@@ -149,6 +151,26 @@ namespace ICT4Rails
             return false;
         }
 
+
+        #endregion
+
+        //Simulatie Methodes
+        #region Simulatie Methodes
+        //public void PlaceTrams()
+        //{
+            
+        //}
+
+        //public Segment CheckIfSpaceIsFree(Segment segment)
+        //{
+        //    foreach(Segment lsegment in cache.segments)
+        //    {
+        //        if(Convert.ToInt32(segment.Name.Substring(3,1)) > 1)
+        //        {
+                    
+        //        }
+        //    }
+        //}
 
         #endregion
 
@@ -1272,6 +1294,11 @@ namespace ICT4Rails
                     }
                 }
             }
+        }
+
+        private void SimulatieTimer_Tick(object sender, EventArgs e)
+        {
+            Timer++;
         }
     }
 }

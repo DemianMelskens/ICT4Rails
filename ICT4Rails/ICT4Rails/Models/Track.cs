@@ -8,7 +8,7 @@ namespace ICT4Rails.Models
 {
     public class Track
     {
-        private int BeginsOn;
+        public List<Segment> Segments { get; set; }
         public int LineID { get; set; }
         public string LineNumber { get; set; }
 

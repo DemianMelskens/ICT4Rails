@@ -60,6 +60,37 @@ namespace ICT4Rails.Data
             }
         }
 
+        public List<Track> GetTracks()
+        {
+            List<Track> tracks = new List<Track>();
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "SELECT * " +
+                                      "FROM TRACK";
+
+                try
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                var track = new Track(Convert.ToInt32(reader["TrackID"]), Convert.ToString(reader["Linenumber"]));
+                                tracks.Add(track);
+                            }
+                        }
+                        return tracks;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         public void ChangeSegmentBlocked(int segmentid, int blocked)
         {
             using (var database = DbConnection.Connection)
