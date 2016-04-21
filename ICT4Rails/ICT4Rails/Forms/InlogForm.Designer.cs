@@ -42,8 +42,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
             this.pContactAdmin = new System.Windows.Forms.Panel();
-            this.lblTestConnection = new System.Windows.Forms.Label();
-            this.btnTestConnection = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnCancelContact = new System.Windows.Forms.Button();
             this.btnSubmitContact = new System.Windows.Forms.Button();
@@ -205,8 +203,6 @@
             this.pContactAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pContactAdmin.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pContactAdmin.Controls.Add(this.lblTestConnection);
-            this.pContactAdmin.Controls.Add(this.btnTestConnection);
             this.pContactAdmin.Controls.Add(this.richTextBox1);
             this.pContactAdmin.Controls.Add(this.btnCancelContact);
             this.pContactAdmin.Controls.Add(this.btnSubmitContact);
@@ -218,24 +214,6 @@
             this.pContactAdmin.Size = new System.Drawing.Size(608, 204);
             this.pContactAdmin.TabIndex = 12;
             this.pContactAdmin.Visible = false;
-            // 
-            // lblTestConnection
-            // 
-            this.lblTestConnection.AutoSize = true;
-            this.lblTestConnection.Location = new System.Drawing.Point(28, 26);
-            this.lblTestConnection.Name = "lblTestConnection";
-            this.lblTestConnection.Size = new System.Drawing.Size(0, 13);
-            this.lblTestConnection.TabIndex = 14;
-            // 
-            // btnTestConnection
-            // 
-            this.btnTestConnection.Location = new System.Drawing.Point(29, 3);
-            this.btnTestConnection.Name = "btnTestConnection";
-            this.btnTestConnection.Size = new System.Drawing.Size(112, 23);
-            this.btnTestConnection.TabIndex = 13;
-            this.btnTestConnection.Text = "Test Connection";
-            this.btnTestConnection.UseVisualStyleBackColor = true;
-            this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
             // 
             // richTextBox1
             // 
@@ -439,7 +417,5 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbNameContact;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnTestConnection;
-        private System.Windows.Forms.Label lblTestConnection;
     }
 }
