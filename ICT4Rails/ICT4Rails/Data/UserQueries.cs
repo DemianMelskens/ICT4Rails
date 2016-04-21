@@ -6,6 +6,10 @@ namespace ICT4Rails.Data
 {
     public class UserQueries : IUserContext
     {
+        /// <summary>
+        /// Retrieves a list of Users from the database.
+        /// </summary>
+        /// <returns>A list of User objects</returns>
         public List<User> GetUsers()
         {
             User user = null;
@@ -68,6 +72,18 @@ namespace ICT4Rails.Data
             }
         }
 
+        /// <summary>
+        /// Method adds a new user to the database
+        /// </summary>
+        /// <param name="userid">The user ID of the new user</param>
+        /// <param name="username">The username of the new user</param>
+        /// <param name="password">The password of the new user</param>
+        /// <param name="age">The age of the new user</param>
+        /// <param name="profession">Profession of the newly created user: technician, cleaner, driver etc.</param>
+        /// <param name="firstname">The first name of the user</param>
+        /// <param name="surname">The surname of the user</param>
+        /// <param name="surnameprefix">Surname prefix (e.g.: 'van der')</param>
+        /// <param name="email">E mail address of the user</param>
         public void AddUser(int userid, string username, string password, int age, string profession, string firstname,
             string surname, string surnameprefix, string email)
         {
@@ -90,6 +106,12 @@ namespace ICT4Rails.Data
             }
         }
 
+        /// <summary>
+        /// Removes a user from the database. Requires first name, last name and email address to validate
+        /// </summary>
+        /// <param name="firstname">First name of the user to be deleted</param>
+        /// <param name="surname">The last name of the user to be deleted</param>
+        /// <param name="email">Email of the user to be deleted</param>
         public void DeleteUser(string firstname, string surname, string email)
         {
             using (var database = DbConnection.Connection)
