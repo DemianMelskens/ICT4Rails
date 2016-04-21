@@ -15,7 +15,7 @@ namespace ICT4Rails.Data
             using (var command = database.CreateCommand())
             {
                 command.CommandText = "SELECT MAX(" + @columnName + ") " +
-                                            "FROM " + @tableName + " " +
+                                            "FROM " + '"' + @tableName + '"' + " " +
                                             "ORDER BY " + @columnName + " ASC";
 
                 try

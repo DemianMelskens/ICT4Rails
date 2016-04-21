@@ -163,7 +163,6 @@ namespace ICT4Rails.Forms
         
         private void button2_Click(object sender, EventArgs e)
         {
-            Tram addtram = null;
             Status status = Status.Defect;
             DataGridViewRow dataRow = dgvTrams.Rows[rowIndex];
             dataRow.Cells[0].Value = tbTramID.Text;

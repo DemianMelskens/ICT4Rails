@@ -63,7 +63,7 @@ namespace ICT4Rails.Forms
         {
             pl_Form_Total_Context.Location = new Point(this.ClientSize.Width / 2 - pl_Form_Total_Context.Size.Width / 2,
                                                        this.ClientSize.Height / 2 - pl_Form_Total_Context.Size.Height / 2);
-            pl_Form_Total_Context.Anchor = AnchorStyles.None;
+            pl_Form_Total_Context.Anchor = AnchorStyles.None; //
         }
 
         public void AddTramToOverview()
