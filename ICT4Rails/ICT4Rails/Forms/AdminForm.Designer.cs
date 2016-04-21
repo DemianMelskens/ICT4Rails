@@ -571,7 +571,6 @@
             this.btnDeleteTram.TabIndex = 23;
             this.btnDeleteTram.Text = "Delete";
             this.btnDeleteTram.UseVisualStyleBackColor = false;
-            this.btnDeleteTram.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // button2
             // 
@@ -4326,7 +4325,7 @@
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel
             // 

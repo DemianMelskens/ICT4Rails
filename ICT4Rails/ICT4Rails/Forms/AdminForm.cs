@@ -19,13 +19,15 @@ namespace ICT4Rails
         private CacheData cache;
         private TramQueries tramQueries = new TramQueries();
         private SegmentQueries segmentqueries = new SegmentQueries();
+        private UserQueries userqueries = new UserQueries();
         private ReservationQueries reservationqueries = new ReservationQueries();
 
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
-
         private bool addreservation = true;
+
+        private string profession;
 
         private int index;
         private DialogForm dfrom;
@@ -221,8 +223,8 @@ namespace ICT4Rails
             pTramManagement.Visible = false;
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
-            lblTableText.Text = "List of drivers";
-
+            lblTableText.Text = "List of Drivers";
+            profession = "Bestuurder";
 
             dgvUsers.Rows.Clear();
             foreach (User user in cache.users)
@@ -243,6 +245,7 @@ namespace ICT4Rails
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Technicians";
+            profession = "Technicus";
             dgvUsers.Rows.Clear();
             foreach (User user in cache.users)
             {
@@ -262,6 +265,7 @@ namespace ICT4Rails
             pTramMaitenance.Visible = false;
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
+            profession = "Schoonmaker";
             dgvUsers.Rows.Clear();
             foreach (User user in cache.users)
             {
@@ -504,9 +508,9 @@ namespace ICT4Rails
             nudAge.Value = 0;
         }
 
-        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        private void btnDeleteAccount_Click(object sender, EventArgs e, DataGridViewCellEventArgs eg)
         {
-            //Not implemented yet!
+            
         }
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -533,7 +537,64 @@ namespace ICT4Rails
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            var userID = GeneralQueries.GetPrimairyKey("User", "UserID");
+            var agedec = nudAge.Value;
+            int age = Convert.ToInt32(agedec);
 
+            if (profession == "Bestuurder")
+            {
+                User driver = new Driver(tbUsername.Text,tbPassword.Text,age,tbFirstname.Text,tbSurname.Text,tbSurnamePrefix.Text,tbEmail.Text);
+                cache.users.Add(driver);
+                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+            }
+            if (profession == "Technicus")
+            {
+                User tech = new Technician(tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                cache.users.Add(tech);
+                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+            }
+            if (profession == "Schoonmaker")
+            {
+                User clean = new Cleaner(tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                cache.users.Add(clean);
+                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+            }
+
+            if (profession == "Bestuurder")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Driver)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
+
+            if (profession == "Technicus")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Technician)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
+
+            if (profession == "Schoonmaker")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Cleaner)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
         }
 
         #endregion
@@ -938,6 +999,53 @@ namespace ICT4Rails
                     break;
             }
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            userqueries.DeleteUser(tbFirstname.Text,tbSurname.Text,tbEmail.Text);
+            foreach (User user in cache.users)
+            {
+                if (user.FirstName == tbFirstname.Text)
+                {
+                    cache.users.Remove(user);
+                    break;
+                }
+            }
+
+            if (profession == "Bestuurder")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Driver)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
+            else if (profession == "Schoonmaker")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Cleaner)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
+            else if (profession == "Technicus")
+            {
+                dgvUsers.Rows.Clear();
+                foreach (User user in cache.users)
+                {
+                    if (user is Technician)
+                    {
+                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                    }
+                }
+            }
         }
     }
 }
