@@ -77,6 +77,29 @@ namespace ICT4Rails
             }
         }
 
+        public bool IsNextSegmentEmpty(Segment previousSegment)
+        {
+            foreach (Segment segment in cache.segments)
+            {
+                if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
+                {
+                    if(segment.Textbox.Text != "")
+                    {
+                        return false;
+                    }
+                    else if (!IsNextSegmentEmpty(segment))
+                    {
+                        return false;
+                    }
+                    else if(IsNextSegmentEmpty(segment))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
 
         #endregion
 
@@ -730,24 +753,27 @@ namespace ICT4Rails
                         {
                             if (dfrom.Tram != null)
                             {
-                                if (segment.Tram == null)
+                                if (IsNextSegmentEmpty(segment))
                                 {
-
-                                }
-                                else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
-                                    MessageBox.Show("this tram is already on a segment");
-                                    add = false;
-                                    break;
-                                }
-                                else
-                                {
-                                    foreach (Tram tram in cache.trams)
+                                    if (segment.Tram == null)
                                     {
-                                        if (dfrom.Tram.TramID == tram.TramID)
+
+                                    }
+                                    else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
+                                        MessageBox.Show("this tram is already on a segment");
+                                        add = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        foreach (Tram tram in cache.trams)
                                         {
-                                            add = true;
-                                            addtram = tram;
-                                            break;
+                                            if (dfrom.Tram.TramID == tram.TramID)
+                                            {
+                                                add = true;
+                                                addtram = tram;
+                                                break;
+                                            }
                                         }
                                     }
                                 }
