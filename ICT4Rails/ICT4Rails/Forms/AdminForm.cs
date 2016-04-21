@@ -828,6 +828,10 @@ namespace ICT4Rails
                             {
 
                             }
+                            else if(dfrom.Tram == null)
+                            {
+
+                            }
                             else if(segment.Tram.TramID == dfrom.Tram.TramID)
                             {
                                 segment.Tram.Status = dfrom.status;
@@ -836,12 +840,20 @@ namespace ICT4Rails
 
                         foreach(Tram tram in cache.trams)
                         {
-                            if(tram.TramID == dfrom.Tram.TramID)
+                            if (tram == null)
+                            {
+
+                            }
+                            else if (dfrom.Tram == null)
+                            {
+
+                            }
+                            else if (tram.TramID == dfrom.Tram.TramID)
                             {
                                 tram.Status = dfrom.status;
+                                tramQueries.ChangeTramStatus(dfrom.statusindex, Convert.ToInt32(dfrom.Tram.TramID));
                             }
-                        }
-                        tramQueries.ChangeTramStatus(dfrom.statusindex, Convert.ToInt32(dfrom.Tram.TramID));
+                        }    
                     }
                     else
                     {
