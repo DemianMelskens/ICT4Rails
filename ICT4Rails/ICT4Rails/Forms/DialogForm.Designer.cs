@@ -33,26 +33,26 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.pAddMoveDelete = new System.Windows.Forms.Panel();
+            this.tbTramID = new System.Windows.Forms.ComboBox();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpBeginDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.lblBeginDate = new System.Windows.Forms.Label();
+            this.tbSegmentID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pStatusOverview = new System.Windows.Forms.Panel();
             this.cbTramStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbTramStatusID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbSegmentID = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbTramID = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pl_Form_Total_Context.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pAddMoveDelete.SuspendLayout();
-            this.pStatusOverview.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.pStatusOverview.SuspendLayout();
             this.SuspendLayout();
             // 
             // pl_Form_Total_Context
@@ -105,18 +105,26 @@
             // pAddMoveDelete
             // 
             this.pAddMoveDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pAddMoveDelete.Controls.Add(this.tbTramID);
             this.pAddMoveDelete.Controls.Add(this.dtpEndDate);
             this.pAddMoveDelete.Controls.Add(this.dtpBeginDate);
             this.pAddMoveDelete.Controls.Add(this.lblEndDate);
             this.pAddMoveDelete.Controls.Add(this.lblBeginDate);
             this.pAddMoveDelete.Controls.Add(this.tbSegmentID);
             this.pAddMoveDelete.Controls.Add(this.label2);
-            this.pAddMoveDelete.Controls.Add(this.tbTramID);
             this.pAddMoveDelete.Controls.Add(this.label20);
             this.pAddMoveDelete.Location = new System.Drawing.Point(3, 90);
             this.pAddMoveDelete.Name = "pAddMoveDelete";
             this.pAddMoveDelete.Size = new System.Drawing.Size(435, 205);
             this.pAddMoveDelete.TabIndex = 4;
+            // 
+            // tbTramID
+            // 
+            this.tbTramID.FormattingEnabled = true;
+            this.tbTramID.Location = new System.Drawing.Point(101, 37);
+            this.tbTramID.Name = "tbTramID";
+            this.tbTramID.Size = new System.Drawing.Size(235, 21);
+            this.tbTramID.TabIndex = 16;
             // 
             // dtpEndDate
             // 
@@ -158,6 +166,54 @@
             this.lblBeginDate.Text = "Begin Date:";
             this.lblBeginDate.Visible = false;
             // 
+            // tbSegmentID
+            // 
+            this.tbSegmentID.Location = new System.Drawing.Point(101, 100);
+            this.tbSegmentID.Name = "tbSegmentID";
+            this.tbSegmentID.Size = new System.Drawing.Size(235, 20);
+            this.tbSegmentID.TabIndex = 6;
+            this.tbSegmentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(97, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Segment ID:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(97, 14);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(78, 20);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Tram ID:";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(435, 81);
+            this.panel3.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(98, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 39);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "EyeCT4Rails";
+            // 
             // pStatusOverview
             // 
             this.pStatusOverview.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -173,6 +229,13 @@
             // cbTramStatus
             // 
             this.cbTramStatus.FormattingEnabled = true;
+            this.cbTramStatus.Items.AddRange(new object[] {
+            "ReadyForUse",
+            "NeedsCleaning",
+            "NeedsReperation",
+            "InRemise",
+            "Defect",
+            "GeenStatusBekent"});
             this.cbTramStatus.Location = new System.Drawing.Point(101, 131);
             this.cbTramStatus.Name = "cbTramStatus";
             this.cbTramStatus.Size = new System.Drawing.Size(235, 21);
@@ -206,62 +269,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Tram ID:";
             // 
-            // tbSegmentID
-            // 
-            this.tbSegmentID.Location = new System.Drawing.Point(101, 100);
-            this.tbSegmentID.Name = "tbSegmentID";
-            this.tbSegmentID.Size = new System.Drawing.Size(235, 20);
-            this.tbSegmentID.TabIndex = 6;
-            this.tbSegmentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Segment ID:";
-            // 
-            // tbTramID
-            // 
-            this.tbTramID.Location = new System.Drawing.Point(101, 37);
-            this.tbTramID.Name = "tbTramID";
-            this.tbTramID.Size = new System.Drawing.Size(235, 20);
-            this.tbTramID.TabIndex = 4;
-            this.tbTramID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(97, 14);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(78, 20);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Tram ID:";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(435, 81);
-            this.panel3.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "EyeCT4Rails";
-            // 
             // DialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,10 +284,10 @@
             this.panel2.ResumeLayout(false);
             this.pAddMoveDelete.ResumeLayout(false);
             this.pAddMoveDelete.PerformLayout();
-            this.pStatusOverview.ResumeLayout(false);
-            this.pStatusOverview.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.pStatusOverview.ResumeLayout(false);
+            this.pStatusOverview.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -294,7 +301,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbSegmentID;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbTramID;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSubmit;
@@ -307,5 +313,6 @@
         private System.Windows.Forms.DateTimePicker dtpBeginDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblBeginDate;
+        private System.Windows.Forms.ComboBox tbTramID;
     }
 }

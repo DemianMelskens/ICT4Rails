@@ -73,6 +73,7 @@
     <Compile Include="Data\GeneralQueries.cs" />
     <Compile Include="Data\ITramContext.cs" />
     <Compile Include="Data\IUserContext.cs" />
+    <Compile Include="Data\ReservationQueries.cs" />
     <Compile Include="Data\SegmentQueries.cs" />
     <Compile Include="Data\TramQueries.cs" />
     <Compile Include="Data\UserQueries.cs" />
@@ -116,6 +117,7 @@
     </Compile>
     <Compile Include="Logic\RFID.cs" />
     <Compile Include="Models\Enums\MaintenanceType.cs" />
+    <Compile Include="Models\Enums\Tramtype.cs" />
     <Compile Include="Models\Maintenance.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Segment.cs" />

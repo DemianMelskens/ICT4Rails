@@ -8,12 +8,12 @@ namespace ICT4Rails.Models
 {
     public class Reservation
     {
-        public int BeginDate { get; set; }
-        public int EndDate { get; set; }
+        public DateTime BeginDate { get; set; }
+        public DateTime EndDate { get; set; }
         public Tram Tram { get; set; }
         public Segment Segment { get; set; }
 
-        public Reservation(int begindate, int enddate, Tram tram, Segment segment)
+        public Reservation(DateTime begindate, DateTime enddate, Tram tram, Segment segment)
         {
             this.BeginDate = begindate;
             this.EndDate = enddate;

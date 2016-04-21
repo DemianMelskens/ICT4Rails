@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ICT4Rails.Models;
+using ICT4Rails.Models.Users;
 
 namespace ICT4Rails.Data
 {
     public class UserQueries : IUserContext
     {
-        public List<string> GetUsers()
+        public List<User> GetUsers()
         {
-            var users = new List<string>();
+            User user = null;
+            List<User> users = new List<User>();
             using (var database = DbConnection.Connection)
             using (var command = database.CreateCommand())
             {
@@ -25,18 +28,27 @@ namespace ICT4Rails.Data
                         {
                             while (reader.Read())
                             {
-                                var values = Convert.ToString(reader["UserID"]) + ","
-                                     + Convert.ToString(reader["Username"]) + ","
-                                     + Convert.ToString(reader["Password"]) + ","
-                                     + Convert.ToString(reader["Age"]) + ","
-                                     + Convert.ToString(reader["Profession"]) + ","
-                                     + Convert.ToString(reader["Firstname"]) + ","
-                                     + Convert.ToString(reader["Surname"]) + ","
-                                     + Convert.ToString(reader["Surnameprefix"]) + ","
-                                     + Convert.ToString(reader["Email"]) + ",";
-                                users.Add(values);
+                                if(Convert.ToString(reader["Profession"]) == "Wagenparkbeheerder")
+                                {
+                                    user = new Admin(Convert.ToString(reader["Username"]), Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]), Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]), Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
+                                }
+                                else if (Convert.ToString(reader["Profession"]) == "Schoonmaker")
+                                {
+                                    user = new Cleaner(Convert.ToString(reader["Username"]), Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]), Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]), Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
+                                }
+                                else if (Convert.ToString(reader["Profession"]) == "Technicus")
+                                {
+                                    user = new Technician(Convert.ToString(reader["Username"]), Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]), Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]), Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
+                                }
+                                else if (Convert.ToString(reader["Profession"]) == "Bestuurder")
+                                {
+                                    user = new Driver(Convert.ToString(reader["Username"]), Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]), Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]), Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
+                                }
+
+                                users.Add(user);
                             }
                         }
+                        
                         return users;
                     }
                 }

@@ -10,11 +10,12 @@ namespace ICT4Rails.Models
     {
         private int BeginsOn;
         public int LineID { get; set; }
+        public string LineNumber { get; set; }
 
-        public Track(int lineid, int beginson)
+        public Track(int lineid, string linenumber)
         {
             this.LineID = lineid;
-            this.BeginsOn = beginson;
+            this.LineNumber = linenumber;
         }
     }
 }

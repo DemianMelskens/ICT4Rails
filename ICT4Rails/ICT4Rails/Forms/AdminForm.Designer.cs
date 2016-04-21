@@ -62,6 +62,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pTramManagement = new System.Windows.Forms.Panel();
+            this.tb5106 = new System.Windows.Forms.TextBox();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.textBox24 = new System.Windows.Forms.TextBox();
@@ -548,9 +549,12 @@
             this.cbTramStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbTramStatus.FormattingEnabled = true;
             this.cbTramStatus.Items.AddRange(new object[] {
-            "Cleaning required",
-            "Reparation required",
-            "Ready for use"});
+            "ReadyForUse",
+            "NeedsCleaning",
+            "NeedsReperation",
+            "InRemise",
+            "Defect",
+            "GeenStatusBekent"});
             this.cbTramStatus.Location = new System.Drawing.Point(47, 244);
             this.cbTramStatus.Name = "cbTramStatus";
             this.cbTramStatus.Size = new System.Drawing.Size(121, 24);
@@ -724,6 +728,7 @@
             // 
             this.pTramManagement.BackColor = System.Drawing.Color.DimGray;
             this.pTramManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pTramManagement.Controls.Add(this.tb5106);
             this.pTramManagement.Controls.Add(this.textBox22);
             this.pTramManagement.Controls.Add(this.textBox23);
             this.pTramManagement.Controls.Add(this.textBox24);
@@ -963,6 +968,20 @@
             this.pTramManagement.Size = new System.Drawing.Size(1097, 612);
             this.pTramManagement.TabIndex = 19;
             this.pTramManagement.Visible = false;
+            // 
+            // tb5106
+            // 
+            this.tb5106.BackColor = System.Drawing.Color.White;
+            this.tb5106.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb5106.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tb5106.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tb5106.Location = new System.Drawing.Point(349, 504);
+            this.tb5106.Name = "tb5106";
+            this.tb5106.ReadOnly = true;
+            this.tb5106.Size = new System.Drawing.Size(50, 26);
+            this.tb5106.TabIndex = 252;
+            this.tb5106.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb5106.Click += new System.EventHandler(this.schematic_Click);
             // 
             // textBox22
             // 
@@ -5311,5 +5330,6 @@
         private System.Windows.Forms.TextBox textBox25;
         private System.Windows.Forms.TextBox textBox26;
         private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox tb5106;
     }
 }

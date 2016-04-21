@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 
 namespace ICT4Rails.Data
@@ -47,6 +48,7 @@ namespace ICT4Rails.Data
                     }
                     else if (Exceptions.OracleConnectIdentifierException.CheckIfIdentifierExeption(e))
                     {
+                        MessageBox.Show("Connect to vpn");
                         throw new Exceptions.OracleConnectIdentifierException(); //als deze exeption word gethrowed betekent dat je niet bent verbonden met vpn (vdi.fhict.nl(SSL))
                     }
                     else

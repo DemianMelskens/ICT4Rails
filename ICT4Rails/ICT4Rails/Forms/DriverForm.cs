@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
-using ICT4Rails.Models.Enums;
 using ICT4Rails.Models;
+using ICT4Rails.Models.Users;
+using ICT4Rails.Models.Enums;
 
 namespace ICT4Rails.Forms
 {
@@ -116,10 +117,9 @@ namespace ICT4Rails.Forms
             pTramStatus.Visible = true;
             pPlaceTram.Visible = false;
 
-            foreach(string value in cache.trams)
+            foreach(Tram tram in cache.trams)
             {
-                string[] values = value.Split(',');
-                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+                dgvTrams.Rows.Add(tram.TramID, tram.TramType, tram.Status, tram.Length);
             }
         }
 
@@ -163,15 +163,46 @@ namespace ICT4Rails.Forms
         
         private void button2_Click(object sender, EventArgs e)
         {
+            Tram addtram = null;
+            Status status = Status.Defect;
             DataGridViewRow dataRow = dgvTrams.Rows[rowIndex];
             dataRow.Cells[0].Value = tbTramID.Text;
             dataRow.Cells[1].Value = tbTramType.Text;
             dataRow.Cells[2].Value = cbTramStatus.Text;
             dataRow.Cells[3].Value = tbTramLenght.Text;
 
-            string value = tbTramID.Text + "," + tbTramType.Text + "," + cbTramStatus.Text + "," + tbTramLenght.Text;
-            cache.trams.RemoveAt(rowIndex);
-            cache.trams.Insert(rowIndex, value);
+            if(cbTramStatus.Text == "Reparation required")
+            {
+                status = Status.NeedsReperation;
+            }
+            else if (cbTramStatus.Text == "Cleaning required")
+            {
+                status = Status.NeedsCleaning;
+            }
+            else if (cbTramStatus.Text == "Ready for use")
+            {
+                status = Status.ReadyForUse;
+            }
+            else if (cbTramStatus.Text == "Remise")
+            {
+                status = Status.InRemise;
+            }
+            else if (cbTramStatus.Text == "Defect")
+            {
+                status = Status.Defect;
+            }
+            else if(cbTramStatus.Text == "GeenStatusBekent" || cbTramStatus.Text == "")
+            {
+                status = Status.GeenStatusBekent;
+            }
+
+            foreach (Tram tram in cache.trams)
+            {
+                if(tram.TramID == tbTramID.Text)
+                {
+                    tram.Status = status;
+                }
+            }
             tramqueries.ChangeTramStatus(cbTramStatus.SelectedIndex + 1, Convert.ToInt32(tbTramID.Text));
             
         }
