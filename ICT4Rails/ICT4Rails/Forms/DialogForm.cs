@@ -19,7 +19,6 @@ namespace ICT4Rails.Forms
         private CacheData cache;
         public Reservation reservation { get; private set; }
         public Tram Tram { get; private set; }
-        public Segment OldSegment { get; private set; }
         public Status status { get; private set; }
         public int statusindex { get; set; }
         public DateTime Begindate {get;set;}
@@ -130,20 +129,11 @@ namespace ICT4Rails.Forms
                 }
                 else if (task == "Move")
                 {
-                    Tram = new Tram(tbTramID.Text);
-                    foreach(Segment segment in cache.segments)
+                    if (tbTramID.Text != "")
                     {
-                        if(segment.Tram == null)
-                        {
-
-                        }
-                        else if(segment.Tram.TramID == tbTramID.Text)
-                        {
-                            OldSegment = new Segment(segment.Name);
-                            break;
-                        }
+                        Tram = new Tram(tbTramID.Text);
+                        DialogResult = DialogResult.OK;
                     }
-                    DialogResult = DialogResult.OK;
                 }
                 else if(task == "Reserve")
                 {

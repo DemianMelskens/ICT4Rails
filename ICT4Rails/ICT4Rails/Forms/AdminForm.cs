@@ -79,10 +79,12 @@ namespace ICT4Rails
 
         public bool IsNextSegmentEmpty(Segment previousSegment)
         {
+            bool noNextSegment = true;
             foreach (Segment segment in cache.segments)
             {
                 if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
                 {
+                    noNextSegment = false;
                     if(segment.Textbox.Text != "")
                     {
                         return false;
@@ -96,6 +98,11 @@ namespace ICT4Rails
                         return true;
                     }
                 }
+            }
+
+            if (noNextSegment)
+            {
+                return true;
             }
             return false;
         }
@@ -741,6 +748,7 @@ namespace ICT4Rails
         {
             switch (index)
             {
+                //Add Tram
                 case 1:
                     bool add = false;
                     Tram addtram = null;
@@ -749,32 +757,41 @@ namespace ICT4Rails
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
                         dfrom.AddTramToOverview();
                         dfrom.ShowDialog();
-                        foreach (Segment segment in cache.segments)
+                        if (dfrom.Tram != null)
                         {
-                            if (dfrom.Tram != null)
+                            foreach (Segment segment in cache.segments)
                             {
-                                if (IsNextSegmentEmpty(segment))
+                                if ("tb" + segment.Name == ((TextBox)sender).Name)
                                 {
-                                    if (segment.Tram == null)
+                                    if (IsNextSegmentEmpty(segment))
                                     {
-
-                                    }
-                                    else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
-                                        MessageBox.Show("this tram is already on a segment");
-                                        add = false;
-                                        break;
+                                        if (segment.Tram == null)
+                                        {
+                                            add = true;
+                                            break;
+                                        }
+                                        else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
+                                            MessageBox.Show("this tram is already on a segment");
+                                            add = false;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            foreach (Tram tram in cache.trams)
+                                            {
+                                                if (dfrom.Tram.TramID == tram.TramID)
+                                                {
+                                                    add = true;
+                                                    addtram = tram;
+                                                    break;
+                                                }
+                                            }
+                                        }
                                     }
                                     else
                                     {
-                                        foreach (Tram tram in cache.trams)
-                                        {
-                                            if (dfrom.Tram.TramID == tram.TramID)
-                                            {
-                                                add = true;
-                                                addtram = tram;
-                                                break;
-                                            }
-                                        }
+                                        MessageBox.Show("Er staat een tram in de weg! tram kan niet geplaatst worden");
+                                        break;
                                     }
                                 }
                             }
@@ -821,33 +838,52 @@ namespace ICT4Rails
                     }
                     break;
 
+                //Move Tram
                 case 2:
                     bool move = false;
-                    Tram movetram = null;
+                    Segment PreviousSegment = null;
+                    Segment NextSegment = null;
                     if (((TextBox)sender).Text == "")
                     {
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
                         dfrom.MoveTramToOverview();
                         dfrom.ShowDialog();
-                        if (dfrom.Tram != null && dfrom.OldSegment != null)
+                        if (dfrom.Tram != null)
                         {
                             foreach (Segment segment in cache.segments)
                             {
-                                if (segment.Textbox.Text.Equals(dfrom.Tram.TramID))
-                                {
-                                    move = true;
-                                    movetram = segment.Tram;
-                                    break;
+                                if(segment.Tram != null)
+                                { 
+                                    if (segment.Tram.TramID == dfrom.Tram.TramID)
+                                    {
+                                        if (IsNextSegmentEmpty(segment))
+                                        {
+                                            move = true;
+                                            PreviousSegment = segment;
+                                        }
+                                        else
+                                        {
+                                            move = false;
+                                            MessageBox.Show("Er staat een tram in de weg! tram kan niet verplaatst worden");
+                                            break;
+                                        }
+                                    }
                                 }
-                                else
+                                else if ("tb" + segment.Name == ((TextBox)sender).Name)
                                 {
-                                    move = false;
+                                    if (IsNextSegmentEmpty(segment))
+                                    {
+                                        move = true;
+                                        NextSegment = segment;
+                                    }
+                                    else
+                                    {
+                                        move = false;
+                                        MessageBox.Show("Er staat een tram in de weg! tram kan niet verplaatst worden");
+                                        break;
+                                    }
                                 }
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("tram is not on the overview");
                         }
                     }
                     else
@@ -857,42 +893,32 @@ namespace ICT4Rails
 
                     if (move)
                     {
-                        if (dfrom.Tram != null && dfrom.OldSegment != null)
-                        {
-                            foreach (Segment segment in cache.segments)
-                            {
-                                if (segment.Textbox.Name.Equals("tb" + dfrom.OldSegment.Name))
-                                {
-                                    segment.Textbox.Text = "";
-                                    segmentqueries.ChangeSegmentTram(segment.Name, "null");
-                                    segment.Tram = null;
-                                    break;
-                                }
-                            }
-                            foreach(Segment segment in cache.segments)
-                            {
-                                if ("tb" + segment.Name == ((TextBox)sender).Name)
-                                {
-                                    segment.Textbox.Text = dfrom.Tram.TramID;
-                                    segmentqueries.ChangeSegmentTram(segment.Name, dfrom.Tram.TramID);
-                                    segment.Tram = movetram;
-                                }
-                            }
-                        }
+                        NextSegment.Tram = PreviousSegment.Tram;
+                        NextSegment.Textbox.Text = PreviousSegment.Tram.TramID;
+                        PreviousSegment.Tram = null;
+                        PreviousSegment.Textbox.Text = "";
                     }     
                     break;
 
                 case 3:
                     if (((TextBox)sender).Text != "")
                     {
-                        ((TextBox)sender).Text = "";
                         foreach (Segment segment in cache.segments)
                         {
                             if ("tb" + segment.Name == ((TextBox)sender).Name)
                             {
-                                segmentqueries.ChangeSegmentTram(segment.Name, "null");
-                                segment.Tram = null;
-                                break;
+                                if (IsNextSegmentEmpty(segment))
+                                {
+                                    ((TextBox)sender).Text = "";
+                                    segmentqueries.ChangeSegmentTram(segment.Name, "null");
+                                    segment.Tram = null;
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Er staat een tram in de weg! tram kan niet verwijderd worden");
+                                    break;
+                                }
                             }
                         }
                     }
