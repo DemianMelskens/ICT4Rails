@@ -58,62 +58,25 @@ namespace ICT4Rails.Data
                 }
             }
         }
-        //added GetUserName
-        public string GetUserName()
+
+        public void AddUser(int userid, string username, string password, int age, string profession, string firstname,
+            string surname, string surnameprefix)
         {
-            string username = "";
             using (var database = DbConnection.Connection)
             using (var command = database.CreateCommand())
             {
-                command.CommandText = "SELECT Username " +
-                                      "FROM " + '"' + "User" + '"';
+                command.CommandText = "INSERT INTO" + '"' + "User" + '"' + "(UserID, Username, Password, Age, Profession, Firstname, Surname, Surnameprefix, Email) " +
+                                          "VALUES (" + @userid + ", " + @username + ", " + @password + ", " + @age + ", " + @profession + ",, " + @firstname + ", " + @surname + ", " + @surnameprefix + ")";
+
                 try
                 {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                username = Convert.ToString(reader["Username"]);
-                            }
-                        }
-                        return username;
-                    }
+                    command.ExecuteNonQuery();
                 }
                 catch (Exception)
                 {
-                    return null;
+
                 }
-            }
-        }
-        //added GetPassword
-        public string GetPassword()
-        {
-            string password = "";
-            using (var database = DbConnection.Connection)
-            using (var command = database.CreateCommand())
-            {
-                command.CommandText = "SELECT Password " +
-                                      "FROM " + '"' + "User" + '"';
-                try
-                {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                password = Convert.ToString(reader["Password"]);
-                            }
-                        }
-                        return password;
-                    }
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
+
             }
         }
     }
