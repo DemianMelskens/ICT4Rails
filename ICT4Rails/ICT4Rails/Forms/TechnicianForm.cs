@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
+using ICT4Rails.Models;
+using ICT4Rails.Models.Users;
+using ICT4Rails.Models.Enums;
 
 namespace ICT4Rails.Forms
 {
@@ -112,10 +115,9 @@ namespace ICT4Rails.Forms
 
             //Load in Trams From Cache
             dgvTrams.Rows.Clear();
-            foreach (string value in cache.trams)
+            foreach (Tram tram in cache.trams)
             {
-                string[] values = value.Split(',');
-                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+                dgvTrams.Rows.Add(tram.TramID, tram.TramType, tram.Status, tram.Length);
             }
             dgvTrams.ClearSelection();
         }

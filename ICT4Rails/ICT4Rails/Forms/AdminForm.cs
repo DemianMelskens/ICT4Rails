@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Data;
 using ICT4Rails.Models;
+using ICT4Rails.Models.Users;
 using ICT4Rails.Forms;
 
 namespace ICT4Rails
@@ -18,11 +19,13 @@ namespace ICT4Rails
         private CacheData cache;
         private TramQueries tramQueries = new TramQueries();
         private SegmentQueries segmentqueries = new SegmentQueries();
-        private List<Segment> segments = new List<Segment>();
+        private ReservationQueries reservationqueries = new ReservationQueries();
 
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
+
+        private bool addreservation = true;
 
         private int index;
         private DialogForm dfrom;
@@ -41,10 +44,8 @@ namespace ICT4Rails
         #region Logic Methodes
         public void SetSegmentsVariables()
         {
-            segments.Clear();
-            foreach (string value in cache.segments)
+            foreach (Segment segment in cache.segments)
             {
-                string[] values = value.Split(',');
                 TextBox textbox = new TextBox();
 
                 foreach (var tb in pTramManagement.Controls)
@@ -52,24 +53,42 @@ namespace ICT4Rails
                     if (tb is TextBox)
                     {
                         var text = tb as TextBox;
-                        if (text.Name.Equals("tb" + values[0]))
+                        if (text.Name.Equals("tb" + segment.Name))
                         {
-                            segments.Add(new Segment(values[0], Convert.ToBoolean(Convert.ToInt32(values[3])), new Track(Convert.ToInt32(values[1]), Convert.ToInt32(values[1] + "01")), text));
+                            segment.Textbox = text;
                             break;
                         }
                     }
                 }
-                foreach (Segment segment in segments)
+            }
+
+            foreach(Segment bsegment in cache.segments)
+            {
+                if (bsegment.Blocked == true)
                 {
-                    if(segment.Blocked == true)
-                    {
-                        segment.Textbox.BackColor = Color.Red;
-                    }
-                    else
-                    {
-                        segment.Textbox.BackColor = Color.White;
-                    }
-                }     
+                    bsegment.Textbox.BackColor = Color.Red;
+                }
+                else if (bsegment.Blocked == false)
+                {
+                    bsegment.Textbox.BackColor = Color.White;
+                }
+            }
+
+            foreach(Reservation reservation in cache.reservations)
+            {
+                if(reservation.BeginDate.Date > DateTime.Today.Date)
+                {
+                    reservation.Segment.Textbox.BackColor = Color.Blue;
+                }
+                else if(reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
+                {
+                    reservation.Segment.Textbox.Text = reservation.Tram.TramID;
+                }
+                else if (reservation.EndDate.Date < DateTime.Today.Date)
+                {
+                    cache.reservations.Remove(reservation);
+                    reservationqueries.RemoveReservation(reservation.Segment.Name);
+                }
             }
         }
 
@@ -206,12 +225,11 @@ namespace ICT4Rails
 
 
             dgvUsers.Rows.Clear();
-            foreach (string value in cache.users)
+            foreach (User user in cache.users)
             {
-                string[] values = value.Split(',');
-                if(values[4] == "Bestuurder")
+                if(user is Driver)
                 {
-                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                    dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                 }
                
             }
@@ -226,12 +244,11 @@ namespace ICT4Rails
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Technicians";
             dgvUsers.Rows.Clear();
-            foreach (string value in cache.users)
+            foreach (User user in cache.users)
             {
-                string[] values = value.Split(',');
-                if (values[4] == "Technicus")
+                if (user is Technician )
                 {
-                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                    dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                 }
 
             }
@@ -246,12 +263,11 @@ namespace ICT4Rails
             pManageAccount.Visible = true;
             lblTableText.Text = "List of Cleaning staff";
             dgvUsers.Rows.Clear();
-            foreach (string value in cache.users)
+            foreach (User user in cache.users)
             {
-                string[] values = value.Split(',');
-                if (values[4] == "Schoonmaker")
+                if (user is Cleaner)
                 {
-                    dgvUsers.Rows.Add(values[5], values[3], values[1]);
+                    dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                 }
 
             }
@@ -285,15 +301,15 @@ namespace ICT4Rails
                 btnTramManagement.Location = new Point(3, 35);
                 btnTramMaitenance.Location = new Point(3, 323);
 
-                foreach (Segment segment in segments)
+                foreach (Segment segment in cache.segments)
                 {
-                    foreach(string value in cache.segments)
+                    if (segment.Tram != null)
                     {
-                        string[] values = value.Split(',');
-                        if(segment.Name == values[0])
-                        {
-                            segment.Textbox.Text = values[4];
-                        }
+                        segment.Textbox.Text = segment.Tram.TramID;
+                    }
+                    else
+                    {
+                        segment.Textbox.Text = "";
                     }
                 }
             }
@@ -400,7 +416,6 @@ namespace ICT4Rails
             btnReserveSegment.BackColor = Color.White;
             btnBlockSegment.BackColor = Color.White;
             btnDeblockSegment.BackColor = Color.White;
-            btnRunSimulation.BackColor = Color.DimGray;
         }
         #endregion
 
@@ -433,10 +448,9 @@ namespace ICT4Rails
         private void btnTramMenu_Click(object sender, EventArgs e)
         {
             dgvTrams.Rows.Clear();
-            foreach (string value in cache.trams)
+            foreach (Tram tram in cache.trams)
             {
-                string[] values = value.Split(',');
-                dgvTrams.Rows.Add(values[0], values[1], values[2], values[3]);
+                dgvTrams.Rows.Add(tram.TramID, tram.TramType, tram.Status, tram.Length);
             }
             dgvTrams.ClearSelection();
             lbTramList.Text = "List of Trams";
@@ -502,18 +516,17 @@ namespace ICT4Rails
             btnDelete.Visible = true;
             int rowIndex = e.RowIndex;
             DataGridViewRow row = dgvUsers.Rows[rowIndex];
-            foreach (string value in cache.users)
+            foreach (User user in cache.users)
             {
-                string[] values = value.Split(',');
-                if(values[5] == Convert.ToString(row.Cells[0].Value))
+                if(user.FirstName == Convert.ToString(row.Cells[0].Value))
                 {
-                    tbFirstname.Text = values[5];
-                    tbSurname.Text = values[6];
-                    tbSurnamePrefix.Text = values[7];
-                    tbUsername.Text = values[1];
-                    tbPassword.Text = values[2];
-                    tbEmail.Text = values[8];
-                    nudAge.Value = Convert.ToInt32(values[3]);
+                    tbFirstname.Text = user.FirstName;
+                    tbSurname.Text = user.SurName;
+                    tbSurnamePrefix.Text = user.SurNamePrefix;
+                    tbUsername.Text = user.UserName;
+                    tbPassword.Text = user.Password;
+                    tbEmail.Text = user.Email;
+                    nudAge.Value = Convert.ToInt32(user.Age);
                 }
             }
         }
@@ -646,27 +659,34 @@ namespace ICT4Rails
             {
                 case 1:
                     bool add = false;
+                    Tram addtram = null;
                     if (((TextBox)sender).Text == "")
                     {
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
                         dfrom.AddTramToOverview();
                         dfrom.ShowDialog();
-                        foreach (string value in cache.segments)
+                        foreach (Segment segment in cache.segments)
                         {
-                            string[] values = value.Split(',');
                             if (dfrom.Tram != null)
                             {
-                                if (values[4] == Convert.ToString(dfrom.Tram.TramID)) {
+                                if (segment.Tram == null)
+                                {
+
+                                }
+                                else if (segment.Tram.TramID == Convert.ToString(dfrom.Tram.TramID)) {
                                     MessageBox.Show("this tram is already on a segment");
+                                    add = false;
+                                    break;
                                 }
                                 else
                                 {
-                                    foreach (string tramvalue in cache.trams)
+                                    foreach (Tram tram in cache.trams)
                                     {
-                                        string[] tramvalues = tramvalue.Split(',');
-                                        if (Convert.ToString(dfrom.Tram.TramID) == tramvalues[0])
+                                        if (dfrom.Tram.TramID == tram.TramID)
                                         {
                                             add = true;
+                                            addtram = tram;
+                                            break;
                                         }
                                     }
                                 }
@@ -681,11 +701,12 @@ namespace ICT4Rails
                     if (add)
                     {
                         ((TextBox)sender).Text = Convert.ToString(dfrom.Tram.TramID);
-                        foreach (Segment segment in segments)
+                        foreach (Segment segment in cache.segments)
                         {
                             if ("tb" + segment.Name == ((TextBox)sender).Name)
                             {
                                 segmentqueries.ChangeSegmentTram(segment.Name, Convert.ToString(dfrom.Tram.TramID));
+                                segment.Tram = addtram;
                                 break;
                             }
                         }
@@ -697,10 +718,9 @@ namespace ICT4Rails
                         if (dfrom.Tram != null)
                         {
                             notexist = true;
-                            foreach (string tramvalue in cache.trams)
+                            foreach (Tram tram in cache.trams)
                             {
-                                string[] tramvalues = tramvalue.Split(',');
-                                if (Convert.ToString(dfrom.Tram.TramID) == tramvalues[0])
+                                if (dfrom.Tram.TramID == tram.TramID)
                                 {
                                     notexist = false;
                                 }
@@ -716,6 +736,7 @@ namespace ICT4Rails
 
                 case 2:
                     bool move = false;
+                    Tram movetram = null;
                     if (((TextBox)sender).Text == "")
                     {
                         dfrom = new DialogForm(((TextBox)sender).Name, cache);
@@ -723,11 +744,12 @@ namespace ICT4Rails
                         dfrom.ShowDialog();
                         if (dfrom.Tram != null && dfrom.OldSegment != null)
                         {
-                            foreach (Segment segment in segments)
+                            foreach (Segment segment in cache.segments)
                             {
-                                if (segment.Textbox.Text.Equals(Convert.ToString(dfrom.Tram.TramID)))
+                                if (segment.Textbox.Text.Equals(dfrom.Tram.TramID))
                                 {
                                     move = true;
+                                    movetram = segment.Tram;
                                     break;
                                 }
                                 else
@@ -735,8 +757,6 @@ namespace ICT4Rails
                                     move = false;
                                 }
                             }
-
-                        ((TextBox)sender).Text = Convert.ToString(dfrom.Tram.TramID);
                         }
                         else
                         {
@@ -752,27 +772,23 @@ namespace ICT4Rails
                     {
                         if (dfrom.Tram != null && dfrom.OldSegment != null)
                         {
-                            foreach (Segment segment in segments)
+                            foreach (Segment segment in cache.segments)
                             {
                                 if (segment.Textbox.Name.Equals("tb" + dfrom.OldSegment.Name))
                                 {
                                     segment.Textbox.Text = "";
-                                    foreach(Segment lsegment in segments)
-                                    {
-                                        if("tb" + lsegment.Name == segment.Textbox.Name)
-                                        {
-                                            segmentqueries.ChangeSegmentTram(lsegment.Name, "null");
-                                        }
-                                    }
+                                    segmentqueries.ChangeSegmentTram(segment.Name, "null");
+                                    segment.Tram = null;
                                     break;
                                 }
                             }
-                            ((TextBox)sender).Text = Convert.ToString(dfrom.Tram.TramID);
-                            foreach(Segment segment in segments)
+                            foreach(Segment segment in cache.segments)
                             {
                                 if ("tb" + segment.Name == ((TextBox)sender).Name)
                                 {
-                                    segmentqueries.ChangeSegmentTram(segment.Name, Convert.ToString(dfrom.Tram.TramID));
+                                    segment.Textbox.Text = dfrom.Tram.TramID;
+                                    segmentqueries.ChangeSegmentTram(segment.Name, dfrom.Tram.TramID);
+                                    segment.Tram = movetram;
                                 }
                             }
                         }
@@ -783,11 +799,12 @@ namespace ICT4Rails
                     if (((TextBox)sender).Text != "")
                     {
                         ((TextBox)sender).Text = "";
-                        foreach (Segment segment in segments)
+                        foreach (Segment segment in cache.segments)
                         {
                             if ("tb" + segment.Name == ((TextBox)sender).Name)
                             {
                                 segmentqueries.ChangeSegmentTram(segment.Name, "null");
+                                segment.Tram = null;
                                 break;
                             }
                         }
@@ -799,21 +816,86 @@ namespace ICT4Rails
                     break;
 
                 case 4:
-                    dfrom = new DialogForm(((TextBox)sender).Name, cache);
-                    dfrom.TramStatusOverview();
-                    dfrom.ShowDialog();
+                    if (((TextBox)sender).Text != "")
+                    {
+                        dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                        dfrom.TramStatusOverview();
+                        dfrom.ShowDialog();
+
+                        foreach(Segment segment in cache.segments)
+                        {
+                            if(segment.Tram == null)
+                            {
+
+                            }
+                            else if(segment.Tram.TramID == dfrom.Tram.TramID)
+                            {
+                                segment.Tram.Status = dfrom.status;
+                            }
+                        }
+
+                        foreach(Tram tram in cache.trams)
+                        {
+                            if(tram.TramID == dfrom.Tram.TramID)
+                            {
+                                tram.Status = dfrom.status;
+                            }
+                        }
+                        tramQueries.ChangeTramStatus(dfrom.statusindex, Convert.ToInt32(dfrom.Tram.TramID));
+                    }
+                    else
+                    {
+                        MessageBox.Show("dit segment heeft geen tram");
+                    }
                     //add database
                     break;
 
                 case 5:
-                    dfrom = new DialogForm(((TextBox)sender).Name, cache);
-                    dfrom.ReserveSegmentOverview();
-                    dfrom.ShowDialog();
-                    //add database
+                    if (((TextBox)sender).Text == "")
+                    {
+                        Segment addsegment = null;
+                        Tram addtram2 = null;
+                        dfrom = new DialogForm(((TextBox)sender).Name, cache);
+                        dfrom.ReserveSegmentOverview();
+                        dfrom.ShowDialog();
+
+                        foreach (Segment segment in cache.segments)
+                        {
+                            if ("tb" + segment.Name == ((TextBox)sender).Name)
+                            {
+                                addsegment = segment;
+                                break;
+                            }
+                        }
+
+                        foreach(Tram tram in cache.trams)
+                        {
+                            if(tram.TramID == dfrom.Tram.TramID)
+                            {
+                                addtram2 = tram;
+                            }
+                        }
+
+                        Reservation reservation = new Reservation(dfrom.Begindate, dfrom.Enddate, addtram2, addsegment);
+                        foreach(Reservation lreservation in cache.reservations)
+                        {
+                            if(lreservation == reservation)
+                            {
+                                addreservation = false;
+                            }
+                        }
+
+                        if (addreservation)
+                        {
+                            cache.reservations.Add(reservation);
+                            reservation.Segment.Textbox.BackColor = Color.Blue;
+                            reservationqueries.AddReservation(reservation.Tram.TramID, reservation.Segment.Name, reservation.BeginDate, reservation.EndDate);
+                        }
+                    }
                     break;
 
                 case 6:
-                    foreach (Segment segment in segments)
+                    foreach (Segment segment in cache.segments)
                     {
                         if ("tb" + segment.Name == ((TextBox)sender).Name)
                         {
@@ -826,7 +908,7 @@ namespace ICT4Rails
                     break;
 
                 case 7:
-                    foreach (Segment segment in segments)
+                    foreach (Segment segment in cache.segments)
                     {
                         if ("tb" + segment.Name == ((TextBox)sender).Name)
                         {

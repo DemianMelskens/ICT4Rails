@@ -13,13 +13,14 @@ namespace ICT4Rails.Models
         public bool Blocked { get; set; }
         public Track Track { get; set; }
         public TextBox Textbox { get; set; }
+        public Tram Tram { get; set; }
 
-        public Segment(string name, bool blocked, Track track, TextBox textbox)
+        public Segment(string name, bool blocked, Track track, Tram tram)
         {
             this.Name = name;
             this.Track = track;
             this.Blocked = blocked;
-            this.Textbox = textbox;
+            this.Tram = tram;
         }
 
         public Segment(string name)

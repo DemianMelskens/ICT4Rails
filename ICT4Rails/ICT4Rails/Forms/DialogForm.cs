@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ICT4Rails.Models;
+using ICT4Rails.Models.Users;
+using ICT4Rails.Models.Enums;
 using ICT4Rails.Data;
 
 namespace ICT4Rails.Forms
@@ -15,9 +17,13 @@ namespace ICT4Rails.Forms
     public partial class DialogForm : Form
     {
         private CacheData cache;
-        public Reservation reservation { get; set; }
-        public Tram Tram { get; set; }
-        public Segment OldSegment { get; set; }
+        public Reservation reservation { get; private set; }
+        public Tram Tram { get; private set; }
+        public Segment OldSegment { get; private set; }
+        public Status status { get; private set; }
+        public int statusindex { get; set; }
+        public DateTime Begindate {get;set;}
+        public DateTime Enddate { get; set; }
 
         private string task;
         private string segmentid;
@@ -28,10 +34,22 @@ namespace ICT4Rails.Forms
             this.segmentid = segmentid;
             this.cache = cache;
             tbSegmentID.Text = segmentid;
-            foreach(string value in cache.trams)
+            foreach(Segment segment in cache.segments)
             {
-                string[] values = value.Split(',');
-                tbTramID.Items.Add(values[0]);
+                if("tb" + segment.Name == segmentid)
+                {
+                    if (segment.Tram != null)
+                    {
+                        tbTramStatusID.Text = segment.Tram.TramID;
+                        cbTramStatus.Text = segment.Tram.Status.ToString();
+                    }
+                    break;
+                }
+            }
+
+            foreach(Tram tram in cache.trams)
+            {
+                tbTramID.Items.Add(tram.TramID);
             }
         }
 
@@ -89,17 +107,13 @@ namespace ICT4Rails.Forms
 
         public void ReserveSegmentOverview()
         {
+            task = "Reserve"; 
             pAddMoveDelete.Visible = true;
             pStatusOverview.Visible = false;
             dtpBeginDate.Visible = true;
             dtpEndDate.Visible = true;
             lblBeginDate.Visible = true;
             lblEndDate.Visible = true;
-        }
-
-        public void RunSimulationOverview()
-        {
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -110,28 +124,83 @@ namespace ICT4Rails.Forms
                 {
                     if (tbTramID.Text != "")
                     {
-                        Tram = new Tram(Convert.ToInt32(tbTramID.Text));
+                        Tram = new Tram(tbTramID.Text);
                         DialogResult = DialogResult.OK;
                     }
                 }
                 else if (task == "Move")
                 {
-                    Tram = new Tram(Convert.ToInt32(tbTramID.Text));
-                    foreach(string value in cache.segments)
+                    Tram = new Tram(tbTramID.Text);
+                    foreach(Segment segment in cache.segments)
                     {
-                        string[] values = value.Split(',');
-                        if(values[4] == tbTramID.Text)
+                        if(segment.Tram == null)
                         {
-                            OldSegment = new Segment(values[0]);
+
+                        }
+                        else if(segment.Tram.TramID == tbTramID.Text)
+                        {
+                            OldSegment = new Segment(segment.Name);
                             break;
                         }
                     }
                     DialogResult = DialogResult.OK;
                 }
+                else if(task == "Reserve")
+                {
+                    if (tbTramID.Text != "")
+                    {
+                        if (dtpBeginDate.Value > DateTime.Today.Date && dtpBeginDate.Value <= dtpEndDate.Value)
+                        {
+                            Tram = new Tram(tbTramID.Text);
+                            Begindate = dtpBeginDate.Value;
+                            Enddate = dtpEndDate.Value;
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Je kunt geen reserveringen maken voor in het verleden");
+                        }
+                    }
+                }
+               
             }
             else if (pStatusOverview.Visible == true)
             {
-                
+                statusindex = cbTramStatus.SelectedIndex + 1;
+                switch(cbTramStatus.SelectedIndex + 1)
+                {
+                    case 1:
+                        status = Status.ReadyForUse;
+                        break;
+
+                    case 2:
+                        status = Status.NeedsCleaning;
+                        break;
+
+                    case 3:
+                        status = Status.NeedsReperation;
+                        break;
+
+                    case 4:
+                        status = Status.InRemise;
+                        break;
+
+                    case 5:
+                        status = Status.Defect;
+                        break;
+
+                    case 6:
+                        status = Status.GeenStatusBekent;
+                        break;   
+                }
+
+                if(cbTramStatus.Text == "")
+                {
+                    status = Status.GeenStatusBekent;
+                }
+
+                Tram = new Tram(tbTramStatusID.Text);
+                DialogResult = DialogResult.OK;
             }
         }
 

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace ICT4Rails.Models.Enums
 {
-    public enum Status
+    public enum Tramtype
     {
-        ReadyForUse,
-        NeedsCleaning,
-        NeedsReperation,
-        InRemise,
-        Defect,
-        GeenStatusBekent
+        Combinos,
+        DubbelekopCombinos,
+        elevenG,
+        twelfG,
+        Opleidingstram
     }
 }

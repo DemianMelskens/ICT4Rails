@@ -11,19 +11,26 @@ namespace ICT4Rails.Models
     {
         private List<Reservation> Reservations = new List<Reservation>();
         private List<Maintenance> Maintenances = new List<Maintenance>();
-        public int TramID { get; set; }
+
+        public string TramID { get; set; }
+        public Tramtype TramType { get; set; }
         public Status Status { get; set; }
         public int Length { get; set; }
+        public DateTime lastClean { get; set; }
+        public DateTime lastReperation { get; set; }
        
 
-        public Tram(int tramid, Status status, int lenght)
+        public Tram(string tramid, Tramtype tramtype, Status status, int lenght, DateTime lastclean, DateTime lastreperation)
         {
             this.TramID = tramid;
+            this.TramType = tramtype;
             this.Status = status;
             this.Length = lenght;
+            this.lastClean = lastClean;
+            this.lastReperation = lastReperation;
         }
 
-        public Tram(int tramid)
+        public Tram(string tramid)
         {
             this.TramID = tramid;
         }

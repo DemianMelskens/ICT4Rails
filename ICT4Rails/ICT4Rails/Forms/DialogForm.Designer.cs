@@ -33,6 +33,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.pAddMoveDelete = new System.Windows.Forms.Panel();
+            this.tbTramID = new System.Windows.Forms.ComboBox();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpBeginDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbTramStatusID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbTramID = new System.Windows.Forms.ComboBox();
             this.pl_Form_Total_Context.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pAddMoveDelete.SuspendLayout();
@@ -117,6 +117,14 @@
             this.pAddMoveDelete.Name = "pAddMoveDelete";
             this.pAddMoveDelete.Size = new System.Drawing.Size(435, 205);
             this.pAddMoveDelete.TabIndex = 4;
+            // 
+            // tbTramID
+            // 
+            this.tbTramID.FormattingEnabled = true;
+            this.tbTramID.Location = new System.Drawing.Point(101, 37);
+            this.tbTramID.Name = "tbTramID";
+            this.tbTramID.Size = new System.Drawing.Size(235, 21);
+            this.tbTramID.TabIndex = 16;
             // 
             // dtpEndDate
             // 
@@ -221,6 +229,13 @@
             // cbTramStatus
             // 
             this.cbTramStatus.FormattingEnabled = true;
+            this.cbTramStatus.Items.AddRange(new object[] {
+            "ReadyForUse",
+            "NeedsCleaning",
+            "NeedsReperation",
+            "InRemise",
+            "Defect",
+            "GeenStatusBekent"});
             this.cbTramStatus.Location = new System.Drawing.Point(101, 131);
             this.cbTramStatus.Name = "cbTramStatus";
             this.cbTramStatus.Size = new System.Drawing.Size(235, 21);
@@ -253,14 +268,6 @@
             this.label4.Size = new System.Drawing.Size(78, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Tram ID:";
-            // 
-            // tbTramID
-            // 
-            this.tbTramID.FormattingEnabled = true;
-            this.tbTramID.Location = new System.Drawing.Point(101, 37);
-            this.tbTramID.Name = "tbTramID";
-            this.tbTramID.Size = new System.Drawing.Size(235, 21);
-            this.tbTramID.TabIndex = 16;
             // 
             // DialogForm
             // 
