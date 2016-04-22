@@ -158,8 +158,7 @@ namespace ICT4Rails
                 if (user.UserName == Name || user.FirstName == Name)
                 {
                     sendMail("ict4rails@gmail.com", Name + " Heeft contact gezocht op " + DateTime.Now.ToString(), richTextBox1.Text);
-                    pRecoverPassword.Visible = false;
-                    pInlog.Visible = true;
+                    pContactAdmin.Visible = false;
                     break;
                 }
                 else
