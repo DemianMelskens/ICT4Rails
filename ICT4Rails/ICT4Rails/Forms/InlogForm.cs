@@ -126,27 +126,19 @@ namespace ICT4Rails
                 if(user.Email == MailAddress)
                 {
                     sendMail(MailAddress, "Recover Password", user.Password);
+                    pRecoverPassword.Visible = false;
+                    pInlog.Visible = true;
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong mail address");
+                    break;
                 }
             }
-            pRecoverPassword.Visible = false;
-            pInlog.Visible = true;
-        }
-
-        public void sendMail(string ontvanger, string subject, string text)
-        {
-            MailMessage mail = new MailMessage("ict4rails@gmail.com", ontvanger, subject, "Dit is uw wachtwoord: " + text);
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
-            client.Port = 465;
-            client.Credentials = new System.Net.NetworkCredential("ict4rails@gmail.com", "WELKOM12345");
-            client.EnableSsl = true;
-            try
-            {
-                client.Send(mail);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.InnerException.ToString());
-            }
+            // stay on recover password form if wrong
+            //pRecoverPassword.Visible = false;
+            //pInlog.Visible = true;
         }
         #endregion
 
@@ -160,7 +152,41 @@ namespace ICT4Rails
 
         private void btnSubmitContact_Click(object sender, EventArgs e)
         {
-            pContactAdmin.Visible = false;
+            string Name = tbNameContact.Text;
+            foreach (User user in cache.users)
+            {
+                if (user.UserName == Name || user.FirstName == Name)
+                {
+                    sendMail("ict4rails@gmail.com", Name + " Heeft contact gezocht op " + DateTime.Now.ToString(), richTextBox1.Text);
+                    pRecoverPassword.Visible = false;
+                    pInlog.Visible = true;
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong Name");
+                    break;
+                }
+            }
+            //stay on contact form if wrong
+            //pContactAdmin.Visible = false;
+        }
+
+        public void sendMail(string ontvanger, string subject, string text)
+        {
+            MailMessage mail = new MailMessage("ict4rails@gmail.com", ontvanger, subject, "Dit is uw wachtwoord: " + text);
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.Port = 465;
+            client.Credentials = new System.Net.NetworkCredential("ict4rails@gmail.com", "WELKOM12345");
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString());
+            }
         }
 
         private void btnCancelContact_Click(object sender, EventArgs e)
