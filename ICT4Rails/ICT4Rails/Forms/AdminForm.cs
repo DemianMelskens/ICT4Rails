@@ -846,19 +846,19 @@ namespace ICT4Rails
 
             if (profession == "Bestuurder")
             {
-                User driver = new Driver(tbUsername.Text,tbPassword.Text,age,tbFirstname.Text,tbSurname.Text,tbSurnamePrefix.Text,tbEmail.Text);
+                User driver = new Driver(userID, tbUsername.Text,tbPassword.Text,age,tbFirstname.Text,tbSurname.Text,tbSurnamePrefix.Text,tbEmail.Text);
                 cache.users.Add(driver);
                 userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
             }
             if (profession == "Technicus")
             {
-                User tech = new Technician(tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                User tech = new Technician(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
                 cache.users.Add(tech);
                 userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
             }
             if (profession == "Schoonmaker")
             {
-                User clean = new Cleaner(tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                User clean = new Cleaner(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
                 cache.users.Add(clean);
                 userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
             }
@@ -898,6 +898,15 @@ namespace ICT4Rails
                     }
                 }
             }
+
+            tbUsername.Text = "";
+            tbPassword.Text = "";
+            tbFirstname.Text = "";
+            tbSurname.Text = "";
+            tbSurnamePrefix.Text = "";
+            tbEmail.Text = "";
+            nudAge.Value = 0;
+
         }
 
         #endregion

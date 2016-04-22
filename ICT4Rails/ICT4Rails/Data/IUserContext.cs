@@ -11,5 +11,7 @@ namespace ICT4Rails.Data
     interface IUserContext
     {
         List<User> GetUsers();
+        void AddUser(int userid, string username, string password, int age, string profession, string firstname, string surname, string surnameprefix, string email);
+        void DeleteUser(string firstname, string surname, string email);
     }
 }

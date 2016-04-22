@@ -14,12 +14,14 @@ namespace ICT4Rails.Data
         private static UserQueries userqueries = new UserQueries();
         private static SegmentQueries segmentqueries = new SegmentQueries();
         private static ReservationQueries reservationqueries = new ReservationQueries();
+        private static MaintenanceQueries maintenancequeries = new MaintenanceQueries();
 
         public List<Tram> trams { get; set; }
         public List<User> users { get; set; }
         public List<Segment> segments { get; set; }
         public List<Reservation> reservations { get; set; }
         public List<Track> tracks { get; set; }
+        public List<Maintenance> maintenances { get; set; }
 
         public void LoadData()
         {
@@ -27,6 +29,7 @@ namespace ICT4Rails.Data
             users = userqueries.GetUsers();
             segments = segmentqueries.GetSegments(trams);
             reservations = reservationqueries.GetReservations(trams, segments);
+            maintenances = maintenancequeries.GetMaintenance(trams, users);
             tracks = FillTracks();
             updateSegments();
         }
