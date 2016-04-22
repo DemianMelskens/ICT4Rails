@@ -22,20 +22,33 @@ namespace ICT4Rails
         private SegmentQueries segmentqueries = new SegmentQueries();
         private UserQueries userqueries = new UserQueries();
         private ReservationQueries reservationqueries = new ReservationQueries();
+        private Random _random, _tram;
 
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
         private bool TramMaitenance = false;
         private bool addreservation = true;
+        private bool placedTram = false;
+        private bool simulation = false;
 
         private string profession;
         private string linenumber;
 
         private int index;
-        private int Timer = 0;
+        private int timer = 0;
+        private int aantalTrams;
+        private int SegmentCount;
+        private int TramCount;
+        private int progress = 0;
+        private int time = 0;
+
 
         private Tram movetram;
+        private Tram simTram;
         private DialogForm dfrom;
+        private SimulationForm sform;
+        private List<Tram> UntakenTrams = new List<Tram>();
+        private List<Segment> UntakenSegments = new List<Segment>();
 
         public AdminForm(CacheData cache)
         {
@@ -49,6 +62,39 @@ namespace ICT4Rails
 
         //logic Methodes
         #region Logic Methodes
+        
+        public void LoadOverview()
+        {
+            foreach (Segment segment in cache.segments)
+            {
+                if (segment.Tram != null)
+                {
+                    segment.Textbox.Text = segment.Tram.TramID;
+                }
+                else
+                {
+                    segment.Textbox.Text = "";
+                }
+            }
+
+            foreach (Reservation reservation in cache.reservations)
+            {
+                if (reservation.BeginDate.Date > DateTime.Today.Date)
+                {
+                    reservation.Segment.Textbox.BackColor = Color.Blue;
+                }
+                else if (reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
+                {
+                    reservation.Segment.Textbox.Text = reservation.Tram.TramID;
+                }
+                else if (reservation.EndDate.Date < DateTime.Today.Date)
+                {
+                    cache.reservations.Remove(reservation);
+                    reservationqueries.RemoveReservation(reservation.Segment.Name);
+                }
+            }
+        }
+
         public void SetSegmentsVariables()
         {
             foreach (Segment segment in cache.segments)
@@ -156,21 +202,141 @@ namespace ICT4Rails
 
         //Simulatie Methodes
         #region Simulatie Methodes
-        //public void PlaceTrams()
-        //{
-            
-        //}
+        public bool PlaceTrams(Tram tram, Track track)
+        {
+            Segment segment = null;
+            for(int e = 0; e <= track.Segments.Count(); e++)
+            {
+                if (CheckIfSegmentIsFree(track.Segments.ElementAt(e)))
+                {
+                    segment = track.Segments.ElementAt(e);
+                    break;
+                }
+            }
 
-        //public Segment CheckIfSpaceIsFree(Segment segment)
-        //{
-        //    foreach(Segment lsegment in cache.segments)
-        //    {
-        //        if(Convert.ToInt32(segment.Name.Substring(3,1)) > 1)
-        //        {
-                    
-        //        }
-        //    }
-        //}
+            if (segment != null)
+            {
+                if (ConvertToLineNumber(tram.TramType) == "undefined")
+                {
+                    if(track.LineNumber == "5" || track.LineNumber == "16/24")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        if (segment.Blocked != true)
+                        {
+                            if (IsNextSegmentEmptySimulation(segment))
+                            {
+                                segment.Textbox.Text = tram.TramID;
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else if(track.LineNumber == ConvertToLineNumber(tram.TramType))
+                {
+                    if (segment.Blocked != true)
+                    {
+                        if (IsNextSegmentEmptySimulation(segment))
+                        {
+                            segment.Textbox.Text = tram.TramID;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsNextSegmentEmptySimulation(Segment previousSegment)
+        {
+            bool noNextSegment = true;
+            foreach (Segment segment in cache.segments)
+            {
+                if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
+                {
+                    noNextSegment = false;
+                    if (segment.Textbox.Text != "")
+                    {
+                        return false;
+                    }
+                    else if (segment.Blocked == true)
+                    {
+                        return false;
+                    }
+                    else if (!IsNextSegmentEmpty(segment))
+                    {
+                        return false;
+                    }
+                    else if (IsNextSegmentEmpty(segment))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if (noNextSegment)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void ClearOverview()
+        {
+            foreach(Segment segment in cache.segments)
+            {
+                segment.Textbox.Text = "";
+            }
+        }
+
+        public bool CheckIfSegmentIsFree(Segment segment)
+        {
+            if(segment.Textbox.Text == "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsTramOnTheOverview(Tram tram)
+        {
+            foreach(Segment segment in cache.segments)
+            {
+                if(tram.TramID == segment.Tram.TramID)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         #endregion
 
@@ -381,40 +547,17 @@ namespace ICT4Rails
                 showTramManagementbuttons();
                 btnTramManagement.Location = new Point(3, 35);
                 btnTramMaitenance.Location = new Point(3, 323);
-
-                foreach (Segment segment in cache.segments)
-                {
-                    if (segment.Tram != null)
-                    {
-                        segment.Textbox.Text = segment.Tram.TramID;
-                    }
-                    else
-                    {
-                        segment.Textbox.Text = "";
-                    }
-                }
-
-                foreach (Reservation reservation in cache.reservations)
-                {
-                    if (reservation.BeginDate.Date > DateTime.Today.Date)
-                    {
-                        reservation.Segment.Textbox.BackColor = Color.Blue;
-                    }
-                    else if (reservation.BeginDate.Date >= DateTime.Today.Date && reservation.EndDate.Date <= DateTime.Today.Date)
-                    {
-                        reservation.Segment.Textbox.Text = reservation.Tram.TramID;
-                    }
-                    else if (reservation.EndDate.Date < DateTime.Today.Date)
-                    {
-                        cache.reservations.Remove(reservation);
-                        reservationqueries.RemoveReservation(reservation.Segment.Name);
-                    }
-                }
+                LoadOverview();
             }
         }
 
         private void btnAddTramOverview_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 1;
             btnAddTramOverview.BackColor = Color.DimGray;
             btnMoveTramOverview.BackColor = Color.White;
@@ -428,6 +571,11 @@ namespace ICT4Rails
 
         private void btnMoveTramOverview_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 2;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.DimGray;
@@ -441,6 +589,11 @@ namespace ICT4Rails
 
         private void btnDeleteTramOverview_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 3;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
@@ -454,6 +607,11 @@ namespace ICT4Rails
 
         private void btnTramStatusOverview_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 4;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
@@ -467,6 +625,11 @@ namespace ICT4Rails
 
         private void btnReserveSegment_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 5;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
@@ -480,6 +643,11 @@ namespace ICT4Rails
 
         private void btnBlockSegment_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 6;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
@@ -493,6 +661,11 @@ namespace ICT4Rails
 
         private void btnDeblockSegment_Click(object sender, EventArgs e)
         {
+            if (simulation)
+            {
+                simulation = false;
+                LoadOverview();
+            }
             index = 7;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
@@ -506,7 +679,7 @@ namespace ICT4Rails
 
         private void btnRunSimulation_Click(object sender, EventArgs e)
         {
-            index = 8;
+            simulation = true;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
             btnDeleteTramOverview.BackColor = Color.White;
@@ -514,6 +687,42 @@ namespace ICT4Rails
             btnReserveSegment.BackColor = Color.White;
             btnBlockSegment.BackColor = Color.White;
             btnDeblockSegment.BackColor = Color.White;
+
+            dfrom = new DialogForm(null, cache);
+            dfrom.SimulatieOverview();
+            dfrom.ShowDialog();
+
+            if (dfrom.DialogResult == DialogResult.OK)
+            {
+                sform = new SimulationForm(dfrom.AantalTrams);
+                sform.Show();
+                ClearOverview();
+                _random = new Random();
+                _tram = new Random();
+                aantalTrams = dfrom.AantalTrams;
+                SimulatieTimer.Start();
+
+                SegmentCount = 0;
+                foreach (Segment segment in cache.segments)
+                {
+                    if (segment.Blocked != true)
+                    {
+                        UntakenSegments.Add(segment);
+                        SegmentCount++;
+                    }
+                }
+
+                TramCount = 0;
+                foreach (Tram tram in cache.trams)
+                {
+                    UntakenTrams.Add(tram);
+                    TramCount++;
+                }
+            }
+            else
+            {
+
+            }
         }
         #endregion
 
@@ -1239,12 +1448,7 @@ namespace ICT4Rails
                             break;
                         }
                     }
-                    break;
-
-                case 8:
-                    //simulation
-
-                    break;
+                    break;                 
             }
 
         }
@@ -1298,7 +1502,44 @@ namespace ICT4Rails
 
         private void SimulatieTimer_Tick(object sender, EventArgs e)
         {
-            Timer++;
+            if(timer < aantalTrams)
+            {
+                if(time + 1 != timer)
+                {
+                    simTram = UntakenTrams.ElementAt(_tram.Next(TramCount));
+                }
+
+                var simSegment = UntakenSegments.ElementAt(_random.Next(SegmentCount));
+                if (PlaceTrams(simTram, simSegment.Track))
+                {
+                    placedTram = true;
+                    UntakenSegments.Remove(simSegment);
+                    SegmentCount--;
+                    UntakenTrams.Remove(simTram);
+                    TramCount--;
+                    progress++;
+                    sform.SetProgress(dfrom.AantalTrams, progress);
+                }
+                else
+                {
+                    placedTram = false;
+                }
+
+                if (placedTram)
+                {
+                    timer++;
+                    time++;
+                }
+                else
+                {
+                    timer = time;
+                }
+            }
+            else
+            {
+                SimulatieTimer.Stop();
+                sform.Close();          
+            }
         }
     }
 }

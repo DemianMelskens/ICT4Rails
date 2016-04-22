@@ -28,6 +28,7 @@ namespace ICT4Rails.Data
             segments = segmentqueries.GetSegments(trams);
             reservations = reservationqueries.GetReservations(trams, segments);
             tracks = FillTracks();
+            updateSegments();
         }
 
         public List<Track> FillTracks()
@@ -51,6 +52,20 @@ namespace ICT4Rails.Data
                 }
             }
             return tracksegments;
+        }
+
+        public void updateSegments()
+        {
+            foreach(Segment segment in segments)
+            {
+                foreach(Track track in tracks)
+                {
+                    if (segment.Track.LineID == track.LineID)
+                    {
+                        segment.Track = track;
+                    }
+                }
+            }
         }
     }
 }

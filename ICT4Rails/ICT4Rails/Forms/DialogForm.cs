@@ -21,11 +21,13 @@ namespace ICT4Rails.Forms
         public Tram Tram { get; private set; }
         public Status status { get; private set; }
         public int statusindex { get; set; }
+        public int AantalTrams { get; set; }
         public DateTime Begindate {get;set;}
         public DateTime Enddate { get; set; }
 
         private string task;
         private string segmentid;
+        private int aantal;
 
         public DialogForm(string segmentid, CacheData cache)
         {
@@ -46,7 +48,17 @@ namespace ICT4Rails.Forms
                 }
             }
 
-            foreach(Tram tram in cache.trams)
+            aantal = 0;
+            foreach (Segment segment in cache.segments)
+            {
+                if (segment.Blocked != true)
+                {
+                    aantal++;
+                    cbAantalTrams.Items.Add(aantal);
+                }
+            }
+
+            foreach (Tram tram in cache.trams)
             {
                 tbTramID.Items.Add(tram.TramID);
             }
@@ -69,6 +81,7 @@ namespace ICT4Rails.Forms
         {
             pAddMoveDelete.Visible = true;
             pStatusOverview.Visible = false;
+            pSimulatie.Visible = false;
             task = "Add/Delete";
             dtpBeginDate.Visible = false;
             dtpEndDate.Visible = false;
@@ -80,6 +93,7 @@ namespace ICT4Rails.Forms
         {
             pAddMoveDelete.Visible = true;
             pStatusOverview.Visible = false;
+            pSimulatie.Visible = false;
             task = "Move";
             dtpBeginDate.Visible = false;
             dtpEndDate.Visible = false;
@@ -91,6 +105,7 @@ namespace ICT4Rails.Forms
         {
             pAddMoveDelete.Visible = true;
             pStatusOverview.Visible = false;
+            pSimulatie.Visible = false;
             task = "Add/Delete";
             dtpBeginDate.Visible = false;
             dtpEndDate.Visible = false;
@@ -102,6 +117,7 @@ namespace ICT4Rails.Forms
         {
             pAddMoveDelete.Visible = false;
             pStatusOverview.Visible = true;
+            pSimulatie.Visible = false;
         }
 
         public void ReserveSegmentOverview()
@@ -109,17 +125,29 @@ namespace ICT4Rails.Forms
             task = "Reserve"; 
             pAddMoveDelete.Visible = true;
             pStatusOverview.Visible = false;
+            pSimulatie.Visible = false;
             dtpBeginDate.Visible = true;
             dtpEndDate.Visible = true;
             lblBeginDate.Visible = true;
             lblEndDate.Visible = true;
         }
 
+        public void SimulatieOverview()
+        {
+            pAddMoveDelete.Visible = false;
+            pStatusOverview.Visible = false;
+            pSimulatie.Visible = true;
+            dtpBeginDate.Visible = false;
+            dtpEndDate.Visible = false;
+            lblBeginDate.Visible = false;
+            lblEndDate.Visible = false;
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(pAddMoveDelete.Visible == true)
+            if (pAddMoveDelete.Visible == true)
             {
-                if(task == "Add/Delete")
+                if (task == "Add/Delete")
                 {
                     if (tbTramID.Text != "")
                     {
@@ -140,7 +168,7 @@ namespace ICT4Rails.Forms
                     {
                         foreach (Tram tram in cache.trams)
                         {
-                            if(tbTramID.Text == tram.TramID)
+                            if (tbTramID.Text == tram.TramID)
                             {
                                 Tram = tram;
                                 break;
@@ -149,7 +177,7 @@ namespace ICT4Rails.Forms
                         DialogResult = DialogResult.OK;
                     }
                 }
-                else if(task == "Reserve")
+                else if (task == "Reserve")
                 {
                     if (tbTramID.Text != "")
                     {
@@ -166,12 +194,12 @@ namespace ICT4Rails.Forms
                         }
                     }
                 }
-               
+
             }
             else if (pStatusOverview.Visible == true)
             {
                 statusindex = cbTramStatus.SelectedIndex + 1;
-                switch(cbTramStatus.SelectedIndex + 1)
+                switch (cbTramStatus.SelectedIndex + 1)
                 {
                     case 1:
                         status = Status.ReadyForUse;
@@ -195,15 +223,20 @@ namespace ICT4Rails.Forms
 
                     case 6:
                         status = Status.GeenStatusBekent;
-                        break;   
+                        break;
                 }
 
-                if(cbTramStatus.Text == "")
+                if (cbTramStatus.Text == "")
                 {
                     status = Status.GeenStatusBekent;
                 }
 
                 Tram = new Tram(tbTramStatusID.Text);
+                DialogResult = DialogResult.OK;
+            }
+            else if (pSimulatie.Visible == true)
+            {
+                AantalTrams = Convert.ToInt32(cbAantalTrams.Text);
                 DialogResult = DialogResult.OK;
             }
         }

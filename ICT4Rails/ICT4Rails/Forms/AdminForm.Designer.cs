@@ -4964,7 +4964,7 @@
             // 
             // SimulatieTimer
             // 
-            this.SimulatieTimer.Interval = 500;
+            this.SimulatieTimer.Interval = 200;
             this.SimulatieTimer.Tick += new System.EventHandler(this.SimulatieTimer_Tick);
             // 
             // AdminForm
