@@ -89,7 +89,7 @@ namespace ICT4Rails
                 }
                 else if (tbUsername.Text == "" || tbPassword.Text == "")
                 {
-                    MessageBox.Show("vul een username of wachtwoord in");
+                    MessageBox.Show("fill in an username & password");
                     geenmatch = false;
                     break;
                 }
@@ -97,7 +97,7 @@ namespace ICT4Rails
 
             if (geenmatch)
             {
-                MessageBox.Show("username of wachtwoord is niet correct");
+                MessageBox.Show("username or password is not correct");
             }
         }
         #endregion
@@ -125,7 +125,7 @@ namespace ICT4Rails
             {
                 if(user.Email == MailAddress)
                 {
-                    sendMail(MailAddress, "Recover Password", user.Password);
+                    sendMail(MailAddress, "Recover Password", "Dit is uw wachtwoord: "+ user.Password);
                     pRecoverPassword.Visible = false;
                     pInlog.Visible = true;
                     break;
@@ -173,7 +173,7 @@ namespace ICT4Rails
 
         public void sendMail(string ontvanger, string subject, string text)
         {
-            MailMessage mail = new MailMessage("ict4rails@gmail.com", ontvanger, subject, "Dit is uw wachtwoord: " + text);
+            MailMessage mail = new MailMessage("ict4rails@gmail.com", ontvanger, subject, text);
             SmtpClient client = new SmtpClient("smtp.gmail.com");
             client.Port = 465;
             client.Credentials = new System.Net.NetworkCredential("ict4rails@gmail.com", "WELKOM12345");
