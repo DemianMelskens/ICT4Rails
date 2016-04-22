@@ -778,7 +778,13 @@ namespace ICT4Rails
         private void btnMaintenanceSchedule_Click(object sender, EventArgs e)
         {
             dgvMaitenanceSchedule.Rows.Clear();
-            dgvMaitenanceSchedule.Rows.Add("2009", "Cleaning", "Ready for use", "12:30", " 14:30");
+            foreach (Maintenance maintenance in cache.maintenances)
+            {
+                if (maintenance.Date >= DateTime.Today)
+                {
+                    dgvMaitenanceSchedule.Rows.Add(maintenance.Tram.TramID, maintenance.Type, maintenance.Tram.Status, maintenance.Date);
+                }
+            }
             dgvMaitenanceSchedule.ClearSelection();
             lbTramList.Text = "List of Maitenance";
             pTramInfo.Visible = false;
@@ -992,7 +998,24 @@ namespace ICT4Rails
             lbTramList.Text = "List of Maitenance";
             lblMaitenanceDescription.Visible = true;
             rtbMaitenanceDescription.Visible = true;
+            foreach (Maintenance maintenance in cache.maintenances)
+            {
+                if (maintenance.Date < DateTime.Today)
+                {
+                    cbTramSelect.Items.Add(maintenance.Tram.TramID);
+                }
+            }
+
             dgvMaitenanceSchedule.Rows.Clear();
+            foreach (Maintenance maintenance in cache.maintenances)
+            {
+                if (maintenance.Date < DateTime.Today)
+                {
+                    dgvMaitenanceSchedule.Rows.Add(maintenance.Tram.TramID, maintenance.Type, maintenance.Tram.Status, maintenance.Date);
+                }
+            }
+            dgvMaitenanceSchedule.ClearSelection();
+
         }
         #endregion
         //Other Tools
@@ -1507,6 +1530,34 @@ namespace ICT4Rails
                     }
                 }
             }
+        }
+
+        private void cbTramSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvMaitenanceSchedule.Rows.Clear();
+            foreach (Maintenance maintenance in cache.maintenances)
+            {
+                if (maintenance.Date < DateTime.Today)
+                {
+                    if (maintenance.Tram.TramID == cbTramSelect.Text)
+                        dgvMaitenanceSchedule.Rows.Add(maintenance.Tram.TramID, maintenance.Type, maintenance.Tram.Status, maintenance.Date);
+                }
+            }
+            dgvMaitenanceSchedule.ClearSelection();
+        }
+
+        private void dtpTramSelect_ValueChanged(object sender, EventArgs e)
+        {
+            dgvMaitenanceSchedule.Rows.Clear();
+            foreach (Maintenance maintenance in cache.maintenances)
+            {
+                if (maintenance.Date < DateTime.Today)
+                {
+                    if (maintenance.Date == dtpTramSelect.Value)
+                        dgvMaitenanceSchedule.Rows.Add(maintenance.Tram.TramID, maintenance.Type, maintenance.Tram.Status, maintenance.Date);
+                }
+            }
+            dgvMaitenanceSchedule.ClearSelection();
         }
 
         private void SimulatieTimer_Tick(object sender, EventArgs e)
