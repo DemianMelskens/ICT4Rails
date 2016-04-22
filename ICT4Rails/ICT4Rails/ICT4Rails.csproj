@@ -109,6 +109,12 @@
     <Compile Include="Forms\InlogForm.Designer.cs">
       <DependentUpon>InlogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SimulationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SimulationForm.Designer.cs">
+      <DependentUpon>SimulationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TechnicianForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InlogForm.resx">
       <DependentUpon>InlogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SimulationForm.resx">
+      <DependentUpon>SimulationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TechnicianForm.resx">
       <DependentUpon>TechnicianForm.cs</DependentUpon>

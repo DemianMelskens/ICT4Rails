@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pl_Form_Total_Context = new System.Windows.Forms.Panel();
             this.pDefault = new System.Windows.Forms.Panel();
             this.pTramMaitenance = new System.Windows.Forms.Panel();
@@ -359,6 +360,7 @@
             this.btnTramMaitenance = new System.Windows.Forms.Button();
             this.btnTramManagement = new System.Windows.Forms.Button();
             this.btnManageAccounts = new System.Windows.Forms.Button();
+            this.SimulatieTimer = new System.Windows.Forms.Timer(this.components);
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramMaitenance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaitenanceSchedule)).BeginInit();
@@ -4960,6 +4962,11 @@
             this.btnManageAccounts.UseVisualStyleBackColor = false;
             this.btnManageAccounts.Click += new System.EventHandler(this.btnManageAccounts_Click);
             // 
+            // SimulatieTimer
+            // 
+            this.SimulatieTimer.Interval = 200;
+            this.SimulatieTimer.Tick += new System.EventHandler(this.SimulatieTimer_Tick);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5330,5 +5337,6 @@
         private System.Windows.Forms.TextBox textBox26;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox tb5106;
+        private System.Windows.Forms.Timer SimulatieTimer;
     }
 }

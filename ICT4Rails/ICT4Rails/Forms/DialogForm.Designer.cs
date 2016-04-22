@@ -48,15 +48,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbTramStatusID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pSimulatie = new System.Windows.Forms.Panel();
+            this.cbAantalTrams = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pl_Form_Total_Context.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pAddMoveDelete.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pStatusOverview.SuspendLayout();
+            this.pSimulatie.SuspendLayout();
             this.SuspendLayout();
             // 
             // pl_Form_Total_Context
             // 
+            this.pl_Form_Total_Context.Controls.Add(this.pSimulatie);
             this.pl_Form_Total_Context.Controls.Add(this.panel2);
             this.pl_Form_Total_Context.Controls.Add(this.pAddMoveDelete);
             this.pl_Form_Total_Context.Controls.Add(this.panel3);
@@ -271,6 +276,35 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Tram ID:";
             // 
+            // pSimulatie
+            // 
+            this.pSimulatie.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pSimulatie.Controls.Add(this.cbAantalTrams);
+            this.pSimulatie.Controls.Add(this.label8);
+            this.pSimulatie.Location = new System.Drawing.Point(3, 90);
+            this.pSimulatie.Name = "pSimulatie";
+            this.pSimulatie.Size = new System.Drawing.Size(435, 205);
+            this.pSimulatie.TabIndex = 17;
+            // 
+            // cbAantalTrams
+            // 
+            this.cbAantalTrams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAantalTrams.FormattingEnabled = true;
+            this.cbAantalTrams.Location = new System.Drawing.Point(100, 100);
+            this.cbAantalTrams.Name = "cbAantalTrams";
+            this.cbAantalTrams.Size = new System.Drawing.Size(235, 21);
+            this.cbAantalTrams.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(97, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 20);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Aantal Trams:";
+            // 
             // DialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +324,8 @@
             this.panel3.PerformLayout();
             this.pStatusOverview.ResumeLayout(false);
             this.pStatusOverview.PerformLayout();
+            this.pSimulatie.ResumeLayout(false);
+            this.pSimulatie.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -316,5 +352,8 @@
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Label lblBeginDate;
         private System.Windows.Forms.ComboBox tbTramID;
+        private System.Windows.Forms.Panel pSimulatie;
+        private System.Windows.Forms.ComboBox cbAantalTrams;
+        private System.Windows.Forms.Label label8;
     }
 }

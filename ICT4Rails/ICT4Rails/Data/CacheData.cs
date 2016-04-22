@@ -19,6 +19,7 @@ namespace ICT4Rails.Data
         public List<User> users { get; set; }
         public List<Segment> segments { get; set; }
         public List<Reservation> reservations { get; set; }
+        public List<Track> tracks { get; set; }
 
         public void LoadData()
         {
@@ -26,6 +27,45 @@ namespace ICT4Rails.Data
             users = userqueries.GetUsers();
             segments = segmentqueries.GetSegments(trams);
             reservations = reservationqueries.GetReservations(trams, segments);
+            tracks = FillTracks();
+            updateSegments();
+        }
+
+        public List<Track> FillTracks()
+        {
+            List<Track> tracks = segmentqueries.GetTracks();
+            foreach(Track track in tracks)
+            {
+                track.Segments = FillSegmentsIntoTrack(track);
+            }
+            return tracks;
+        }
+
+        public List<Segment> FillSegmentsIntoTrack(Track track)
+        {
+            List<Segment> tracksegments = new List<Segment>();
+            foreach(Segment segment in segments)
+            {
+                if (segment.Track.LineID == track.LineID)
+                {
+                    tracksegments.Add(segment);
+                }
+            }
+            return tracksegments;
+        }
+
+        public void updateSegments()
+        {
+            foreach(Segment segment in segments)
+            {
+                foreach(Track track in tracks)
+                {
+                    if (segment.Track.LineID == track.LineID)
+                    {
+                        segment.Track = track;
+                    }
+                }
+            }
         }
     }
 }
