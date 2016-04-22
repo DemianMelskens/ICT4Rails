@@ -35,11 +35,6 @@
             this.btnAddMaitenance = new System.Windows.Forms.Button();
             this.btnMaitenanceHistory = new System.Windows.Forms.Button();
             this.dgvMaitenanceSchedule = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pTramInfo = new System.Windows.Forms.Panel();
             this.lblMaitenanceDescription = new System.Windows.Forms.Label();
             this.rtbMaitenanceDescription = new System.Windows.Forms.RichTextBox();
@@ -330,7 +325,7 @@
             this.pDateSelect = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbTramSelect = new System.Windows.Forms.ComboBox();
             this.dtpTramSelect = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
@@ -361,6 +356,10 @@
             this.btnTramManagement = new System.Windows.Forms.Button();
             this.btnManageAccounts = new System.Windows.Forms.Button();
             this.SimulatieTimer = new System.Windows.Forms.Timer(this.components);
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramMaitenance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaitenanceSchedule)).BeginInit();
@@ -453,8 +452,7 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10});
+            this.dataGridViewTextBoxColumn9});
             this.dgvMaitenanceSchedule.Location = new System.Drawing.Point(15, 52);
             this.dgvMaitenanceSchedule.Name = "dgvMaitenanceSchedule";
             this.dgvMaitenanceSchedule.Size = new System.Drawing.Size(518, 541);
@@ -462,37 +460,6 @@
             this.dgvMaitenanceSchedule.TabStop = false;
             this.dgvMaitenanceSchedule.Visible = false;
             this.dgvMaitenanceSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaitenanceSchedule_CellClick);
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.FillWeight = 2F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Start Time";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "End Time";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
             // pTramInfo
             // 
@@ -4572,7 +4539,7 @@
             this.pDateSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pDateSelect.Controls.Add(this.label15);
             this.pDateSelect.Controls.Add(this.label13);
-            this.pDateSelect.Controls.Add(this.comboBox1);
+            this.pDateSelect.Controls.Add(this.cbTramSelect);
             this.pDateSelect.Controls.Add(this.dtpTramSelect);
             this.pDateSelect.Controls.Add(this.panel4);
             this.pDateSelect.Controls.Add(this.label17);
@@ -4602,13 +4569,14 @@
             this.label13.TabIndex = 28;
             this.label13.Text = "Tram Number:";
             // 
-            // comboBox1
+            // cbTramSelect
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 55);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 21);
-            this.comboBox1.TabIndex = 20;
+            this.cbTramSelect.FormattingEnabled = true;
+            this.cbTramSelect.Location = new System.Drawing.Point(3, 55);
+            this.cbTramSelect.Name = "cbTramSelect";
+            this.cbTramSelect.Size = new System.Drawing.Size(201, 21);
+            this.cbTramSelect.TabIndex = 20;
+            this.cbTramSelect.SelectedIndexChanged += new System.EventHandler(this.cbTramSelect_SelectedIndexChanged);
             // 
             // dtpTramSelect
             // 
@@ -4617,6 +4585,7 @@
             this.dtpTramSelect.Name = "dtpTramSelect";
             this.dtpTramSelect.Size = new System.Drawing.Size(201, 22);
             this.dtpTramSelect.TabIndex = 19;
+            this.dtpTramSelect.ValueChanged += new System.EventHandler(this.dtpTramSelect_ValueChanged);
             // 
             // panel4
             // 
@@ -4967,6 +4936,31 @@
             this.SimulatieTimer.Interval = 200;
             this.SimulatieTimer.Tick += new System.EventHandler(this.SimulatieTimer_Tick);
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5300,15 +5294,10 @@
         private System.Windows.Forms.Panel pDateSelect;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbTramSelect;
         private System.Windows.Forms.DateTimePicker dtpTramSelect;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.TextBox textBox21;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox11;
@@ -5338,5 +5327,9 @@
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox tb5106;
         private System.Windows.Forms.Timer SimulatieTimer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }
