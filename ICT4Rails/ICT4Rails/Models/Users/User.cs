@@ -8,6 +8,7 @@ namespace ICT4Rails.Models.Users
 {
     public abstract class User
     {
+        public abstract int UserID { get; set; }
         public abstract string UserName { get; set; }
         public abstract string Password { get; set; }
         public abstract int Age { get; set; }
@@ -16,8 +17,9 @@ namespace ICT4Rails.Models.Users
         public abstract string SurNamePrefix { get; set; }
         public abstract string Email { get; set; }
 
-        public User(string name, string password, int age, string firstname, string surname, string surnameprefix, string email)
+        public User(int userid, string name, string password, int age, string firstname, string surname, string surnameprefix, string email)
         {
+            this.UserID = userid;
             this.UserName = name;
             this.Password = password;
             this.Age = age;

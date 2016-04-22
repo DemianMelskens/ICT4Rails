@@ -8,6 +8,7 @@ namespace ICT4Rails.Models.Users
 {
     class Driver : User
     {
+        public override int UserID { get; set; }
         public override string UserName { get; set; }
         public override string Password { get; set; }
         public override int Age { get; set; }
@@ -16,8 +17,9 @@ namespace ICT4Rails.Models.Users
         public override string SurNamePrefix { get; set; }
         public override string Email { get; set; }
 
-        public Driver(string name, string password, int age, string firstname, string surname, string surnameprefix, string email) : base(name, password, age, firstname, surname, surnameprefix, email)
+        public Driver(int userid, string name, string password, int age, string firstname, string surname, string surnameprefix, string email) : base(userid, name, password, age, firstname, surname, surnameprefix, email)
         {
+            this.UserID = userid;
             this.UserName = name;
             this.Password = password;
             this.Age = age;

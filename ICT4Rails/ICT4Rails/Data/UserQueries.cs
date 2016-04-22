@@ -31,28 +31,29 @@ namespace ICT4Rails.Data
                                 var profession = Convert.ToString(reader["Profession"]);
                                 if (Convert.ToString(reader["Profession"]) == "Wagenparkbeheerder")
                                 {
-                                    user = new Admin(Convert.ToString(reader["Username"]),
+                                    int userid = Convert.ToInt32(reader["UserID"]);
+                                    user = new Admin(userid, Convert.ToString(reader["Username"]),
                                         Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]),
                                         Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]),
                                         Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
                                 }
                                 else if (Convert.ToString(reader["Profession"]) == "Schoonmaker")
                                 {
-                                    user = new Cleaner(Convert.ToString(reader["Username"]),
+                                    user = new Cleaner(Convert.ToInt32(reader["UserID"]), Convert.ToString(reader["Username"]),
                                         Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]),
                                         Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]),
                                         Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
                                 }
                                 else if (Convert.ToString(reader["Profession"]) == "Technicus")
                                 {
-                                    user = new Technician(Convert.ToString(reader["Username"]),
+                                    user = new Technician(Convert.ToInt32(reader["UserID"]), Convert.ToString(reader["Username"]),
                                         Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]),
                                         Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]),
                                         Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
                                 }
                                 else if (Convert.ToString(reader["Profession"]) == "Bestuurder")
                                 {
-                                    user = new Driver(Convert.ToString(reader["Username"]),
+                                    user = new Driver(Convert.ToInt32(reader["UserID"]), Convert.ToString(reader["Username"]),
                                         Convert.ToString(reader["Password"]), Convert.ToInt32(reader["Age"]),
                                         Convert.ToString(reader["Firstname"]), Convert.ToString(reader["Surname"]),
                                         Convert.ToString(reader["Surnameprefix"]), Convert.ToString(reader["Email"]));
