@@ -236,8 +236,15 @@ namespace ICT4Rails.Forms
             }
             else if (pSimulatie.Visible == true)
             {
-                AantalTrams = Convert.ToInt32(cbAantalTrams.Text);
-                DialogResult = DialogResult.OK;
+                if (cbAantalTrams.Text != "")
+                {
+                    AantalTrams = Convert.ToInt32(cbAantalTrams.Text);
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    DialogResult = DialogResult.Cancel;
+                }
             }
         }
 

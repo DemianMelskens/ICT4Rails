@@ -23,6 +23,7 @@ namespace ICT4Rails
         private UserQueries userqueries = new UserQueries();
         private ReservationQueries reservationqueries = new ReservationQueries();
         private Random _random, _tram;
+        private List<Segment> segments;
 
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
@@ -30,6 +31,7 @@ namespace ICT4Rails
         private bool addreservation = true;
         private bool placedTram = false;
         private bool simulation = false;
+        private bool repeat = false;
 
         private string profession;
         private string linenumber;
@@ -38,9 +40,10 @@ namespace ICT4Rails
         private int timer = 0;
         private int aantalTrams;
         private int SegmentCount;
+        private int trackCount;
         private int TramCount;
         private int progress = 0;
-        private int time = 0;
+        private int number = 1;
 
 
         private Tram movetram;
@@ -58,6 +61,7 @@ namespace ICT4Rails
             UpdateFont();
             this.cache = cache;
             SetSegmentsVariables();
+            segments = cache.segments;
         }
 
         //logic Methodes
@@ -204,14 +208,12 @@ namespace ICT4Rails
         #region Simulatie Methodes
         public bool PlaceTrams(Tram tram, Track track)
         {
+            track.Segments.Sort();
             Segment segment = null;
-            for(int e = 0; e <= track.Segments.Count(); e++)
+            for(int e = 0; e <= track.Segments.Count() - 1; e++)
             {
-                if (CheckIfSegmentIsFree(track.Segments.ElementAt(e)))
-                {
-                    segment = track.Segments.ElementAt(e);
-                    break;
-                }
+                segment = CheckIfSegmentIsFree(track.Segments.ElementAt(e), track);
+                break;
             }
 
             if (segment != null)
@@ -229,6 +231,10 @@ namespace ICT4Rails
                             if (IsNextSegmentEmptySimulation(segment))
                             {
                                 segment.Textbox.Text = tram.TramID;
+                                UntakenSegments.Remove(segment);
+                                SegmentCount--;
+                                UntakenTrams.Remove(simTram);
+                                TramCount--;
                                 return true;
                             }
                             else
@@ -249,7 +255,28 @@ namespace ICT4Rails
                         if (IsNextSegmentEmptySimulation(segment))
                         {
                             segment.Textbox.Text = tram.TramID;
+                            UntakenSegments.Remove(segment);
+                            SegmentCount--;
+                            UntakenTrams.Remove(simTram);
+                            TramCount--;
                             return true;
+                        }
+                        else if(!IsNextSegmentEmpty(segment))
+                        {
+                            var segment2 = WhatisEarliestFreeSegmentSimulation(segment);
+                            if(segment2 == null)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                segment2.Textbox.Text = tram.TramID;
+                                UntakenSegments.Remove(segment2);
+                                SegmentCount--;
+                                UntakenTrams.Remove(simTram);
+                                TramCount--;
+                                return true;
+                            }
                         }
                         else
                         {
@@ -275,7 +302,7 @@ namespace ICT4Rails
         public bool IsNextSegmentEmptySimulation(Segment previousSegment)
         {
             bool noNextSegment = true;
-            foreach (Segment segment in cache.segments)
+            foreach (Segment segment in segments)
             {
                 if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
                 {
@@ -306,24 +333,75 @@ namespace ICT4Rails
             return false;
         }
 
+        public Segment WhatisEarliestFreeSegmentSimulation(Segment previousSegment)
+        {
+            bool noNextSegment = true;
+            foreach (Segment segment in segments)
+            {
+                if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
+                {
+                    noNextSegment = false;
+                    if (segment.Textbox.Text != "")
+                    {
+                        WhatisEarliestFreeSegmentSimulation(segment);
+                    }
+                    else if (segment.Blocked == true)
+                    {
+                        foreach(Segment segment2 in segments)
+                        {
+                            if(Convert.ToInt32(segment.Name) + 1 == Convert.ToInt32(segment2.Name))
+                            {
+                                if (WhatisEarliestFreeSegmentSimulation(segment2) != null)
+                                {
+                                    return WhatisEarliestFreeSegmentSimulation(segment2);
+                                }
+                            }
+                        }
+                    }
+                    else if (!IsNextSegmentEmpty(segment))
+                    {
+                        return null;
+                    }
+                    else if (IsNextSegmentEmpty(segment))
+                    {
+                        return previousSegment;
+                    }
+                }
+            }
+
+            if (noNextSegment)
+            {
+                return previousSegment;
+            }
+            return null;
+        }
+
         public void ClearOverview()
         {
-            foreach(Segment segment in cache.segments)
+            foreach(Segment segment in segments)
             {
                 segment.Textbox.Text = "";
+                segment.Tram = null;
             }
         }
 
-        public bool CheckIfSegmentIsFree(Segment segment)
+        public Segment CheckIfSegmentIsFree(Segment segment, Track track)
         {
-            if(segment.Textbox.Text == "")
+            if(segment.Textbox.Text == "" && segment.Blocked != true)
             {
-                return true;
+                return segment;
             }
             else
             {
-                return false;
+                foreach(Segment nextsegment in track.Segments)
+                {
+                    if(Convert.ToInt32(nextsegment.Name) == Convert.ToInt32(segment.Name) + 1)
+                    {
+                        return CheckIfSegmentIsFree(nextsegment, track);
+                    }
+                } 
             }
+            return null;
         }
 
         public bool IsTramOnTheOverview(Tram tram)
@@ -701,15 +779,21 @@ namespace ICT4Rails
                 _tram = new Random();
                 aantalTrams = dfrom.AantalTrams;
                 SimulatieTimer.Start();
+                trackCount = 0;
 
                 SegmentCount = 0;
-                foreach (Segment segment in cache.segments)
+                foreach (Segment segment in segments)
                 {
                     if (segment.Blocked != true)
                     {
                         UntakenSegments.Add(segment);
                         SegmentCount++;
                     }
+                }
+
+                foreach(Track track in cache.tracks)
+                {
+                    trackCount++;
                 }
 
                 TramCount = 0;
@@ -1564,19 +1648,22 @@ namespace ICT4Rails
         {
             if(timer < aantalTrams)
             {
-                if(time + 1 != timer)
+                if(!repeat)
                 {
                     simTram = UntakenTrams.ElementAt(_tram.Next(TramCount));
+                    timer++;
                 }
 
-                var simSegment = UntakenSegments.ElementAt(_random.Next(SegmentCount));
-                if (PlaceTrams(simTram, simSegment.Track))
+                if(number >= trackCount)
+                {
+                    number = 0;
+                }
+
+                var simTrack = cache.tracks.ElementAt(number);
+                number++;
+                if (PlaceTrams(simTram, simTrack))
                 {
                     placedTram = true;
-                    UntakenSegments.Remove(simSegment);
-                    SegmentCount--;
-                    UntakenTrams.Remove(simTram);
-                    TramCount--;
                     progress++;
                     sform.SetProgress(dfrom.AantalTrams, progress);
                 }
@@ -1587,12 +1674,11 @@ namespace ICT4Rails
 
                 if (placedTram)
                 {
-                    timer++;
-                    time++;
+                    repeat = false;
                 }
                 else
                 {
-                    timer = time;
+                    repeat = true;
                 }
             }
             else
