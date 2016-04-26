@@ -23,7 +23,6 @@ namespace ICT4Rails
         private UserQueries userqueries = new UserQueries();
         private ReservationQueries reservationqueries = new ReservationQueries();
         private Random _random, _tram;
-        private List<Segment> segments;
 
         private bool ManageAccountsOpen = false;
         private bool TramManagement = false;
@@ -32,6 +31,7 @@ namespace ICT4Rails
         private bool placedTram = false;
         private bool simulation = false;
         private bool repeat = false;
+        private bool maintenancehistory = false;
 
         private string profession;
         private string linenumber;
@@ -60,8 +60,8 @@ namespace ICT4Rails
             AutoCenterContextSection();
             UpdateFont();
             this.cache = cache;
-            SetSegmentsVariables();
-            segments = cache.segments;
+            SetSegmentsVariables(this.cache.segments);
+            SetSegmentsVariables(this.cache.simulatiesegments);
         }
 
         //logic Methodes
@@ -99,9 +99,9 @@ namespace ICT4Rails
             }
         }
 
-        public void SetSegmentsVariables()
+        public void SetSegmentsVariables(List<Segment> segments)
         {
-            foreach (Segment segment in cache.segments)
+            foreach (Segment segment in segments)
             {
                 TextBox textbox = new TextBox();
 
@@ -159,6 +159,32 @@ namespace ICT4Rails
             return line;
         }
 
+        public Tramtype ConvertToTramtype(string tramtype)
+        {
+            if(tramtype == "Combinos")
+            {
+                return Tramtype.Combinos;
+            }
+            else if (tramtype == "DubbelekopCombinos")
+            {
+                return Tramtype.DubbelekopCombinos;
+            }
+            else if (tramtype == "11G")
+            {
+                return Tramtype.elevenG;
+            }
+            else if (tramtype == "12G")
+            {
+                return Tramtype.twelfG;
+            }
+            else if (tramtype == "Opleidingstram")
+            {
+                return Tramtype.Opleidingstram;
+            }
+
+            return Tramtype.Opleidingstram;
+        }
+
         public bool IsNextSegmentEmpty(Segment previousSegment)
         {
             bool noNextSegment = true;
@@ -169,9 +195,12 @@ namespace ICT4Rails
                     noNextSegment = false;
                     if(segment.Textbox.Text != "")
                     {
-                        if(segment.Tram.TramID == movetram.TramID)
+                        if(movetram != null)
                         {
-                            return true;
+                            if (segment.Tram.TramID == movetram.TramID)
+                            {
+                                return true;
+                            }
                         }
                         else
                         {
@@ -302,7 +331,7 @@ namespace ICT4Rails
         public bool IsNextSegmentEmptySimulation(Segment previousSegment)
         {
             bool noNextSegment = true;
-            foreach (Segment segment in segments)
+            foreach (Segment segment in cache.simulatiesegments)
             {
                 if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
                 {
@@ -336,7 +365,7 @@ namespace ICT4Rails
         public Segment WhatisEarliestFreeSegmentSimulation(Segment previousSegment)
         {
             bool noNextSegment = true;
-            foreach (Segment segment in segments)
+            foreach (Segment segment in cache.simulatiesegments)
             {
                 if (Convert.ToInt32(previousSegment.Name) + 1 == Convert.ToInt32(segment.Name))
                 {
@@ -347,7 +376,7 @@ namespace ICT4Rails
                     }
                     else if (segment.Blocked == true)
                     {
-                        foreach(Segment segment2 in segments)
+                        foreach(Segment segment2 in cache.simulatiesegments)
                         {
                             if(Convert.ToInt32(segment.Name) + 1 == Convert.ToInt32(segment2.Name))
                             {
@@ -378,7 +407,7 @@ namespace ICT4Rails
 
         public void ClearOverview()
         {
-            foreach(Segment segment in segments)
+            foreach(Segment segment in this.cache.simulatiesegments)
             {
                 segment.Textbox.Text = "";
                 segment.Tram = null;
@@ -758,6 +787,10 @@ namespace ICT4Rails
         private void btnRunSimulation_Click(object sender, EventArgs e)
         {
             simulation = true;
+            timer = 0;
+            progress = 0;
+            placedTram = false;
+            repeat = false;
             btnAddTramOverview.BackColor = Color.White;
             btnMoveTramOverview.BackColor = Color.White;
             btnDeleteTramOverview.BackColor = Color.White;
@@ -780,9 +813,11 @@ namespace ICT4Rails
                 aantalTrams = dfrom.AantalTrams;
                 SimulatieTimer.Start();
                 trackCount = 0;
+                UntakenSegments.Clear();
+                UntakenTrams.Clear();
 
                 SegmentCount = 0;
-                foreach (Segment segment in segments)
+                foreach (Segment segment in cache.simulatiesegments)
                 {
                     if (segment.Blocked != true)
                     {
@@ -814,6 +849,7 @@ namespace ICT4Rails
         #region TramMaintenanceMenuEvents
         private void btnTramMaitenance_Click(object sender, EventArgs e)
         {
+            maintenancehistory = false;
             pDefault.Visible = true;
             pManageAccount.Visible = false;
             pTramManagement.Visible = false;
@@ -901,18 +937,18 @@ namespace ICT4Rails
             nudAge.Value = 0;
         }
 
-        private void btnDeleteAccount_Click(object sender, EventArgs e, DataGridViewCellEventArgs eg)
-        {
-            
-        }
-
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lblAccountInfo.Text = "Edit Account";
             pAccountInfo.Visible = true;
             btnDelete.Visible = true;
             int rowIndex = e.RowIndex;
+            if(rowIndex < 0)
+            {
+                return;
+            }
             DataGridViewRow row = dgvUsers.Rows[rowIndex];
+
             foreach (User user in cache.users)
             {
                 if(user.FirstName == Convert.ToString(row.Cells[0].Value))
@@ -963,6 +999,7 @@ namespace ICT4Rails
                         dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                     }
                 }
+                dgvUsers.ClearSelection();
             }
 
             if (profession == "Technicus")
@@ -975,6 +1012,7 @@ namespace ICT4Rails
                         dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                     }
                 }
+                dgvUsers.ClearSelection();
             }
 
             if (profession == "Schoonmaker")
@@ -987,6 +1025,7 @@ namespace ICT4Rails
                         dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
                     }
                 }
+                dgvUsers.ClearSelection();
             }
 
             tbUsername.Text = "";
@@ -1011,6 +1050,91 @@ namespace ICT4Rails
             cbTramStatus.Visible = true;
             lblTramStatus.Visible = true;
             lbTramInfo.Text = "Add Tram";
+            tbTramID.Text = "";
+            tbTramType.Text = "";
+            cbTramStatus.Text = "";
+            tbTramLenght.Text = "";
+        }
+
+        private void btnSubmitTram_Click(object sender, EventArgs e)
+        {
+            Tram addtram = null;
+            foreach (Tram tram in cache.trams)
+            {
+                if(tram.TramID == tbTramID.Text)
+                {
+                    addtram = tram;
+                    break;
+                }
+                else
+                {
+                    addtram = null;
+                }
+            }
+
+            if (addtram == null)
+            {
+                tramQueries.AddTram(tbTramID.Text, tbTramType.Text, dtpLastClean.Value, dtpLastReparation.Value, Convert.ToInt32(tbTramLenght.Text));
+                Tram tram = new Tram(tbTramID.Text, ConvertToTramtype(tbTramType.Text), Status.GeenStatusBekent, Convert.ToInt32(tbTramLenght.Text), dtpLastClean.Value, dtpLastReparation.Value);
+                cache.trams.Add(tram);
+                dgvTrams.Rows.Clear();
+                foreach (Tram ltram in cache.trams)
+                {
+                    dgvTrams.Rows.Add(ltram.TramID, ltram.TramType.ToString(), ltram.Status.ToString(), ltram.Length.ToString());
+                }
+                dgvTrams.ClearSelection();
+            }
+            else
+            {
+                tramQueries.ChangeTram(tbTramID.Text, tbTramType.Text, dtpLastClean.Value, dtpLastReparation.Value, Convert.ToInt32(tbTramLenght.Text));
+                foreach(Tram tram in cache.trams)
+                {
+                    if(tbTramID.Text == tram.TramID)
+                    {
+                        tram.TramType = ConvertToTramtype(tbTramType.Text);
+                        tram.lastClean = dtpLastClean.Value;
+                        tram.lastReperation = dtpLastReparation.Value;
+                        tram.Length = Convert.ToInt32(tbTramLenght.Text);
+                        break;
+                    }
+                }
+                dgvTrams.Rows.Clear();
+                foreach (Tram ltram in cache.trams)
+                {
+                    dgvTrams.Rows.Add(ltram.TramID, ltram.TramType.ToString(), ltram.Status.ToString(), ltram.Length.ToString());
+                }
+                dgvTrams.ClearSelection();
+            }
+        }
+
+        private void btnDeleteTram_Click(object sender, EventArgs e)
+        {
+            Tram deltram = null;
+            foreach (Tram tram in cache.trams)
+            {
+                if (tram.TramID == tbTramID.Text)
+                {
+                    deltram = tram;
+                    break;
+                }
+                else
+                {
+                    deltram = null;
+                }
+            }
+
+            if(deltram != null)
+            {
+                tramQueries.DeleteTram(deltram.TramID);
+                cache.trams.Remove(deltram);
+            }
+
+            dgvTrams.Rows.Clear();
+            foreach (Tram ltram in cache.trams)
+            {
+                dgvTrams.Rows.Add(ltram.TramID, ltram.TramType.ToString(), ltram.Status.ToString(), ltram.Length.ToString());
+            }
+            dgvTrams.ClearSelection();
         }
 
         private void dgvTrams_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1025,21 +1149,14 @@ namespace ICT4Rails
             rtbMaitenanceDescription.Visible = false;
 
             int rowIndex = e.RowIndex;
+            if(rowIndex < 0)
+            {
+                return;
+            }
             DataGridViewRow row = dgvTrams.Rows[rowIndex];
             tbTramID.Text = Convert.ToString(row.Cells[0].Value);
             tbTramType.Text = Convert.ToString(row.Cells[1].Value);
-            if (Convert.ToString(row.Cells[2].Value) == "Defect")
-            {
-                cbTramStatus.DisplayMember = "Reperation required";
-            }
-            else if(Convert.ToString(row.Cells[2].Value) == "")
-            {
-                cbTramStatus.SelectedIndex = 1;
-            }
-            else if (Convert.ToString(row.Cells[2].Value) == "Dienst")
-            {
-                cbTramStatus.SelectedIndex = 2;
-            }
+            cbTramStatus.Text = Convert.ToString(row.Cells[2].Value);
             tbTramLenght.Text = Convert.ToString(row.Cells[3].Value);
 
         }
@@ -1059,17 +1176,23 @@ namespace ICT4Rails
 
         private void dgvMaitenanceSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            lbTramInfo.Text = "Edit Maitenance";
+            if (!maintenancehistory)
+            {
+                lbTramInfo.Text = "Edit Maitenance";
+            }
             cbTramStatus.Visible = false;
             lblTramStatus.Visible = false;
             pTramInfo.Visible = true;
             btnDeleteTram.Visible = true;
             lblMaitenanceDescription.Visible = true;
             rtbMaitenanceDescription.Visible = true;
+            dtpLastClean.Visible = false;
+            lblLastClean.Visible = false;
         }
 
         private void btnMaitenanceHistory_Click(object sender, EventArgs e)
         {
+            maintenancehistory = true;
             lbTramInfo.Text = "Maitenance Info";
             cbTramStatus.Visible = false;
             dtpTramSelect.Value = DateTime.Today;
@@ -1128,11 +1251,7 @@ namespace ICT4Rails
 
         #endregion
 
-        private void btnSubmitTram_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        #region overview Events
         private void schematic_Click(object sender, EventArgs e)
         {
             switch (index)
@@ -1687,5 +1806,6 @@ namespace ICT4Rails
                 sform.Close();          
             }
         }
+        #endregion
     }
 }
