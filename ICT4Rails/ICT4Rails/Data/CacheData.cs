@@ -19,6 +19,7 @@ namespace ICT4Rails.Data
         public List<Tram> trams { get; set; }
         public List<User> users { get; set; }
         public List<Segment> segments { get; set; }
+        public List<Segment> simulatiesegments { get; set; }
         public List<Reservation> reservations { get; set; }
         public List<Track> tracks { get; set; }
         public List<Maintenance> maintenances { get; set; }
@@ -28,6 +29,7 @@ namespace ICT4Rails.Data
             trams = tramqueries.GetTrams();
             users = userqueries.GetUsers();
             segments = segmentqueries.GetSegments(trams);
+            simulatiesegments = segmentqueries.GetSegments(trams);
             reservations = reservationqueries.GetReservations(trams, segments);
             maintenances = maintenancequeries.GetMaintenance(trams, users);
             tracks = FillTracks();

@@ -169,14 +169,64 @@ namespace ICT4Rails.Data
             }
         }
 
-        public void RFIDSegment()
+        public bool AddTram(string tramid, string tramtype, DateTime lastclean, DateTime lastreparation, int lenght)
         {
             using (var database = DbConnection.Connection)
             using (var command = database.CreateCommand())
             {
-                command.CommandText = "Select s.SegmentID" +
-                                      "From Segment s";
+                command.CommandText = "INSERT INTO Tram (TramID, Type, Lastclean, lastreparation, Lenght) " +
+                                      "VALUES (" + @tramid + ", '" + @tramtype + "', to_date('" + @lastclean.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss')" + ", to_date('" + @lastreparation.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss'), " + @lenght + ")";
 
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool ChangeTram(string tramid, string tramtype, DateTime lastclean, DateTime lastreparation, int lenght)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "UPDATE Tram " +
+                                      "SET TramID=" + @tramid + ", Type= '" + @tramtype + "', Lastclean=" + "to_date('" + @lastclean.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss')" + ", Lastreparation =" + "to_date('" + @lastreparation.ToString("yyyy-MM-dd HH:mm:ss") + "', 'yyyy-mm-dd hh24:mi:ss')" + ", Lenght =" + @lenght +
+                                      "WHERE TramID=" + @tramid;
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool DeleteTram(string tramid)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Tram " +
+                                      "WHERE TramID = " + @tramid;
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
     }

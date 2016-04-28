@@ -35,6 +35,10 @@
             this.btnAddMaitenance = new System.Windows.Forms.Button();
             this.btnMaitenanceHistory = new System.Windows.Forms.Button();
             this.dgvMaitenanceSchedule = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pTramInfo = new System.Windows.Forms.Panel();
             this.lblMaitenanceDescription = new System.Windows.Forms.Label();
             this.rtbMaitenanceDescription = new System.Windows.Forms.RichTextBox();
@@ -356,10 +360,10 @@
             this.btnTramManagement = new System.Windows.Forms.Button();
             this.btnManageAccounts = new System.Windows.Forms.Button();
             this.SimulatieTimer = new System.Windows.Forms.Timer(this.components);
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpLastClean = new System.Windows.Forms.DateTimePicker();
+            this.dtpLastReparation = new System.Windows.Forms.DateTimePicker();
+            this.lblLastClean = new System.Windows.Forms.Label();
+            this.lblLastReparation = new System.Windows.Forms.Label();
             this.pl_Form_Total_Context.SuspendLayout();
             this.pTramMaitenance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaitenanceSchedule)).BeginInit();
@@ -461,10 +465,39 @@
             this.dgvMaitenanceSchedule.Visible = false;
             this.dgvMaitenanceSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaitenanceSchedule_CellClick);
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
             // pTramInfo
             // 
             this.pTramInfo.BackColor = System.Drawing.Color.Gainsboro;
             this.pTramInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pTramInfo.Controls.Add(this.lblLastReparation);
+            this.pTramInfo.Controls.Add(this.lblLastClean);
+            this.pTramInfo.Controls.Add(this.dtpLastReparation);
+            this.pTramInfo.Controls.Add(this.dtpLastClean);
             this.pTramInfo.Controls.Add(this.lblMaitenanceDescription);
             this.pTramInfo.Controls.Add(this.rtbMaitenanceDescription);
             this.pTramInfo.Controls.Add(this.lblTramStatus);
@@ -540,6 +573,7 @@
             this.btnDeleteTram.TabIndex = 23;
             this.btnDeleteTram.Text = "Delete";
             this.btnDeleteTram.UseVisualStyleBackColor = false;
+            this.btnDeleteTram.Click += new System.EventHandler(this.btnDeleteTram_Click);
             // 
             // button2
             // 
@@ -4936,30 +4970,39 @@
             this.SimulatieTimer.Interval = 200;
             this.SimulatieTimer.Tick += new System.EventHandler(this.SimulatieTimer_Tick);
             // 
-            // dataGridViewTextBoxColumn5
+            // dtpLastClean
             // 
-            this.dataGridViewTextBoxColumn5.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tram ID";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dtpLastClean.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpLastClean.Location = new System.Drawing.Point(207, 246);
+            this.dtpLastClean.Name = "dtpLastClean";
+            this.dtpLastClean.Size = new System.Drawing.Size(115, 22);
+            this.dtpLastClean.TabIndex = 28;
             // 
-            // dataGridViewTextBoxColumn6
+            // dtpLastReparation
             // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "MaintenanceType";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dtpLastReparation.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpLastReparation.Location = new System.Drawing.Point(360, 246);
+            this.dtpLastReparation.Name = "dtpLastReparation";
+            this.dtpLastReparation.Size = new System.Drawing.Size(115, 22);
+            this.dtpLastReparation.TabIndex = 29;
             // 
-            // dataGridViewTextBoxColumn7
+            // lblLastClean
             // 
-            this.dataGridViewTextBoxColumn7.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tram Status";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.lblLastClean.AutoSize = true;
+            this.lblLastClean.Location = new System.Drawing.Point(204, 227);
+            this.lblLastClean.Name = "lblLastClean";
+            this.lblLastClean.Size = new System.Drawing.Size(74, 16);
+            this.lblLastClean.TabIndex = 30;
+            this.lblLastClean.Text = "Last Clean:";
             // 
-            // dataGridViewTextBoxColumn9
+            // lblLastReparation
             // 
-            this.dataGridViewTextBoxColumn9.FillWeight = 1F;
-            this.dataGridViewTextBoxColumn9.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.lblLastReparation.AutoSize = true;
+            this.lblLastReparation.Location = new System.Drawing.Point(356, 227);
+            this.lblLastReparation.Name = "lblLastReparation";
+            this.lblLastReparation.Size = new System.Drawing.Size(106, 16);
+            this.lblLastReparation.TabIndex = 31;
+            this.lblLastReparation.Text = "Last Reparation:";
             // 
             // AdminForm
             // 
@@ -5331,5 +5374,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Label lblLastReparation;
+        private System.Windows.Forms.Label lblLastClean;
+        private System.Windows.Forms.DateTimePicker dtpLastReparation;
+        private System.Windows.Forms.DateTimePicker dtpLastClean;
     }
 }

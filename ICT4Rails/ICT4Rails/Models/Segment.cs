@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ICT4Rails.Models
 {
-    public class Segment
+    public class Segment : IComparable<Segment>
     {
         public string Name { get; set; }
         public bool Blocked { get; set; }
@@ -26,6 +26,11 @@ namespace ICT4Rails.Models
         public Segment(string name)
         {
             this.Name = name;
+        }
+
+        public int CompareTo(Segment other)
+        {
+            return Convert.ToInt32(this.Name) - Convert.ToInt32(other.Name);
         }
     }
 }
