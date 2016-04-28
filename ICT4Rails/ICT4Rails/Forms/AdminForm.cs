@@ -964,77 +964,95 @@ namespace ICT4Rails
             }
         }
 
+        // Aanmaken van nieuwe account door methode 
+        // AddUser(int userid, string username, string password, int age, string profession, string firstname,string surname, string surnameprefix, string email)
+        // aan te roepen uit de UserQueries.cs klasse
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var userID = GeneralQueries.GetPrimairyKey("User", "UserID");
-            var agedec = nudAge.Value;
-            int age = Convert.ToInt32(agedec);
+            if (tbUsername.Text == "" || tbFirstname.Text == "" || tbSurname.Text == "" || tbEmail.Text == "")
+            {
+                MessageBox.Show("Vul a.u.b. eerst alle velden in");
+            }
+            else
+            {
+                var userID = GeneralQueries.GetPrimairyKey("User", "UserID");
+                var agedec = nudAge.Value;
+                int age = Convert.ToInt32(agedec);
 
-            if (profession == "Bestuurder")
-            {
-                User driver = new Driver(userID, tbUsername.Text,tbPassword.Text,age,tbFirstname.Text,tbSurname.Text,tbSurnamePrefix.Text,tbEmail.Text);
-                cache.users.Add(driver);
-                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
-            }
-            if (profession == "Technicus")
-            {
-                User tech = new Technician(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
-                cache.users.Add(tech);
-                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
-            }
-            if (profession == "Schoonmaker")
-            {
-                User clean = new Cleaner(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
-                cache.users.Add(clean);
-                userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text, tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
-            }
-
-            if (profession == "Bestuurder")
-            {
-                dgvUsers.Rows.Clear();
-                foreach (User user in cache.users)
+                // Kan mooier met case : break
+                if (profession == "Bestuurder")
                 {
-                    if (user is Driver)
-                    {
-                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
-                    }
+                    User driver = new Driver(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                    cache.users.Add(driver);
+                    userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
                 }
-                dgvUsers.ClearSelection();
-            }
-
-            if (profession == "Technicus")
-            {
-                dgvUsers.Rows.Clear();
-                foreach (User user in cache.users)
+                if (profession == "Technicus")
                 {
-                    if (user is Technician)
-                    {
-                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
-                    }
+                    User tech = new Technician(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                    cache.users.Add(tech);
+                    userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
                 }
-                dgvUsers.ClearSelection();
-            }
-
-            if (profession == "Schoonmaker")
-            {
-                dgvUsers.Rows.Clear();
-                foreach (User user in cache.users)
+                if (profession == "Schoonmaker")
                 {
-                    if (user is Cleaner)
-                    {
-                        dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
-                    }
+                    User clean = new Cleaner(userID, tbUsername.Text, tbPassword.Text, age, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
+                    cache.users.Add(clean);
+                    userqueries.AddUser(userID, tbUsername.Text, tbPassword.Text, age, profession, tbFirstname.Text,
+                        tbSurname.Text, tbSurnamePrefix.Text, tbEmail.Text);
                 }
-                dgvUsers.ClearSelection();
-            }
 
-            tbUsername.Text = "";
-            tbPassword.Text = "";
-            tbFirstname.Text = "";
-            tbSurname.Text = "";
-            tbSurnamePrefix.Text = "";
-            tbEmail.Text = "";
-            nudAge.Value = 0;
+                if (profession == "Bestuurder")
+                {
+                    dgvUsers.Rows.Clear();
+                    foreach (User user in cache.users)
+                    {
+                        if (user is Driver)
+                        {
+                            dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                        }
+                    }
+                    dgvUsers.ClearSelection();
+                }
+
+                if (profession == "Technicus")
+                {
+                    dgvUsers.Rows.Clear();
+                    foreach (User user in cache.users)
+                    {
+                        if (user is Technician)
+                        {
+                            dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                        }
+                    }
+                    dgvUsers.ClearSelection();
+                }
+
+
+                if (profession == "Schoonmaker")
+                {
+                    dgvUsers.Rows.Clear();
+                    foreach (User user in cache.users)
+                    {
+                        if (user is Cleaner)
+                        {
+                            dgvUsers.Rows.Add(user.FirstName, user.Age, user.UserName);
+                        }
+                    }
+                    dgvUsers.ClearSelection();
+                }
+
+                tbUsername.Text = "";
+                tbPassword.Text = "";
+                tbFirstname.Text = "";
+                tbSurname.Text = "";
+                tbSurnamePrefix.Text = "";
+                tbEmail.Text = "";
+                nudAge.Value = 0;
+            }
 
         }
 
