@@ -11,6 +11,54 @@ namespace ICT4Rails.Data
 {
     class MaintenanceQueries
     {
+        public void AddMaintenance(int maintenanceid, int tramid, string type, string specification, DateTime date, int number)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Maintenance " +
+                                      "(MaintenanceID, TramID, Type, Specification, Mdate, Duration) " +
+                                      "VALUES (" + @maintenanceid + ", '" + @tramid + "', '" + @type + "', " + @specification +
+                                      ", '" + @date + "', '" + @number + "')";
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        public void DeleteMaintenance(int maintenanceid, int tramid, string type, string specification, DateTime date, int number)
+        {
+            using (var database = DbConnection.Connection)
+            using (var command = database.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Maintenance" +
+                                      " WHERE Maintenanceid = " + "'" +
+                                      maintenanceid  + "'" +
+                                      " AND TramID = " + "'" +
+                                      tramid + "'" +
+                                      " AND Type = " + "'" +
+                                      type + "'" +
+                                       " AND Specification = " + "'" +
+                                      specification + "'" +
+                                       " AND Date = " + "'" +
+                                      date + "'" +
+                                       " AND number = " + "'" +
+                                      number + "'";
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
         public List<Maintenance> GetMaintenance(List<Tram> trams, List<User> users)
         {
             List<Maintenance> maintenances = new List<Maintenance>();

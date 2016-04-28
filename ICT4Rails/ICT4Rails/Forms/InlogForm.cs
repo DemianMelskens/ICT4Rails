@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ICT4Rails.Forms;
 using ICT4Rails.Models;
 using ICT4Rails.Models.Users;
-
+using ICT4Rails.Logic;
 
 namespace ICT4Rails
 {
@@ -23,6 +23,7 @@ namespace ICT4Rails
         CacheData cache = new CacheData();
         public InlogForm()
         {
+            Rfid.Start();
             InitializeComponent();
             AutoCenterContextSection();
             cache.LoadData();

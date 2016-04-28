@@ -19,7 +19,7 @@ namespace ICT4Rails.Models
         public List<User> Workers { get; set; }
         
 
-        public Maintenance(int maintenanceID, Tram tram, MaintenanceType type, string specification, DateTime date, int duration, List<User> workers)
+        public Maintenance(int maintenanceID, Tram tram, MaintenanceType type, string specification, DateTime date, int duration)
         {
             this.MaintenanceID = maintenanceID;
             this.Tram = tram;
@@ -27,8 +27,7 @@ namespace ICT4Rails.Models
             this.Specification = specification;
             this.Date = date;
             this.Duration = duration;
-            this.Workers = workers;
-            
+            this.Workers = new List<User>();  
         }
 
         public Maintenance(MaintenanceType type)

@@ -107,6 +107,8 @@ namespace ICT4Rails.Data
             }
         }
 
+      
+
         /// <summary>
         /// Removes a user from the database. Requires first name, last name and email address to validate
         /// </summary>

@@ -1055,6 +1055,50 @@ namespace ICT4Rails
             cbTramStatus.Visible = false;
             lblTramStatus.Visible = false;
             lbTramInfo.Text = "Add Maitenance";
+
+            Tram tram = null;
+            int maintenanceid = GeneralQueries.GetPrimairyKey("Maintenance", "MaintenanceID");
+            foreach(Tram ltram in cache.trams)
+            {
+                if(tram.TramID == tbTramID.Text)
+                {
+                    tram = ltram;
+                }
+            }
+
+            MaintenanceType mt = MaintenanceType.NotDeclared;
+            if(cbTramStatus.SelectedValue == "NeedsCleaning")
+            {
+                mt = MaintenanceType.Cleaning;
+            }
+            else if(cbTramStatus.SelectedValue == "NeedsReperation")
+            {
+                mt = MaintenanceType.Reparation;
+            }
+
+            DateTime date = dateTimePicker1.Value;
+
+            if (tram != null)
+            {
+                Maintenance maintenance = new Maintenance(maintenanceid, tram, mt, rtbMaitenanceDescription.Text, date, Convert.ToInt32(numericUpDown1.Value));
+                cache.maintenances.Add(maintenance);
+                MaintenanceQueries mq = new MaintenanceQueries();
+                mq.AddMaintenance(maintenance.MaintenanceID, Convert.ToInt32(tram.TramID), maintenance.Type.ToString(), maintenance.Specification, maintenance.Date, maintenance.Duration);
+            }
+            dgvMaitenanceSchedule.Rows.Clear();
+
+            foreach (Maintenance m in cache.maintenances)
+            {
+                dgvMaitenanceSchedule.Rows.Add(m.Tram.TramID, m.Type, cbTramStatus.SelectedValue, m.Date);
+            }
+
+
+            
+
+
+
+
+
         }
 
         private void dgvMaitenanceSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1642,6 +1686,38 @@ namespace ICT4Rails
                 }
             }
             dgvMaitenanceSchedule.ClearSelection();
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteTram_Click(object sender, EventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            Tram tram = null;
+          
+            foreach (Tram ltram in cache.trams)
+            {
+                if (tram.TramID == tbTramID.Text)
+                {
+                    tram = ltram;
+                }
+            }
+
+
+            MaintenanceQueries mq = new MaintenanceQueries();
+            DataGridViewRow row = dgvUsers.Rows[rowIndex];
+            foreach (Maintenance m in cache.maintenances)
+            {
+                if (m.Tram.TramID == Convert.ToString(row.Cells[0].Value))
+                {
+                    cache.maintenances.Remove(m);
+                    mq.DeleteMaintenance(m.MaintenanceID, Convert.ToInt32(tram.TramID), m.Type.ToString(), m.Specification, m.Date, m.Duration);
+
+                }
+            }
         }
 
         private void SimulatieTimer_Tick(object sender, EventArgs e)

@@ -9,6 +9,7 @@ namespace ICT4Rails.Models.Enums
     public enum MaintenanceType
     {
         Reparation,
-        Cleaning
+        Cleaning,
+        NotDeclared
     }
 }

@@ -11,6 +11,10 @@ using ICT4Rails.Data;
 using ICT4Rails.Models;
 using ICT4Rails.Models.Users;
 using ICT4Rails.Models.Enums;
+using ICT4Rails.Logic;
+using Phidgets;
+using Phidgets.Events;
+using System.Diagnostics;
 
 namespace ICT4Rails.Forms
 {
@@ -218,5 +222,118 @@ namespace ICT4Rails.Forms
             tbPtramType.Text = Convert.ToString(row.Cells[1].Value);
             tbPtramLenght.Text = Convert.ToString(row.Cells[3].Value);
         }
+
+       private void RfidSCanner()
+        {
+            Rfid rfd = new Rfid(tbTramID.Text, cache);
+            
+        }
+
+        // RFID
+        #region RFID
+
+        private static RFID rfid;
+        private static bool started;
+        private string tramid;
+        private Tram tram;
+
+
+
+
+        public  void Start()
+        {
+            try
+            {
+                rfid = new RFID();
+                //rfid.Error
+                rfid.Tag += rfid_Tag;
+                rfid.open();
+                rfid.waitForAttachment();
+                rfid.Antenna = true;
+                rfid.LED = true;
+                started = true;
+            }
+            catch (PhidgetException e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+        }
+
+        public string ConvertToLineNumber(Tramtype tramtype)
+        {
+            string line = "";
+            if (tramtype == Tramtype.Combinos)
+            {
+                line = "undefined";
+            }
+            else if (tramtype == Tramtype.DubbelekopCombinos)
+            {
+                line = "undefined";
+            }
+            else if (tramtype == Tramtype.elevenG)
+            {
+                line = "5";
+            }
+            else if (tramtype == Tramtype.twelfG)
+            {
+                line = "16/24";
+            }
+            else if (tramtype == Tramtype.Opleidingstram)
+            {
+                line = "undefined";
+            }
+
+            return line;
+        }
+
+
+        public  void rfid_Tag(object sender, TagEventArgs e)
+        {
+
+            string tag = e.Tag;
+
+
+            if (tag == "2800b3b724")
+            {
+                Tram tram = new Tram(tbTramID.Text);
+                if (ConvertToLineNumber(tram.TramType) == "undefined")
+                {
+                     Random r = new Random();
+                     int seegment = r.Next(cache.segments.Count);
+                     Segment segment = cache.segments[seegment];
+                     tbPtramID.Text = segment.Name;
+                }
+                else if(ConvertToLineNumber(tram.TramType) != "undefined")
+                {
+                     Random r = new Random();
+                     int seegment = r.Next(cache.segments.Count);
+                     Segment segment = cache.segments[seegment];
+                     tbPtramID.Text = segment.Name;
+                }
+
+            }
+            else if (tag == "1100ad7362")
+            {
+                Tram tram = new Tram(tbTramID.Text);
+                if (ConvertToLineNumber(tram.TramType) == "undefined")
+                {
+                    Random r = new Random();
+                    int seegment = r.Next(cache.segments.Count);
+                    Segment segment = cache.segments[seegment];
+                    tbPtramID.Text = segment.Name;
+                }
+                else if (ConvertToLineNumber(tram.TramType) != "undefined")
+                {
+                    Random r = new Random();
+                    int seegment = r.Next(cache.segments.Count);
+                    Segment segment = cache.segments[seegment];
+                    tbPtramID.Text = segment.Name;
+                }
+
+            }
+
+
+        }
+        #endregion
     }
 }
